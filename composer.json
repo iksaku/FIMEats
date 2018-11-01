@@ -1,8 +1,8 @@
 {
-    "name": "laravel/laravel",
+    "name": "iksaku/fimeats",
     "description": "FIMEats Project.",
     "keywords": ["fimeats", "fime", "uanl"],
-    "license": "MIT",
+    "license": "GPLv3",
     "type": "project",
     "require": {
         "php": "^7.1.3",
