@@ -79,9 +79,10 @@ class ImportMenus extends Command
                 $faculty_maps_url = $worksheet->getCellByColumnAndRow(5, 2, false);
 
                 $faculty = Faculty::firstOrCreate(['short_name' => $faculty_short_name], [
-                    'name' => $faculty_name,
-                    'maps_url' => $faculty_maps_url
+                    'name' => $faculty_name
                 ]);
+                $faculty->maps_url = $faculty_maps_url;
+                $faculty->save();
 
                 $cafeteria = Cafeteria::firstOrNew(['faculty_id' => $faculty->id], [
                     'name' => 'Cafetería de ' . $faculty->short_name
@@ -113,7 +114,8 @@ class ImportMenus extends Command
                         'name' => $consumable_name,
                         'price' => (float) $consumable_price,
                         'menu_id' => $menu->id
-                    ], ['image' => $consumable_img]);
+                    ]);
+                    $consumable->image = $consumable_img;
                     $menu->consumables()->save($consumable);
 
                     $category = Category::firstOrCreate(['name' => $consumable_category]);
