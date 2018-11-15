@@ -11,6 +11,5 @@
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
+Route::get('/', 'Main@index')->name('index');
+Route::get('/facultad/{name}', 'Main@faculty')->name('faculty');

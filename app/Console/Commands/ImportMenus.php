@@ -90,7 +90,9 @@ class ImportMenus extends Command
                 $faculty->cafeterias()->save($cafeteria);
 
                 // TODO: Multiple Menus
-                $menu = Menu::firstOrNew(['cafeteria_id' => $cafeteria->id], ['name' => null]);
+                $menu = Menu::firstOrNew(['cafeteria_id' => $cafeteria->id], [
+                    'name' => 'Menú Principal'
+                ]);
                 $cafeteria->menus()->save($menu);
 
                 foreach ($worksheet->getRowIterator() as $row) {

@@ -29,10 +29,10 @@ class Menu extends Model
     protected $fillable = ['name'];
 
     public function cafeteria() {
-        return $this->belongsTo('App\Models\Cafeteria');
+        return $this->belongsTo('App\Models\Cafeteria')->get();
     }
 
     public function consumables() {
-        return $this->hasMany('App\Models\Consumable');
+        return $this->hasMany('App\Models\Consumable')->get();
     }
 }
