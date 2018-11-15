@@ -30,6 +30,6 @@ class Faculty extends Model
     protected $fillable = ['name', 'short_name', 'maps_url'];
 
     public function cafeterias() {
-        return $this->hasMany('App\Models\Cafeteria')->get();
+        return $this->hasMany('App\Models\Cafeteria');
     }
 }

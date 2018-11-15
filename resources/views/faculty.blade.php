@@ -7,9 +7,9 @@
     </header>
 
     <section class="box">
-        @foreach($faculty->cafeterias() as $cafeteria)
+        @foreach($faculty->cafeterias()->get() as $cafeteria)
             <h3>{{ $cafeteria->name }}</h3>
-            @foreach($cafeteria->menus() as $menu)
+            @foreach($cafeteria->menus()->get() as $menu)
                 <h5>{{ $menu->name }}</h5>
                 <div class="table-wrapper">
                     <table class="alt">
@@ -21,13 +21,13 @@
                         </tr>
                         </thead>
                         <tbody>
-                            @foreach($menu->consumables() as $consumble)
+                            @foreach($menu->consumables()->get() as $consumble)
                                 <tr>
                                     <td>
                                         @php
                                             echo join(', ', array_map(function($category) {
                                                 return $category['name'];
-                                            }, $consumble->categories()->toArray()))
+                                            }, $consumble->categories()->get()->toArray()))
                                         @endphp
                                     </td>
                                     <td>{{ $consumble->name }}</td>

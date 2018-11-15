@@ -32,7 +32,7 @@ class Consumable extends Model
     protected $fillable = ['name', 'price', 'image'];
 
     public function categories() {
-        return $this->belongsToMany('App\Models\Category')->get();
+        return $this->belongsToMany('App\Models\Category');
     }
 
     public function price() {

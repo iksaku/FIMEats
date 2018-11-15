@@ -29,10 +29,10 @@ class Cafeteria extends Model
     protected $fillable = ['name'];
 
     public function faculty() {
-        return $this->belongsTo('App\Models\Faculty')->get();
+        return $this->belongsTo('App\Models\Faculty');
     }
 
     public function menus() {
-        return $this->hasMany('App\Models\Menu')->get();
+        return $this->hasMany('App\Models\Menu');
     }
 }

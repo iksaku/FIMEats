@@ -26,6 +26,6 @@ class Category extends Model
     protected $fillable = ['name'];
 
     public function consumables() {
-        return $this->belongsToMany('App\Models\Consumable')->get();
+        return $this->belongsToMany('App\Models\Consumable');
     }
 }
