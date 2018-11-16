@@ -32,4 +32,8 @@ class Faculty extends Model
     public function cafeterias() {
         return $this->hasMany('App\Models\Cafeteria');
     }
+
+    public function name() {
+        return ucwords(strtolower($this->name));
+    }
 }

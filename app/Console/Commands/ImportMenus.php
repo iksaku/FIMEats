@@ -98,7 +98,11 @@ class ImportMenus extends Command
                 foreach ($worksheet->getRowIterator() as $row) {
                     if ($row->getRowIndex() == 1) continue;
 
-                    $consumable_category = $worksheet->getCellByColumnAndRow(1, $row->getRowIndex());
+                    $consumable_categories = explode(',', preg_replace(
+                        '/( |),( |)/',
+                        ',',
+                        $worksheet->getCellByColumnAndRow(1, $row->getRowIndex())
+                    ));
 
                     $consumable_name = $worksheet->getCellByColumnAndRow(2, $row->getRowIndex());
                     $consumable_img = $worksheet->getCellByColumnAndRow(4, $row->getRowIndex(), false);
@@ -120,9 +124,11 @@ class ImportMenus extends Command
                     $consumable->image = $consumable_img;
                     $menu->consumables()->save($consumable);
 
-                    $category = Category::firstOrCreate(['name' => $consumable_category]);
-
-                    $consumable->categories()->save($category);
+                    foreach($consumable_categories as $consumable_category) {
+                        if (empty($consumable_categories)) continue;
+                        $category = Category::firstOrCreate(['name' => $consumable_category]);
+                        $consumable->categories()->save($category);
+                    }
 
                     $bar->advance();
                 }

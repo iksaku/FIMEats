@@ -28,4 +28,8 @@ class Category extends Model
     public function consumables() {
         return $this->belongsToMany('App\Models\Consumable');
     }
+
+    public function name() {
+        return ucwords(strtolower($this->name));
+    }
 }

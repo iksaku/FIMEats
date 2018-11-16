@@ -11,7 +11,7 @@
             <h3>Porfavor elige tu facultad:</h3>
         </header>
 
-        @for($i = 0; $i < count($faculties); $i += 2)
+        @for($i = 0; $i < count($faculties) - 1; $i += 2)
             <div class="features-row">
                 @for($j = 0; $j < 2; ++$j)
                     @php($faculty = $faculties[$i + $j])

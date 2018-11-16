@@ -35,4 +35,8 @@ class Cafeteria extends Model
     public function menus() {
         return $this->hasMany('App\Models\Menu');
     }
+
+    public function name() {
+        return ucwords(strtolower($this->name));
+    }
 }

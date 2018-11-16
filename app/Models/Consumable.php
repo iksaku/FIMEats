@@ -35,7 +35,18 @@ class Consumable extends Model
         return $this->belongsToMany('App\Models\Category');
     }
 
+    public function name() {
+        return ucwords(strtolower($this->name));
+    }
+
     public function price() {
         return '$' . $this->price;
+    }
+
+    public function image() {
+        if (!empty($this->image) && file_exists(public_path('img/' . $this->image)))
+            return asset('img/' . $this->image);
+        else
+            return asset('img/food_placeholder.jpg');
     }
 }

@@ -35,4 +35,8 @@ class Menu extends Model
     public function consumables() {
         return $this->hasMany('App\Models\Consumable');
     }
+
+    public function name() {
+        return ucwords(strtolower($this->name));
+    }
 }
