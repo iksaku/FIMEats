@@ -133,7 +133,8 @@ class ImportMenus extends Command
                     foreach($consumable_categories as $consumable_category) {
                         if (empty($consumable_categories)) continue;
                         $category = Category::firstOrCreate(['name' => $consumable_category]);
-                        $consumable->categories()->save($category);
+
+                        if (!$consumable->categories->contains($category->id))  $consumable->categories()->save($category);
                     }
 
                     $bar->advance();
