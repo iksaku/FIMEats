@@ -77,11 +77,17 @@ class ImportMenus extends Command
                 $faculty_name = $worksheet->getCellByColumnAndRow(5, 5);
                 $faculty_short_name = $spreadsheet->getSheetNames()[$i];
                 $faculty_maps_url = $worksheet->getCellByColumnAndRow(5, 2, false);
+                $embeddable_maps_url = null;
+
+                if (!empty($faculty_maps_url)) {
+                    preg_match('/src="([a-zA-Z0-9:\/.?=!\-\%]+)"/', $faculty_maps_url, $matches);
+                    if (isset($matches[1])) $embeddable_maps_url = $matches[1];
+                }
 
                 $faculty = Faculty::firstOrCreate(['short_name' => $faculty_short_name], [
                     'name' => $faculty_name
                 ]);
-                $faculty->maps_url = $faculty_maps_url;
+                $faculty->maps_url = $embeddable_maps_url;
                 $faculty->save();
 
                 $cafeteria = Cafeteria::firstOrNew(['faculty_id' => $faculty->id], [

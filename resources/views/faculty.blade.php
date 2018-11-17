@@ -6,8 +6,16 @@
         <p>{{ $faculty->name() }}</p>
     </header>
 
-    <section class="box special features">
-        @foreach($faculty->cafeterias()->get() as $cafeteria)
+    @if(!empty($faculty->maps_url))
+        <section class="box special">
+            <iframe src="{{ $faculty->maps_url }}"
+                    style="border: 0; width: 90vw; height: 67.5vw; max-width: 600px; max-height: 450px;"
+                    allowfullscreen></iframe>
+        </section>
+    @endif
+
+    @foreach($faculty->cafeterias()->get() as $cafeteria)
+        <section class="box special features">
             <h3>{{ $cafeteria->name() }}</h3>
             @foreach($cafeteria->menus()->get() as $menu)
                 <h4>{{ $menu->name() }}</h4>
@@ -37,6 +45,6 @@
                     </div>
                 @endfor
             @endforeach
-        @endforeach
-    </section>
+        </section>
+    @endforeach
 @endsection
