@@ -78,6 +78,8 @@ class CreateTables extends Migration
                 ->references('id')->on('consumables')
                 ->onDelete('cascade');
         });
+
+        Artisan::call('import:menus');
     }
 
     /**
