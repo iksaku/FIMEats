@@ -3,11 +3,11 @@
 
 .features-row .major {
 	overflow: hidden;
+	border-radius: 1vw;
 }
 
-.features-row .major img {
-	display: inline-block;
-	position: relative;
+.features-row img {
+	border-radius: 1vw;
 }
 
 /*
