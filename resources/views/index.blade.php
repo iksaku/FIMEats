@@ -15,12 +15,12 @@
             <div class="features-row">
                 @for($j = 0; $j < 2; ++$j)
                     @php($faculty = $faculties[$i + $j])
-                    <section>
-                        <span class="image major">
-                            <img src="{{ asset('img/' . strtolower($faculty->short_name) . '.png') }}" style="max-height: 225px; max-width: 225px;">
+                    <section onclick="window.location.href = '{{ $faculty->url() }}';">
+                        <span class="major">
+                            <img src="{{ $faculty->logo() }}" style="max-height: 225px; max-width: 225px;">
                         </span>
                         <h3>{{ $faculty->short_name }}</h3>
-                        <a class="button alt icon fa-search" href="{{ route('faculty', ['name' => $faculty->short_name]) }}">
+                        <a class="button alt icon fa-search" href="{{ $faculty->url() }}">
                             Ver Menú
                         </a>
                     </section>

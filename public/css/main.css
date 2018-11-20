@@ -3,11 +3,14 @@
 
 .features-row .major {
 	overflow: hidden;
+	height: 225px;
+	display: block;
 	border-radius: 1vw;
 }
 
 .features-row img {
 	border-radius: 1vw;
+	max-height: 225px;
 }
 
 /*

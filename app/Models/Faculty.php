@@ -27,12 +27,42 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Faculty extends Model
 {
+    /** @var array */
     protected $fillable = ['name', 'short_name', 'maps_url'];
 
+    /**
+     * Returns a pre-formatted URL to access Faculty's Page
+     *
+     * @return string
+     */
+    public function url() {
+        return route('faculty', ['name' => $this->short_name]);
+    }
+
+    /**
+     * Returns a pre-formatted URL to access Faculty's Logo
+     *
+     * @return string
+     */
+    public function logo() {
+        return asset('img/' . strtolower($this->short_name)) . '.png';
+    }
+
+    /**
+     * Returns a Collection of Cafeterias owned by this Faculty
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function cafeterias() {
         return $this->hasMany('App\Models\Cafeteria');
     }
 
+
+    /**
+     * Returns formatted Faculty's full name
+     *
+     * @return string
+     */
     public function name() {
         return ucwords(strtolower($this->name));
     }

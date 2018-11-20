@@ -1,4 +1,6 @@
-@extends('template.main')
+@extends('template.main', [
+    'title' => $faculty->name()
+])
 
 @section('content')
     <header>
@@ -14,37 +16,41 @@
         </section>
     @endif
 
-    @foreach($faculty->cafeterias()->get() as $cafeteria)
+    @foreach($faculty->cafeterias as $cafeteria)
         <section class="box special features">
-            <h3>{{ $cafeteria->name() }}</h3>
-            @foreach($cafeteria->menus()->get() as $menu)
-                <h4>{{ $menu->name() }}</h4>
-
-                @php($consumables = $menu->consumables()->get())
-                @for($i = 0; $i < count($consumables) - 1; $i += 2)
-                    <div class="features-row">
-                        @for($j = 0; $j < 2; ++$j)
-                            @php($consumable = $consumables[$i + $j])
-                            <section>
-                                <span class="img major" style="height: 225px; display: block">
-                                    <img src="{{ $consumable->image() }}" style="max-height: 225px;">
-                                </span>
-                                <h3>{{ $consumable->name() }} {{ $consumable->price() }}</h3>
-                                <ul class="actions special">
-                                    @foreach($consumable->categories()->get() as $category)
-                                        <li><a class="button alt small">{{ $category->name() }}</a></li>
-                                    @endforeach
-                                </ul>
-                                <ul class="actions special">
+            <h3>{{ $cafeteria->name }}</h3>
+            @php($consumables = $cafeteria->consumables)
+            @for($i = 0; $i < count($consumables) - 1; $i += 2)
+                <div class="features-row">
+                    @for($j = 0; $j < 2; ++$j)
+                        @php($consumable = $consumables[$i + $j])
+                        <section>
+                            <span class="major">
+                                <img src="{{ $consumable->image() }}">
+                            </span>
+                            <h3>{{ $consumable->name() }} {{ $consumable->price() }}</h3>
+                            <ul class="actions special">
+                                @foreach($consumable->categories as $category)
                                     <li>
-                                        <a class="button alt icon fa-balance-scale">Comparar con otras facultades</a>
+                                        <a href="{{ $category->url() }}"
+                                           class="button alt small">
+                                            {{ $category->name() }}
+                                        </a>
                                     </li>
-                                </ul>
-                            </section>
-                        @endfor
-                    </div>
-                @endfor
-            @endforeach
+                                @endforeach
+                            </ul>
+                            <ul class="actions special">
+                                <li>
+                                    <a href="{{ route('compare') }}?name={{ urlencode($consumable->name()) }}"
+                                       class="button alt icon fa-balance-scale">
+                                        Comparar con otras facultades
+                                    </a>
+                                </li>
+                            </ul>
+                        </section>
+                    @endfor
+                </div>
+            @endfor
         </section>
     @endforeach
 @endsection

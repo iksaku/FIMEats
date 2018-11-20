@@ -34,18 +34,6 @@ class CreateTables extends Migration
                 ->onDelete('cascade');
         });
 
-        Schema::create('menus', function (Blueprint $table) {
-            $table->increments('id');
-            $table->unsignedInteger('cafeteria_id');
-            $table->string('name')->nullable();
-
-            $table->timestamps();
-
-            $table->foreign('cafeteria_id')
-                ->references('id')->on('cafeterias')
-                ->onDelete('cascade');
-        });
-
         Schema::create('categories', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
@@ -55,15 +43,15 @@ class CreateTables extends Migration
 
         Schema::create('consumables', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('menu_id');
+            $table->unsignedInteger('cafeteria_id');
             $table->string('name');
             $table->decimal('price', 5, 2);
             $table->string('image')->nullable();
 
             $table->timestamps();
 
-            $table->foreign('menu_id')
-                ->references('id')->on('menus')
+            $table->foreign('cafeteria_id')
+                ->references('id')->on('cafeterias')
                 ->onDelete('cascade');
         });
 

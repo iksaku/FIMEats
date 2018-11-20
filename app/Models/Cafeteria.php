@@ -26,17 +26,24 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Cafeteria extends Model
 {
+    /** @var array */
     protected $fillable = ['name'];
 
+    /**
+     * Returns the Faculty that owns this Cafeteria
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function faculty() {
         return $this->belongsTo('App\Models\Faculty');
     }
 
-    public function menus() {
-        return $this->hasMany('App\Models\Menu');
-    }
-
-    public function name() {
-        return ucwords(strtolower($this->name));
+    /**
+     * Returns a Collection of Consumables available at this Cafeteria
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function consumables() {
+        return $this->hasMany('App\Models\Consumable');
     }
 }

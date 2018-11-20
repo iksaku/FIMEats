@@ -23,12 +23,32 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Category extends Model
 {
+    /** @var array */
     protected $fillable = ['name'];
 
+    /**
+     * Returns a pre-formatted URL to access Category's Page
+     *
+     * @return string
+     */
+    public function url() {
+        return route('category', ['name' => $this->name()]);
+    }
+
+    /**
+     * Returns a Collection of Consumables that are tagged with this Category
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
     public function consumables() {
         return $this->belongsToMany('App\Models\Consumable');
     }
 
+    /**
+     * Returns formatted Category's Name
+     *
+     * @return string
+     */
     public function name() {
         return ucwords(strtolower($this->name));
     }

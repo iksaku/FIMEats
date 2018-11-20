@@ -29,20 +29,50 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Consumable extends Model
 {
+    /** @var array */
     protected $fillable = ['name', 'price', 'image'];
 
+    /**
+     * Returns the Cafeteria that owns this Consumable
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function cafeteria() {
+        return $this->belongsTo('App\Models\Cafeteria');
+    }
+
+    /**
+     * Returns a Collection of categories that are tagged in this Consumable
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
     public function categories() {
         return $this->belongsToMany('App\Models\Category');
     }
 
+    /**
+     * Returns formatted Consumable's full name
+     *
+     * @return string
+     */
     public function name() {
         return ucwords(strtolower($this->name));
     }
 
+    /**
+     * Returns formatted Consumable's price
+     *
+     * @return string
+     */
     public function price() {
         return '$' . $this->price;
     }
 
+    /**
+     * Returns a pre-formatted URL to access Consumable's image
+     *
+     * @return string
+     */
     public function image() {
         if (!empty($this->image) && file_exists(public_path('img/' . $this->image)))
             return asset('img/' . $this->image);
