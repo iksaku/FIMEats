@@ -12,7 +12,8 @@
     "devDependencies": {
         "axios": "^0.18",
         "cross-env": "^5.1",
-        "laravel-mix": "^2.0",
-        "lodash": "^4.17.5"
+        "laravel-mix": "^4.0.14",
+        "lodash": "^4.17.5",
+        "vue-template-compiler": "^2.5.22"
     }
 }
