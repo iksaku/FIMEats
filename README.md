@@ -11,4 +11,4 @@
 
 ### Background
 - This project started to be presented as a school assignment, but the actual interest grew so much. That's why I'm Open Sourcing it, so other college mates can contribute to its development.
-- Started as final proyect for the "Object Oriented Programming" class, taken with Mayra Deyanira from August to December in 2918
+- Started as final proyect for the "Object Oriented Programming" class, taken with Mayra Deyanira from August to December in 2018
