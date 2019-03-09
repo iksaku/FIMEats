@@ -71,9 +71,11 @@ class Main extends Controller
             ->where('name', 'LIKE', '%' . str_replace(' ', '%', $name) . '%')
             ->get();
 
-        $consumables = $consumables->filter(function($consumable) use ($compareTo) {
+        $consumables = $consumables->filter(function ($consumable) use ($compareTo) {
             /** @var Consumable $consumable */
             return count($consumable->categories->intersect($compareTo->categories)) > 0;
+        })->sort(function ($consumable) use ($compareTo) {
+            return $consumable->id == $compareTo->id ? 0 : 1;
         });
 
         return view('compare', compact('consumables', 'id'));

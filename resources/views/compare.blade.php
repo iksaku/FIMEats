@@ -2,6 +2,14 @@
     'title' => 'Comparar precios'
 ])
 
+@push('stylesheets')
+    <style>
+        .highlight-first tr:first-child {
+            background-color: #fffb9d;
+        }
+    </style>
+@endpush
+
 @section('content')
     @if ($consumables->count() < 2)
         <header>
@@ -29,7 +37,7 @@
                             <th>Precio</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody class="highlight-first">
                         @foreach($consumables as $consumable)
                             <tr>
                                 <td>{{ $consumable->name() }}</td>
