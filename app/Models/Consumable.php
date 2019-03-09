@@ -56,7 +56,7 @@ class Consumable extends Model
      * @return string
      */
     public function name() {
-        return ucwords(strtolower($this->name));
+        return ucwords(mb_strtolower($this->name));
     }
 
     /**

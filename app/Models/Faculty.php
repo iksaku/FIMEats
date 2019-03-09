@@ -45,7 +45,7 @@ class Faculty extends Model
      * @return string
      */
     public function logo() {
-        return asset('img/' . strtolower($this->short_name)) . '.png';
+        return asset('img/' . mb_strtolower($this->short_name)) . '.png';
     }
 
     /**
@@ -64,6 +64,6 @@ class Faculty extends Model
      * @return string
      */
     public function name() {
-        return ucwords(strtolower($this->name));
+        return ucwords(mb_strtolower($this->name));
     }
 }

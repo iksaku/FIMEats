@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Consumable;
 use App\Models\Faculty;
+use function foo\func;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 
@@ -58,12 +59,23 @@ class Main extends Controller
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function compare(Request $request) {
-        $name = $request->input('name');
-        if (empty($name)) return abort(404);
+        $id = $request->input('id');
+        if (empty($id)) return abort(404);
+
+        /** @var Consumable $compareTo */
+        $compareTo = Consumable::whereId($id)->first();
+        $name = preg_replace('/([a-zA-z0-9 ]+).*/', '$1', $compareTo->name());
 
         /** @var Collection $consumables */
-        $consumables = Consumable::query()->where('name', 'LIKE', '%' . str_replace(' ', '%', $name) . '%')->get();
+        $consumables = Consumable::query()
+            ->where('name', 'LIKE', '%' . str_replace(' ', '%', $name) . '%')
+            ->get();
 
-        return view('compare', compact('consumables', 'name'));
+        $consumables = $consumables->filter(function($consumable) use ($compareTo) {
+            /** @var Consumable $consumable */
+            return count($consumable->categories->intersect($compareTo->categories)) > 0;
+        });
+
+        return view('compare', compact('consumables', 'id'));
     }
 }

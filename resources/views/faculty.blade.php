@@ -9,7 +9,9 @@
     </header>
 
     @if(!empty($faculty->maps_url))
-        <section class="box special">
+        <section class="box special text-center">
+            <h3>¿No sabes como llegar?</h3>
+            <p>Aquí tienes un mapa con la ubicación del lugar.</p>
             <iframe src="{{ $faculty->maps_url }}"
                     style="border: 0; width: 90vw; height: 67.5vw; max-width: 600px; max-height: 450px;"
                     allowfullscreen></iframe>
@@ -41,7 +43,7 @@
                             </ul>
                             <ul class="actions special">
                                 <li>
-                                    <a href="{{ route('compare') }}?name={{ urlencode($consumable->name()) }}"
+                                    <a href="{{ route('compare') }}?id={{ urlencode($consumable->id) }}"
                                        class="button alt icon fa-balance-scale">
                                         Comparar con otras facultades
                                     </a>
