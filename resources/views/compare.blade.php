@@ -5,7 +5,7 @@
 @push('stylesheets')
     <style>
         .highlight-first tr:first-child {
-            background-color: #fffb9d;
+            background-color: #ffffb2;
         }
     </style>
 @endpush
