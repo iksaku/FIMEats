@@ -60,7 +60,7 @@ return [
             'artisan:view:clear',
             'artisan:cache:clear',
             'artisan:config:cache',
-            'artisan:migrate',
+            'artisan:migrate:fresh',
         ],
         
         // Deployment is done and live
@@ -108,7 +108,9 @@ return [
 
     'hosts' => [
         'fimeats.jorgeglz.io' => [
+            'hostname' => env('DEPLOY_HOST'),
             'deploy_path' => '/var/www/fimeats',
+            'user' => env('DEPLOY_USER')
         ],
     ],
 
