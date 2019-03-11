@@ -1,7 +1,7 @@
 <html lang="en">
 <head>
     <title>
-        {{ env('APP_NAME') }}
+        {{ config('app.name') }}
     </title>
 
     <meta charset="utf-8">

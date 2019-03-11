@@ -1,5 +1,5 @@
 <header id="header">
-    <h1><a href="{{ route('index') }}">{{ env('APP_NAME') }}</a></h1>
+    <h1><a href="{{ route('index') }}">{{ config('app.name') }}</a></h1>
     <nav id="nav">
         <ul>
             <li><a href="{{ route('index') }}">Inicio</a></li>

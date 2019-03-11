@@ -2,7 +2,7 @@
 
 @section('content')
     <header>
-        <h2><strong>{{ env('APP_NAME') }}</strong></h2>
+        <h2><strong>{{ config('app.name') }}</strong></h2>
         <p>Encuentras la comida que buscas, en el lugar que la buscas.</p>
     </header>
 

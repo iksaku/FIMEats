@@ -1,6 +1,6 @@
 <head>
     <title>
-        {{ env('APP_NAME') }}
+        {{ config('app.name') }}
         @if(isset($title) && !empty($title))
             | {{ $title }}
         @endif
