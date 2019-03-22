@@ -1,0 +1,126 @@
+name: Facultad de Filosofía y Letras
+short_name: FFYL
+maps_url: https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3594.2572984080166!2d-100.31134538497969!3d25.729003483651596!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8662945396e136af%3A0x99b2536497dbcd4d!2sCafeteria+Filosofia+y+Letras!5e0!3m2!1ses!2smx!4v1542687032812
+cafeterias:
+  - name: Cafetería de FFYL
+    products:
+      - name: HUEVOS AL GUSTO
+        price: 45
+        image: huevos.jpg
+        categories:
+          - ALMUERZOS
+      - name: CHILAQUILES
+        price: 50
+        image: chilaquiles.jpg
+        categories:
+          - ALMUERZOS
+      - name: COCTEL DE FRUTAS
+        price: 30
+        image: coctelfruta.jpg
+        categories:
+          - ALMUERZOS
+      - name: COCTEL DE FRUTAS PREPARADO
+        price: 35
+        image: coctelpreparadp.jpg
+        categories:
+          - ALMUERZOS
+      - name: MOLLETES
+        price: 30
+        image: molletes.jpg
+        categories:
+          - ALMUERZOS
+      - name: HOT CAKES
+        price: 30
+        image: hotcakes.jpg
+        categories:
+          - ALMUERZOS
+      - name: SINCRONIZADA C/PAPAS
+        price: 35
+        image: sincronizadas.jpg
+        categories:
+          - COMIDAS
+      - name: SANDWICH C/PAPAS
+        price: 35
+        image: sandwichpapas.jpg
+        categories:
+          - COMIDAS
+      - name: HOT DOG C/PAPAS
+        price: 25
+        image: hotdogpapas.jpg
+        categories:
+          - COMIDAS
+      - name: PAPAS A LA FRANCESA
+        price: 30
+        image: papas.jpg
+        categories:
+          - COMIDAS
+      - name: HAMBURGUESA C/PAPAS
+        price: 40
+        image: hamburguesapapasre.jpg
+        categories:
+          - COMIDAS
+      - name: TORTA C/PAPAS
+        price: 40
+        image: tortapapas.jpg
+        categories:
+          - COMIDAS
+      - name: COMIDA DEL DIA
+        price: 65
+        image: 
+        categories:
+          - COMIDAS
+      - name: MILANESA DE RES
+        price: 70
+        image: milanesa-de-res.jpg
+        categories:
+          - COMIDAS
+      - name: BISTEC A LA PARRILLA
+        price: 70
+        image: bistec.jpg
+        categories:
+          - COMIDAS
+      - name: GORDITAS
+        price: 14
+        image: gorditas.jpg
+        categories:
+          - COMIDAS
+      - name: AL VAPOR
+        price: 7
+        image: tacosalvapor.jpg
+        categories:
+          - TACOS
+      - name: PREPARADOS
+        price: 12
+        image: tacos.jpg
+        categories:
+          - TACOS
+      - name: LICUADOS
+        price: 25
+        image: licuados.jpg
+        categories:
+          - BEBIDAS
+      - name: AGUAS FRESCAS
+        price: 17
+        image: aguafruta.jpg
+        categories:
+          - BEBIDAS
+      - name: CAFÉ
+        price: 8
+        image: cafe.jpg
+        categories:
+          - BEBIDAS
+      - name: VASO DE REFRESCO
+        price: 10
+        image: refresco.jpg
+        categories:
+          - BEBIDAS
+      - name: AGUAS FRESCAS
+        price: 25
+        image: aguafruta.jpg
+        categories:
+          - BEBIDAS
+      - name: CAFÉ
+        price: 12
+        image: cafe.jpg
+        categories:
+          - BEBIDAS

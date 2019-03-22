@@ -1,0 +1,116 @@
+name: Facultad de Contaduría Pública y Administración
+short_name: FACPYA
+maps_url: https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3594.29484854102!2d-100.3111364!3d25.7277613!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x9b1c8f7d76fae54f!2sCafeter%C3%ADa!5e0!3m2!1ses!2smx!4v1542474423733
+cafeterias:
+  - name: Cafetería de FACPYA
+    products:
+      - name: RED BULL
+        price: 30
+        image: redbull.jpg
+        categories:
+          - BEBIDAS
+      - name: LICUADOS
+        price: 25
+        image: licuados.jpg
+        categories:
+          - BEBIDAS
+      - name: CAFE
+        price: 12
+        image: cafe.jpg
+        categories:
+          - BEBIDAS
+      - name: AGUA DE FRUTA
+        price: 18
+        image: aguafruta.jpg
+        categories:
+          - BEBIDAS
+      - name: HOT CAKES
+        price: 30
+        image: hotcakes.jpg
+        categories:
+          - ALMUERZOS
+      - name: BISQUET PREPARADO
+        price: 20
+        image: bisquet.jpg
+        categories:
+          - ALMUERZOS
+      - name: MOLLETES
+        price: 30
+        image: molletes.jpg
+        categories:
+          - ALMUERZOS
+      - name: HUEVOS AL GUSTO C/ REFRESCO
+        price: 50
+        image: huevos.jpg
+        categories:
+          - ALMUERZOS
+      - name: SINCRONIZADAS C/PAPAS
+        price: 35
+        image: sincronizadas.jpg
+        categories:
+          - COMIDAS
+      - name: SANDWICH C/PAPAS
+        price: 35
+        image: sandwichpapas.jpg
+        categories:
+          - COMIDAS
+      - name: HOT DOG C/PAPAS
+        price: 25
+        image: hotdogpapas.jpg
+        categories:
+          - COMIDAS
+      - name: HAMBURGESA C/PAPAS Y REFRESCO
+        price: 47
+        image: hamburguesapapasre.jpg
+        categories:
+          - COMIDAS
+      - name: TORTA C/PAPAS Y REFRESCO
+        price: 47
+        image: tortapapas.jpg
+        categories:
+          - COMIDAS
+      - name: GORDITAS
+        price: 14
+        image: gorditas.jpg
+        categories:
+          - COMIDAS
+      - name: COMIDA DEL DIA
+        price: 65
+        image: 
+        categories:
+          - COMIDAS
+      - name: MILANESA DE RES
+        price: 70
+        image: milanesa-de-res.jpg
+        categories:
+          - COMIDAS
+      - name: BISTEC A LA PARRILLA
+        price: 70
+        image: bistec.jpg
+        categories:
+          - COMIDAS
+      - name: PAPAS A LA FRANCESA
+        price: 30
+        image: papas.jpg
+        categories:
+          - COMIDAS
+      - name: PAPAS CRISSCUT
+        price: 40
+        image: papascrisscut.jpg
+        categories:
+          - COMIDAS
+      - name: PAPAS MUNCHER
+        price: 40
+        image: muncher.jpg
+        categories:
+          - COMIDAS
+      - name: AL VAPOR
+        price: 7
+        image: tacosalvapor.jpg
+        categories:
+          - TACOS
+      - name: PREPARADOS
+        price: 12
+        image: tacos.jpg
+        categories:
+          - TACOS

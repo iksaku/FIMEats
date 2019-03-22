@@ -1,0 +1,146 @@
+name: Facultad de Ingeniería Civil
+short_name: FIC
+maps_url: https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d898.5959016614335!2d-100.3145295!3d25.7248249!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x86629452f713ad5d%3A0x581b445dc92f500b!2sCafeter%C3%ADa!5e0!3m2!1ses!2smx!4v1542687051988
+cafeterias:
+  - name: Cafetería de FIC
+    products:
+      - name: ENCHILADAS SUIZAS (4)
+        price: 60
+        image: suizas.jpg
+        categories:
+          - COMIDAS
+      - name: ENTOMATADAS (4)
+        price: 60
+        image: entomatadas.jpg
+        categories:
+          - COMIDAS
+      - name: DISCADA
+        price: 60
+        image: discada.jpg
+        categories:
+          - COMIDAS
+      - name: ASADO
+        price: 60
+        image: asado.jpg
+        categories:
+          - COMIDAS
+      - name: GORDITAS (4)
+        price: 60
+        image: gorditas.jpg
+        categories:
+          - COMIDAS
+      - name: POLLO CON CREMA
+        price: 60
+        image: pollocrema.jpg
+        categories:
+          - COMIDAS
+      - name: PICADILLO
+        price: 60
+        image: picadillo.jpg
+        categories:
+          - COMIDAS
+      - name: SOPES (4)
+        price: 60
+        image: sopes.jpg
+        categories:
+          - COMIDAS
+      - name: ALBÓNDIGAS (6)
+        price: 60
+        image: albondigas.jpg
+        categories:
+          - COMIDAS
+      - name: CORTADILLO
+        price: 60
+        image: cortadillo.jpg
+        categories:
+          - COMIDAS
+      - name: CHILAQUILES CHICOS
+        price: 30
+        image: chilaquiles.jpg
+        categories:
+          - COMIDAS
+      - name: CHILAQUILES GRANDES
+        price: 50
+        image: chilaquiles.jpg
+        categories:
+          - COMIDAS
+      - name: MILANESA EMPANIZADA
+        price: 70
+        image: milanesa-de-res.jpg
+        categories:
+          - COMIDAS
+      - name: FAJITA A LA PLANCHA (RES)
+        price: 70
+        image: fajitared.jpg
+        categories:
+          - COMIDAS
+      - name: FAJITA A LA PLANCHA (POLLO)
+        price: 70
+        image: fajitapollo.jpg
+        categories:
+          - COMIDAS
+      - name: CORTE DE RES A LA PLANCHA
+        price: 80
+        image: corte.jpg
+        categories:
+          - COMIDAS
+      - name: COCA COLA
+        price: 14
+        image: coca.jpg
+        categories:
+          - BEBIDAS
+      - name: JOYAS DE SABOR
+        price: 14
+        image: joya.jpg
+        categories:
+          - BEBIDAS
+      - name: SPRITE
+        price: 14
+        image: sprite.jpg
+        categories:
+          - BEBIDAS
+      - name: FRESCA
+        price: 14
+        image: fresca.jpg
+        categories:
+          - BEBIDAS
+      - name: JUGOS VALLE FRUIT
+        price: 16
+        image: jugos.jpg
+        categories:
+          - BEBIDAS
+      - name: FUZE TEA
+        price: 16
+        image: fuze.jpg
+        categories:
+          - BEBIDAS
+      - name: PEÑAFIEL
+        price: 15
+        image: penafiel.jpg
+        categories:
+          - BEBIDAS
+      - name: DR PEPPER
+        price: 15
+        image: drpepper.jpg
+        categories:
+          - BEBIDAS
+      - name: SCHWEPPERS
+        price: 15
+        image: schweppes.jpg
+        categories:
+          - BEBIDAS
+      - name: TOPOCHICO
+        price: 16
+        image: topochico.jpg
+        categories:
+          - BEBIDAS
+      - name: AGUA NATURAL 1L
+        price: 12
+        image: agua.jpg
+        categories:
+          - BEBIDAS
+      - name: MORELOS
+        price: 13
+        image: jugomorelos.jpg
+        categories:
+          - BEBIDAS

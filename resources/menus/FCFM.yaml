@@ -1,0 +1,61 @@
+name: Facultad de Ciencias Fisico Matematicas
+short_name: FCFM
+maps_url: https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d898.5920275057739!2d-100.3157028!3d25.7253376!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x8c982757dda91d20!2sFCFM+-+Facultad+de+Ciencias+F%C3%ADsico+Matem%C3%A1ticas!5e0!3m2!1ses!2smx!4v1542687172713
+cafeterias:
+  - name: Cafetería de FCFM
+    products:
+      - name: LICUADOS
+        price: 30
+        image: licuados.jpg
+        categories:
+          - BEBIDAS 
+      - name: AGUAS FRESCAS
+        price: 25
+        image: aguafruta.jpg
+        categories:
+          - BEBIDAS 
+      - name: CIEL 600 ml
+        price: 10
+        image: aguaciel.jpg
+        categories:
+          - BEBIDAS 
+      - name: REFRESCOS
+        price: 15
+        image: coca.jpg
+        categories:
+          - BEBIDAS 
+      - name: HOT CAKES
+        price: 25
+        image: hotcakes.jpg
+        categories:
+          - DESAYUNOS 
+      - name: PAN DULCE
+        price: 10
+        image: pandulce.jpg
+        categories:
+          - DESAYUNOS 
+      - name: GALLETAS
+        price: 13
+        image: galletas.jpg
+        categories:
+          - DESAYUNOS 
+      - name: MOLLETES
+        price: 23
+        image: molletes.jpg
+        categories:
+          - ALMUERZO
+      - name: ALITAS DE POLLO
+        price: 25
+        image: alitas.jpg
+        categories:
+          - ALMUERZO
+      - name: SANDWICH DE HUEVO
+        price: 30
+        image: shuevo.jpg
+        categories:
+          - ALMUERZO
+      - name: BURRIPIZZA
+        price: 25
+        image: bp.jpg
+        categories:
+          - ALMUERZO
