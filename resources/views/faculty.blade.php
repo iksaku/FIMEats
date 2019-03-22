@@ -21,18 +21,18 @@
     @foreach($faculty->cafeterias as $cafeteria)
         <section class="box special features">
             <h3>{{ $cafeteria->name }}</h3>
-            @php($consumables = $cafeteria->consumables)
-            @for($i = 0; $i < count($consumables) - 1; $i += 2)
+            @php($products = $cafeteria->products)
+            @for($i = 0; $i < count($products) - 1; $i += 2)
                 <div class="features-row">
                     @for($j = 0; $j < 2; ++$j)
-                        @php($consumable = $consumables[$i + $j])
+                        @php($product = $products[$i + $j])
                         <section>
                             <span class="major">
-                                <img src="{{ $consumable->image() }}">
+                                <img src="{{ $product->image() }}">
                             </span>
-                            <h3>{{ $consumable->name() }} {{ $consumable->price() }}</h3>
+                            <h3>{{ $product->name() }} {{ $product->price() }}</h3>
                             <ul class="actions special">
-                                @foreach($consumable->categories as $category)
+                                @foreach($product->categories as $category)
                                     <li>
                                         <a href="{{ $category->url() }}"
                                            class="button alt small">
@@ -43,7 +43,7 @@
                             </ul>
                             <ul class="actions special">
                                 <li>
-                                    <a href="{{ route('compare') }}?id={{ urlencode($consumable->id) }}"
+                                    <a href="{{ route('compare') }}?id={{ urlencode($product->id) }}"
                                        class="button alt icon fa-balance-scale">
                                         Comparar con otras facultades
                                     </a>

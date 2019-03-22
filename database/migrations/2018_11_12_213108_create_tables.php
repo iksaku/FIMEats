@@ -41,10 +41,11 @@ class CreateTables extends Migration
             $table->timestamps();
         });
 
-        Schema::create('consumables', function (Blueprint $table) {
+        Schema::create('products', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('cafeteria_id');
             $table->string('name');
+            $table->string('quantity')->nullable();
             $table->decimal('price', 5, 2);
             $table->string('image')->nullable();
 
@@ -55,15 +56,15 @@ class CreateTables extends Migration
                 ->onDelete('cascade');
         });
 
-        Schema::create('category_consumable', function (Blueprint $table) {
+        Schema::create('category_product', function (Blueprint $table) {
             $table->unsignedInteger('category_id');
-            $table->unsignedInteger('consumable_id');
+            $table->unsignedInteger('product_id');
 
             $table->foreign('category_id')
                 ->references('id')->on('categories')
                 ->onDelete('cascade');
-            $table->foreign('consumable_id')
-                ->references('id')->on('consumables')
+            $table->foreign('product_id')
+                ->references('id')->on('products')
                 ->onDelete('cascade');
         });
     }
@@ -78,7 +79,7 @@ class CreateTables extends Migration
         Schema::dropIfExists('faculties');
         Schema::dropIfExists('cafeterias');
         Schema::dropIfExists('menus');
-        Schema::dropIfExists('consumables');
-        Schema::dropIfExists('consumable_category');
+        Schema::dropIfExists('products');
+        Schema::dropIfExists('product_category');
     }
 }

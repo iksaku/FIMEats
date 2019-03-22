@@ -39,11 +39,11 @@ class Cafeteria extends Model
     }
 
     /**
-     * Returns a Collection of Consumables available at this Cafeteria
+     * Returns a Collection of products available at this Cafeteria
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function consumables() {
-        return $this->hasMany('App\Models\Consumable');
+    public function products() {
+        return $this->hasMany('App\Models\Product');
     }
 }

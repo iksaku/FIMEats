@@ -4,202 +4,242 @@ maps_url: https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d898.5732458608693
 cafeterias:
   - name: Cafetería de FTSYDH
     products:
-      - name: VASO DE AGUA 350ml
+      - name: VASO DE AGUA
+        quantity: 350ml
         price: 10
         image: vasoagua.jpg
         categories:
           - BEBIDAS
-      - name: VASO DE AGUA 500ml
+      - name: VASO DE AGUA
+        quantity: 500ml
         price: 15
         image: vasoagua.jpg
         categories:
           - BEBIDAS
-      - name: VASO DE AGUA 1L
+      - name: VASO DE AGUA
+        quantity: 1L
         price: 25
         image: vasoagua.jpg
         categories:
           - BEBIDAS
       - name: LICUADO MEDIANO
+        quantity:
         price: 22
         image: licuados.jpg
         categories:
           - BEBIDAS
       - name: JUGO DE NARANJA
+        quantity:
         price: 14
         image: jugodenaranja.jpg
         categories:
           - BEBIDAS
       - name: CHOCOMILK
+        quantity:
         price: 22
         image: chocomilk.jpg
         categories:
           - BEBIDAS
       - name: ARROZ CON LECHE
+        quantity:
         price: 18
         image: arroz-con-leche.jpg
         categories:
           - POSTRES
       - name: PAY DE LIMON
+        quantity:
         price: 18
         image: paydelimon.jpg
         categories:
           - POSTRES
       - name: PAY DE QUESO
+        quantity:
         price: 18
         image: paydequeso.jpg
         categories:
           - POSTRES
       - name: GELATINA
+        quantity:
         price: 18
         image: gelatina.jpg
         categories:
           - POSTRES
-      - name: HOT CAKES (3)
+      - name: HOT CAKES
+        quantity: 3
         price: 20
         image: hotcakes.jpg
         categories:
           - ALMUERZOS
       - name: MACHACADO CON HUEVO
+        quantity:
         price: 36
         image: machacadoconhuevo.jpg
         categories:
           - ALMUERZOS
       - name: MOLLETE DULCE
+        quantity:
         price: 10
         image: molletes.jpg
         categories:
           - ALMUERZOS
       - name: MOLLETE
+        quantity:
         price: 20
         image: molletes.jpg
         categories:
           - ALMUERZOS
       - name: MOLLETE DE GUISADO
+        quantity:
         price: 25
         image: molletes.jpg
         categories:
           - ALMUERZOS
       - name: BURRITO MACHACA C/HUEVO G
+        quantity:
         price: 25
         image: burritos.jpg
         categories:
           - ALMUERZOS
       - name: BURRITO MACHACA C/HUEVO J
+        quantity:
         price: 40
         image: burritos.jpg
         categories:
           - ALMUERZOS
       - name: HUEVO C/ CHILAQUILES Y FRIJOLES
+        quantity:
         price: 35
         image: huevos.jpg
         categories:
           - ALMUERZOS
       - name: CHILAQUILES
+        quantity:
         price: 30
         image: chilaquiles.jpg
         categories:
           - ALMUERZOS
-      - name: 1/2 CHILAQUILES
+      - name: CHILAQUILES
+        quantity: 1/2
         price: 25
         image: chilaquiles.jpg
         categories:
           - ALMUERZOS
-      - name: VASO DE FRUTA 1L C/GRANOLA Y YOGURT
+      - name: VASO DE FRUTA C/GRANOLA Y YOGURT
+        quantity: 1L
         price: 50
         image: vasodefruta.jpg
         categories:
           - ALMUERZOS
       - name: TORTA
+        quantity:
         price: 50
         image: torta.jpg
         categories:
           - COMIDAS
-      - name: HOT DOGS (2)
+      - name: HOT DOGS
+        quantity: 2
         price: 20
         image: hotdog.jpg
         categories:
           - COMIDAS
       - name: HAMBURGUESA C/PAPAS
+        quantity:
         price: 45
         image: hamburguesapapasre.jpg
         categories:
           - COMIDAS
       - name: SINCRONIZADAS MAIZ
+        quantity:
         price: 17
         image: sincronizadas.jpg
         categories:
           - COMIDAS
       - name: SINCRONIZADAS HARINA
+        quantity:
         price: 22
         image: sincronizadas.jpg
         categories:
           - COMIDAS
       - name: GRINGAS
+        quantity:
         price: 30
         image: gringas.jpg
         categories:
           - COMIDAS
       - name: QUESADILLA SENCILLA
+        quantity:
         price: 10
         image: quesadilla.jpg
         categories:
           - COMIDAS
       - name: PAPAS A LA FRANCESA
+        quantity:
         price: 35
         image: papas.jpg
         categories:
           - COMIDAS
       - name: NUGET DE POLLO C/PAPAS
+        quantity:
         price: 40
         image: nuggetspollo.jpg
         categories:
           - COMIDAS
       - name: SANDWICH DE JAMON
+        quantity:
         price: 20
         image: sandwichpapas.jpg
         categories:
           - COMIDAS
       - name: GUISADO SOLO
+        quantity:
         price: 26
         image: guisado.jpg
         categories:
           - COMIDAS
       - name: TOSTADAS
+        quantity:
         price: 15
         image: tostadas.jpeg
         categories:
           - COMIDAS
       - name: BANDERILLAS
+        quantity:
         price: 10
         image: banderillas.jpg
         categories:
           - COMIDAS
       - name: TORTA DE JAMON
+        quantity:
         price: 25
         image: torta.jpg
         categories:
           - COMIDAS
       - name: QUESADILLA DE GUISADO
+        quantity:
         price: 13
         image: quesadillag.jpg
         categories:
           - COMIDAS
       - name: DE GUISO DEL DIA
+        quantity:
         price: 13
         image: tguiso.jpg
         categories:
           - TACOS
       - name: DE ASADA
+        quantity:
         price: 15
         image: tasada.jpg
         categories:
           - TACOS
       - name: AL PASTOR
+        quantity:
         price: 15
         image: tacosalpastor.jpg
         categories:
           - TACOS
-      - name: AL VAPOR (5)
+      - name: AL VAPOR
+        quantity: 5
         price: 20
         image: tacosalvapor.jpg
         categories:

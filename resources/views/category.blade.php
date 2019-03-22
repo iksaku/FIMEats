@@ -7,23 +7,23 @@
         <h2>Explora la variedad de {{ $category->name() }} de las diferentes facultades</h2>
     </header>
 
-    @php($cafeterias = $category->consumables->groupBy('cafeteria_id'))
-    @foreach($cafeterias as $id => $consumables)
+    @php($cafeterias = $category->products->groupBy('cafeteria_id'))
+    @foreach($cafeterias as $id => $products)
         <section class="box special features">
             <h3>{{ \App\Models\Cafeteria::whereId($id)->first()->name }}</h3>
-            @for($i = 0; $i < $consumables->count() - 1; $i += 2)
+            @for($i = 0; $i < $products->count() - 1; $i += 2)
                 <div class="features-row">
                     @for($j = 0; $j < 2; ++$j)
-                        @php($consumable = $consumables[$i + $j])
+                        @php($product = $products[$i + $j])
                         <section>
                         <span class="major">
-                            <img src="{{ $consumable->image() }}">
+                            <img src="{{ $product->image() }}">
                         </span>
-                            <h3>{{ $consumable->name() }} {{ $consumable->price() }}</h3>
-                            @php($cafeteria = $consumable->cafeteria)
+                            <h3>{{ $product->name() }} {{ $product->price() }}</h3>
+                            @php($cafeteria = $product->cafeteria)
                             <h4><a href="{{ $cafeteria->faculty->url() }}">{{ $cafeteria->name }}</a></h4>
                             <ul class="actions special">
-                                @foreach($consumable->categories as $category)
+                                @foreach($product->categories as $category)
                                     <li><a href="{{ $category->url() }}" class="button alt small">
                                             {{ $category->name() }}
                                         </a></li>

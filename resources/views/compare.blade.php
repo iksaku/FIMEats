@@ -11,10 +11,10 @@
 @endpush
 
 @section('content')
-    @if ($consumables->count() < 2)
+    @if ($products->count() < 2)
         <header>
             <h2>
-                @if($consumables->count() < 1)
+                @if($products->count() < 1)
                     No se han encontrado comidas con el nombre "{{ $name }}"
                 @else
                     No se han encontrado otras comidas similares.
@@ -38,16 +38,16 @@
                         </tr>
                     </thead>
                     <tbody class="highlight-first">
-                        @foreach($consumables as $consumable)
+                        @foreach($products as $product)
                             <tr>
-                                <td>{{ $consumable->name() }}</td>
+                                <td>{{ $product->name() }}</td>
                                 <td>
-                                    @php($cafeteria = $consumable->cafeteria)
+                                    @php($cafeteria = $product->cafeteria)
                                     <a href="{{ $cafeteria->faculty->url() }}">
                                         {{ $cafeteria->name }}
                                     </a>
                                 </td>
-                                <td>{{ $consumable->price() }}</td>
+                                <td>{{ $product->price() }}</td>
                             </tr>
                         @endforeach
                     </tbody>

@@ -5,121 +5,145 @@ cafeterias:
   - name: Cafetería de FFYL
     products:
       - name: HUEVOS AL GUSTO
+        quantity:
         price: 45
         image: huevos.jpg
         categories:
           - ALMUERZOS
       - name: CHILAQUILES
+        quantity:
         price: 50
         image: chilaquiles.jpg
         categories:
           - ALMUERZOS
       - name: COCTEL DE FRUTAS
+        quantity:
         price: 30
         image: coctelfruta.jpg
         categories:
           - ALMUERZOS
       - name: COCTEL DE FRUTAS PREPARADO
+        quantity:
         price: 35
         image: coctelpreparadp.jpg
         categories:
           - ALMUERZOS
       - name: MOLLETES
+        quantity:
         price: 30
         image: molletes.jpg
         categories:
           - ALMUERZOS
       - name: HOT CAKES
+        quantity:
         price: 30
         image: hotcakes.jpg
         categories:
           - ALMUERZOS
       - name: SINCRONIZADA C/PAPAS
+        quantity:
         price: 35
         image: sincronizadas.jpg
         categories:
           - COMIDAS
       - name: SANDWICH C/PAPAS
+        quantity:
         price: 35
         image: sandwichpapas.jpg
         categories:
           - COMIDAS
       - name: HOT DOG C/PAPAS
+        quantity:
         price: 25
         image: hotdogpapas.jpg
         categories:
           - COMIDAS
       - name: PAPAS A LA FRANCESA
+        quantity:
         price: 30
         image: papas.jpg
         categories:
           - COMIDAS
       - name: HAMBURGUESA C/PAPAS
+        quantity:
         price: 40
         image: hamburguesapapasre.jpg
         categories:
           - COMIDAS
       - name: TORTA C/PAPAS
+        quantity:
         price: 40
         image: tortapapas.jpg
         categories:
           - COMIDAS
       - name: COMIDA DEL DIA
+        quantity:
         price: 65
         image: 
         categories:
           - COMIDAS
       - name: MILANESA DE RES
+        quantity:
         price: 70
         image: milanesa-de-res.jpg
         categories:
           - COMIDAS
       - name: BISTEC A LA PARRILLA
+        quantity:
         price: 70
         image: bistec.jpg
         categories:
           - COMIDAS
       - name: GORDITAS
+        quantity:
         price: 14
         image: gorditas.jpg
         categories:
           - COMIDAS
       - name: AL VAPOR
+        quantity:
         price: 7
         image: tacosalvapor.jpg
         categories:
           - TACOS
       - name: PREPARADOS
+        quantity:
         price: 12
         image: tacos.jpg
         categories:
           - TACOS
       - name: LICUADOS
+        quantity:
         price: 25
         image: licuados.jpg
         categories:
           - BEBIDAS
       - name: AGUAS FRESCAS
+        quantity:
         price: 17
         image: aguafruta.jpg
         categories:
           - BEBIDAS
       - name: CAFÉ
+        quantity:
         price: 8
         image: cafe.jpg
         categories:
           - BEBIDAS
       - name: VASO DE REFRESCO
+        quantity:
         price: 10
         image: refresco.jpg
         categories:
           - BEBIDAS
       - name: AGUAS FRESCAS
+        quantity:
         price: 25
         image: aguafruta.jpg
         categories:
           - BEBIDAS
       - name: CAFÉ
+        quantity:
         price: 12
         image: cafe.jpg
         categories:

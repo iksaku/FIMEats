@@ -5,56 +5,67 @@ cafeterias:
   - name: Cafetería de FCFM
     products:
       - name: LICUADOS
+        quantity:
         price: 30
         image: licuados.jpg
         categories:
           - BEBIDAS 
       - name: AGUAS FRESCAS
+        quantity:
         price: 25
         image: aguafruta.jpg
         categories:
           - BEBIDAS 
-      - name: CIEL 600 ml
+      - name: CIEL
+        quantity: 600ml
         price: 10
         image: aguaciel.jpg
         categories:
           - BEBIDAS 
       - name: REFRESCOS
+        quantity:
         price: 15
         image: coca.jpg
         categories:
           - BEBIDAS 
       - name: HOT CAKES
+        quantity:
         price: 25
         image: hotcakes.jpg
         categories:
           - DESAYUNOS 
       - name: PAN DULCE
+        quantity:
         price: 10
         image: pandulce.jpg
         categories:
           - DESAYUNOS 
       - name: GALLETAS
+        quantity:
         price: 13
         image: galletas.jpg
         categories:
           - DESAYUNOS 
       - name: MOLLETES
+        quantity:
         price: 23
         image: molletes.jpg
         categories:
           - ALMUERZO
       - name: ALITAS DE POLLO
+        quantity:
         price: 25
         image: alitas.jpg
         categories:
           - ALMUERZO
       - name: SANDWICH DE HUEVO
+        quantity:
         price: 30
         image: shuevo.jpg
         categories:
           - ALMUERZO
       - name: BURRIPIZZA
+        quantity:
         price: 25
         image: bp.jpg
         categories:

@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * App\Models\Consumable
+ * App\Models\Product
  *
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Consumable newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Consumable newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Consumable query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Product newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Product newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Product query()
  * @mixin \Eloquent
  * @property int $id
  * @property int $menu_id
@@ -19,21 +19,21 @@ use Illuminate\Database\Eloquent\Model;
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Category[] $categories
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Consumable whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Consumable whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Consumable whereImage($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Consumable whereMenuId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Consumable whereName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Consumable wherePrice($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Consumable whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Product whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Product whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Product whereImage($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Product whereMenuId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Product whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Product wherePrice($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Product whereUpdatedAt($value)
  */
-class Consumable extends Model
+class Product extends Model
 {
     /** @var array */
     protected $fillable = ['name', 'price', 'image'];
 
     /**
-     * Returns the Cafeteria that owns this Consumable
+     * Returns the Cafeteria that owns this Product
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
@@ -42,7 +42,7 @@ class Consumable extends Model
     }
 
     /**
-     * Returns a Collection of categories that are tagged in this Consumable
+     * Returns a Collection of categories that are tagged in this Product
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
@@ -51,7 +51,7 @@ class Consumable extends Model
     }
 
     /**
-     * Returns formatted Consumable's full name
+     * Returns formatted Product's full name
      *
      * @return string
      */
@@ -60,7 +60,7 @@ class Consumable extends Model
     }
 
     /**
-     * Returns formatted Consumable's price
+     * Returns formatted Product's price
      *
      * @return string
      */
@@ -69,7 +69,7 @@ class Consumable extends Model
     }
 
     /**
-     * Returns a pre-formatted URL to access Consumable's image
+     * Returns a pre-formatted URL to access Product's image
      *
      * @return string
      */

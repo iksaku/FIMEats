@@ -3,9 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
-use App\Models\Consumable;
+use App\Models\Product;
 use App\Models\Faculty;
-use function foo\func;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 
@@ -23,7 +22,7 @@ class Main extends Controller
 
     /**
      * Renders Faculty page while listing its Cafeterias
-     * and available Consumables
+     * and available products
      *
      * @param string $name
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
@@ -37,7 +36,7 @@ class Main extends Controller
     }
 
     /**
-     * Renders Category page while showing Consumables in that Category,
+     * Renders Category page while showing products in that Category,
      * which are grouped by Cafeteria
      *
      * @param string $name
@@ -52,7 +51,7 @@ class Main extends Controller
     }
 
     /**
-     * Renders a page which lists similarly named Consumables,
+     * Renders a page which lists similarly named products,
      * along with the Cafeteria it's owned at and the Price
      *
      * @param Request $request
@@ -62,22 +61,22 @@ class Main extends Controller
         $id = $request->input('id');
         if (empty($id)) return abort(404);
 
-        /** @var Consumable $compareTo */
-        $compareTo = Consumable::whereId($id)->first();
+        /** @var Product $compareTo */
+        $compareTo = Product::whereId($id)->first();
         $name = preg_replace('/([a-zA-z0-9 ]+).*/', '$1', $compareTo->name());
 
-        /** @var Collection $consumables */
-        $consumables = Consumable::query()
+        /** @var Collection $products */
+        $products = Product::query()
             ->where('name', 'LIKE', '%' . str_replace(' ', '%', $name) . '%')
             ->get();
 
-        $consumables = $consumables->filter(function ($consumable) use ($compareTo) {
-            /** @var Consumable $consumable */
-            return count($consumable->categories->intersect($compareTo->categories)) > 0;
-        })->sort(function ($consumable) use ($compareTo) {
-            return $consumable->id == $compareTo->id ? 0 : 1;
+        $products = $products->filter(function ($product) use ($compareTo) {
+            /** @var Product $product */
+            return count($product->categories->intersect($compareTo->categories)) > 0;
+        })->sort(function ($product) use ($compareTo) {
+            return $product->id == $compareTo->id ? 0 : 1;
         });
 
-        return view('compare', compact('consumables', 'id'));
+        return view('compare', compact('products', 'id'));
     }
 }

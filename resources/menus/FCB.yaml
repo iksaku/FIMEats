@@ -4,92 +4,110 @@ maps_url: https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3594.39832873449
 cafeterias:
   - name: Cafetería de FCB
     products:
-      - name: HOT CAKES (2)
+      - name: HOT CAKES
+        quantity: 2
         price: 20
         image: hotcakes.jpg
         categories:
           - DESAYUNOS
       - name: HARINA
+        quantity:
         price: 9
         image: tacoharina.jpg
         categories:
           - TACOS 
       - name: MAIZ
+        quantity:
         price: 7
         image: tacomaiz.jpg
         categories:
           - TACOS 
       - name: COMIDA DEL DIA
+        quantity:
         price: 55
         image: 
         categories:
           - COMIDAS
       - name: COMIDA DEL DIA CON AGUA
+        quantity:
         price: 60
         image: 
         categories:
           - COMIDAS
       - name: BURRITOS
+        quantity:
         price: 40
         image: burritos.jpg
         categories:
           - COMIDAS
       - name: HAMBURGUESA CON PAPAS
+        quantity:
         price: 35
         image: hamburguesa.jpg
         categories:
           - COMIDAS
       - name: CHILAQUILES
+        quantity:
         price: 40
         image: chilaquiles.jpg
         categories:
           - COMIDAS
       - name: ENSALADAS
+        quantity:
         price: 35
         image: ensalada.jpg
         categories:
           - COMIDAS
       - name: CHILLI DOG
+        quantity:
         price: 20
         image: chilidog.jpg
         categories:
           - COMIDAS
       - name: PIZZA
+        quantity:
         price: 25
         image: pizza.jpg
         categories:
           - COMIDAS
       - name: SANDWICH
+        quantity:
         price: 15
         image: sandwichpapas.jpg
         categories:
           - COMIDAS
       - name: PAPAS A LA FRANCESA
+        quantity:
         price: 25
         image: papas.jpg
         categories:
           - COMIDAS
       - name: MOLLETES
+        quantity:
         price: 17
         image: molletes.jpg
         categories:
           - COMIDAS
       - name: CAFÉ
+        quantity:
         price: 15
         image: cafe.jpg
         categories:
           - BEBIDAS
       - name: AGUA FRESCA
+        quantity:
         price: 12
         image: agua.jpg
         categories:
           - BEBIDAS
       - name: TORTILLAS
+        quantity:
         price: 5
         image: tortillas.jpg
         categories:
           - EXTRA
       - name: QUESO
+        quantity:
         price: 10
         image: queso.jpg
         categories:

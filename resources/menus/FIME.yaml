@@ -4,97 +4,116 @@ maps_url: https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14377.44598636929
 cafeterias:
   - name: Cafetería de FIME
     products:
-      - name: COCA COLA 600ml
+      - name: COCA COLA
+        quantity: 600ml
         price: 15
         image: coca.jpg
         categories:
           - BEBIDAS
       - name: JUEGO DEL VALLE
+        quantity:
         price: 15
         image: jugos.jpg
         categories:
           - BEBIDAS 
-      - name: PEPSI 600ml
+      - name: PEPSI
+        quantity: 600ml
         price: 16
         image: pepsi.jpg
         categories:
           - BEBIDAS
       - name: JUGO DE NARANJA
+        quantity:
         price: 12
         image: jugodenaranja.jpg
         categories:
           - BEBIDAS 
       - name: LIMONADA
+        quantity:
         price: 12
         image: limonada.png
         categories:
           - BEBIDAS 
       - name: CAFE NEGRO
+        quantity:
         price: 10
         image: cafe.jpg
         categories:
           - BEBIDAS
       - name: MOLLETES
+        quantity:
         price: 25
         image: molletes.jpg
         categories:
           - ALMUERZO
       - name: CHILAQUILES
+        quantity:
         price: 40
         image: chilaquiles.jpg
         categories:
           - ALMUERZO
       - name: TORTA  DE JAMON
+        quantity:
         price: 30
         image: torta.jpg
         categories:
           - ALMUERZO
       - name: EMPALMES
+        quantity:
         price: 18
         image: empalmes.jpg
         categories:
           - ALMUERZO 
       - name: GELATINA
+        quantity:
         price: 15
         image: gelatina.jpg
         categories:
           - POSTRES
       - name: COCTEL DE FRUTAS
+        quantity:
         price: 20
         image: coctelfruta.jpg
         categories:
           - POSTRES
       - name: ARROZ CON LECHE
+        quantity:
         price: 15
         image: arroz-con-leche.jpg
         categories:
           - POSTRES
       - name: ENSALADA FRIA
+        quantity:
         price: 35
         image: ensalada.jpg
         categories:
           - COMIDAS
       - name: TENDERS
+        quantity:
         price: 39
         image: tenders.jpg
         categories:
           - COMIDAS
       - name: PAPAS A LA FRANCESA
+        quantity:
         price: 30
         image: papas.jpg
         categories:
           - COMIDAS
       - name: HAMBURGUEZA
+        quantity:
         price: 45
         image: hamburguesa.jpg
         categories:
           - COMIDAS
       - name: ASADO DE PUERCO
+        quantity:
         price: 35
         image: asado.jpg
         categories:
           - COMIDAS
       - name: CHILE RELLENOS
+        quantity:
         price: 40
         image: chilesrellenos.jpg
         categories:

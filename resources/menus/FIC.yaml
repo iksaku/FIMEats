@@ -4,142 +4,170 @@ maps_url: https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d898.5959016614335
 cafeterias:
   - name: Cafetería de FIC
     products:
-      - name: ENCHILADAS SUIZAS (4)
+      - name: ENCHILADAS SUIZAS
+        quantity: 4
         price: 60
         image: suizas.jpg
         categories:
           - COMIDAS
-      - name: ENTOMATADAS (4)
+      - name: ENTOMATADAS
+        quantity: 4
         price: 60
         image: entomatadas.jpg
         categories:
           - COMIDAS
       - name: DISCADA
+        quantity:
         price: 60
         image: discada.jpg
         categories:
           - COMIDAS
       - name: ASADO
+        quantity:
         price: 60
         image: asado.jpg
         categories:
           - COMIDAS
-      - name: GORDITAS (4)
+      - name: GORDITAS
+        quantity: 4
         price: 60
         image: gorditas.jpg
         categories:
           - COMIDAS
       - name: POLLO CON CREMA
+        quantity:
         price: 60
         image: pollocrema.jpg
         categories:
           - COMIDAS
       - name: PICADILLO
+        quantity:
         price: 60
         image: picadillo.jpg
         categories:
           - COMIDAS
-      - name: SOPES (4)
+      - name: SOPES
+        quantity: 4
         price: 60
         image: sopes.jpg
         categories:
           - COMIDAS
-      - name: ALBÓNDIGAS (6)
+      - name: ALBÓNDIGAS
+        quantity: 6
         price: 60
         image: albondigas.jpg
         categories:
           - COMIDAS
       - name: CORTADILLO
+        quantity:
         price: 60
         image: cortadillo.jpg
         categories:
           - COMIDAS
       - name: CHILAQUILES CHICOS
+        quantity:
         price: 30
         image: chilaquiles.jpg
         categories:
           - COMIDAS
       - name: CHILAQUILES GRANDES
+        quantity:
         price: 50
         image: chilaquiles.jpg
         categories:
           - COMIDAS
       - name: MILANESA EMPANIZADA
+        quantity:
         price: 70
         image: milanesa-de-res.jpg
         categories:
           - COMIDAS
       - name: FAJITA A LA PLANCHA (RES)
+        quantity:
         price: 70
         image: fajitared.jpg
         categories:
           - COMIDAS
       - name: FAJITA A LA PLANCHA (POLLO)
+        quantity:
         price: 70
         image: fajitapollo.jpg
         categories:
           - COMIDAS
       - name: CORTE DE RES A LA PLANCHA
+        quantity:
         price: 80
         image: corte.jpg
         categories:
           - COMIDAS
       - name: COCA COLA
+        quantity:
         price: 14
         image: coca.jpg
         categories:
           - BEBIDAS
       - name: JOYAS DE SABOR
+        quantity:
         price: 14
         image: joya.jpg
         categories:
           - BEBIDAS
       - name: SPRITE
+        quantity:
         price: 14
         image: sprite.jpg
         categories:
           - BEBIDAS
       - name: FRESCA
+        quantity:
         price: 14
         image: fresca.jpg
         categories:
           - BEBIDAS
       - name: JUGOS VALLE FRUIT
+        quantity:
         price: 16
         image: jugos.jpg
         categories:
           - BEBIDAS
       - name: FUZE TEA
+        quantity:
         price: 16
         image: fuze.jpg
         categories:
           - BEBIDAS
       - name: PEÑAFIEL
+        quantity:
         price: 15
         image: penafiel.jpg
         categories:
           - BEBIDAS
       - name: DR PEPPER
+        quantity:
         price: 15
         image: drpepper.jpg
         categories:
           - BEBIDAS
       - name: SCHWEPPERS
+        quantity:
         price: 15
         image: schweppes.jpg
         categories:
           - BEBIDAS
       - name: TOPOCHICO
+        quantity:
         price: 16
         image: topochico.jpg
         categories:
           - BEBIDAS
-      - name: AGUA NATURAL 1L
+      - name: AGUA NATURAL
+        quantity: 1L
         price: 12
         image: agua.jpg
         categories:
           - BEBIDAS
       - name: MORELOS
+        quantity:
         price: 13
         image: jugomorelos.jpg
         categories:

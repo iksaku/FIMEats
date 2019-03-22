@@ -5,126 +5,151 @@ cafeterias:
   - name: Cafetería de FCQ
     products:
       - name: CHILAQUILES
+        quantity:
         price: 55
         image: chilaquiles.jpg
         categories:
           - ALMUERZOS
-      - name: 1/2 CHILAQUILES
+      - name: CHILAQUILES
+        quantity: 1/2
         price: 30
         image: chilaquiles.jpg
         categories:
           - ALMUERZOS
       - name: SANDWICH POLLO C/PAPAS
+        quantity:
         price: 45
         image: sandwichpollopapas.jpg
         categories:
           - ALMUERZOS
       - name: SANDWICH JAMON C/PAPAS
+        quantity:
         price: 30
         image: sandwichjamonpapas.jpg
         categories:
           - ALMUERZOS
       - name: CUERNITO C/PAPAS
+        quantity:
         price: 30
         image: cuernito.jpg
         categories:
           - ALMUERZOS
-      - name: MOLLETES (2)
+      - name: MOLLETES
+        quantity: 2
         price: 25
         image: molletes.jpg
         categories:
           - ALMUERZOS
       - name: MOLLETES C/PAPAS Y CHORIZO
+        quantity:
         price: 35
         image: molletes.jpg
         categories:
           - ALMUERZOS
       - name: SINCRONIZADA C/PAPAS
+        quantity:
         price: 25
         image: sincronizadas.jpg
         categories:
           - ALMUERZOS
       - name: ENMOLADAS
+        quantity:
         price: 55
         image: enmoladas.jpg
         categories:
           - COMIDAS
       - name: ENTOMATADAS
+        quantity:
         price: 55
         image: entomatadas.jpg
         categories:
           - COMIDAS
       - name: ENCHILADAS SUIZAS
+        quantity:
         price: 55
         image: suizas.jpg
         categories:
           - COMIDAS
       - name: HAMBURGUESA C/PAPAS
+        quantity:
         price: 60
         image: hamburguesapapasre.jpg
         categories:
           - COMIDAS
       - name: PIRATA C/PAPAS
+        quantity:
         price: 45
         image: pirata.jpg
         categories:
           - COMIDAS
       - name: HOTDOG C/PAPAS
+        quantity:
         price: 30
         image: hotdogpapas.jpg
         categories:
           - COMIDAS
       - name: TOSTADA SIBERIA
+        quantity:
         price: 55
         image: tostadasiberia.jpg
         categories:
           - COMIDAS
       - name: MILANESA DE POLLO
+        quantity:
         price: 55
         image: milanesapollo.jpg
         categories:
           - COMIDAS
       - name: MILANESA DE RES
+        quantity:
         price: 55
         image: milanesa-de-res.jpg
         categories:
           - COMIDAS
       - name: PAPAS SENCILLAS
+        quantity:
         price: 25
         image: papas.jpg
         categories:
           - COMIDAS
       - name: PAPAS C/QUESO
+        quantity:
         price: 30
         image: papasqueso.jpg
         categories:
           - COMIDAS
       - name: PAPAS PREPARADAS (QUESO Y CARNE)
+        quantity:
         price: 40
         image: papasquesoycarne.jpg
         categories:
           - COMIDAS
       - name: ENSALADA DE POLLO
+        quantity:
         price: 45
         image: ensalada-de-pollo.jpg
         categories:
           - COMIDAS
       - name: ENSALADA CODITO Y ATUN
+        quantity:
         price: 45
         image: ensaladacoditosatun.jpg
         categories:
           - COMIDAS
       - name: COMIDA DEL DIA
+        quantity:
         price: 60
         image: 
         categories:
           - COMIDAS
       - name: MAIZ
+        quantity:
         price: 8
         image: tacomaiz.jpg
         categories:
           - TACOS
       - name: HARINA
+        quantity:
         price: 9
         image: tacoharina.jpg
         categories:

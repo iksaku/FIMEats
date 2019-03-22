@@ -15,7 +15,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $name
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Consumable[] $consumables
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Product[] $consumables
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Category whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Category whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Category whereName($value)
@@ -36,12 +36,12 @@ class Category extends Model
     }
 
     /**
-     * Returns a Collection of Consumables that are tagged with this Category
+     * Returns a Collection of products that are tagged with this Category
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
-    public function consumables() {
-        return $this->belongsToMany('App\Models\Consumable');
+    public function products() {
+        return $this->belongsToMany('App\Models\Product');
     }
 
     /**
