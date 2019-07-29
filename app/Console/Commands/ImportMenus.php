@@ -2,10 +2,10 @@
 
 namespace App\Console\Commands;
 
-use App\Models\Cafeteria;
-use App\Models\Category;
-use App\Models\Product;
-use App\Models\Faculty;
+use App\Cafeteria;
+use App\Category;
+use App\Faculty;
+use App\Product;
 use Illuminate\Console\Command;
 use Symfony\Component\Console\Helper\ProgressBar;
 use Symfony\Component\Yaml\Exception\ParseException;
@@ -42,11 +42,12 @@ class ImportMenus extends Command
      * @param $fileExtension
      * @return \Generator
      */
-    public function filesInDir($directory, $fileExtension) {
+    public function filesInDir($directory, $fileExtension)
+    {
         $directory = realpath($directory);
         $it = new \RecursiveDirectoryIterator($directory);
         $it = new \RecursiveIteratorIterator($it, \RecursiveIteratorIterator::LEAVES_ONLY);
-        $it = new \RegexIterator($it, '(\.' . preg_quote($fileExtension) . '$)');
+        $it = new \RegexIterator($it, '(\.'.preg_quote($fileExtension).'$)');
         foreach ($it as $file) {
             $fileName = $file->getPathname();
             yield $fileName => file_get_contents($fileName);
@@ -66,7 +67,7 @@ class ImportMenus extends Command
 
         foreach ($this->filesInDir(resource_path('menus'), 'yaml') as $content) {
             try {
-                /**
+                /*
                  * @var string  $name
                  * @var string  $short_name
                  * @var string  $maps_url
@@ -75,7 +76,8 @@ class ImportMenus extends Command
                 extract(Yaml::parse($content), EXTR_OVERWRITE);
 
                 $bar = $this->getOutput()->createProgressBar();
-                $bar->setFormat(ProgressBar::getFormatDefinition('normal_nomax') . ' | %message%');
+                $bar->setFormat(ProgressBar::getFormatDefinition('normal_nomax').' | %message%');
+                $bar->setMessage('Loading...');
                 $bar->start();
 
                 /** @var Faculty $faculty */
@@ -83,7 +85,9 @@ class ImportMenus extends Command
                     compact('name', 'maps_url'));
 
                 foreach ($cafeterias as $cafeteria_content) {
-                    /**
+                    $bar->setProgress(0);
+
+                    /*
                      * @var string  $name
                      * @var array   $products
                      */
@@ -93,7 +97,7 @@ class ImportMenus extends Command
                     $cafeteria = $faculty->cafeterias()->firstOrCreate(compact('name'));
 
                     foreach ($products as $product_content) {
-                        /**
+                        /*
                          * @var string  $name
                          * @var string  $quantity
                          * @var string  $price
@@ -102,8 +106,8 @@ class ImportMenus extends Command
                          */
                         extract($product_content, EXTR_OVERWRITE);
 
-                        $bar->setMessage('Importing for ' . $faculty->short_name
-                            . ' ➤ ' . $cafeteria->name . ' ➤ ' . $name);
+                        $bar->setMessage('Importing for '.$faculty->short_name
+                            .' ➤ '.$cafeteria->name.' ➤ '.$name);
 
                         /** @var Product $product */
                         $product = $cafeteria->products()->firstOrCreate(compact('name', 'quantity', 'price'),
@@ -118,15 +122,14 @@ class ImportMenus extends Command
 
                         $bar->advance();
                     }
-
-                    $bar->setProgress(0);
                 }
 
-                $bar->setMessage('Successfully imported all cafeterias of ' . $faculty->short_name);
+                $bar->setMessage('Successfully imported all cafeterias of '.$faculty->short_name);
                 $bar->finish();
                 $this->line('');
             } catch (ParseException $e) {
                 $this->error($e->getMessage());
+
                 continue;
             }
         }

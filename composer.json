@@ -4,24 +4,25 @@
     "keywords": ["fimeats", "fime", "uanl"],
     "license": "GPLv3",
     "type": "project",
-        "require": {
+    "require": {
         "php": "^7.2",
         "doctrine/dbal": "^2.8",
         "fideloper/proxy": "^4.0",
-        "laravel/framework": "5.7.*",
+        "laravel/framework": "^5.8",
         "laravel/tinker": "^1.0",
         "symfony/yaml": "^4.2"
     },
     "require-dev": {
-        "barryvdh/laravel-debugbar": "^3.2",
         "barryvdh/laravel-ide-helper": "^2.5",
         "beyondcode/laravel-dump-server": "^1.0",
+        "brainmaestro/composer-git-hooks": "^2.7",
         "filp/whoops": "^2.0",
+        "friendsofphp/php-cs-fixer": "^2.15",
         "fzaninotto/faker": "^1.4",
-        "lorisleiva/laravel-deployer": "^0.2.8",
+        "lorisleiva/laravel-deployer": "^0.2",
         "mockery/mockery": "^1.0",
         "nunomaduro/collision": "^2.0",
-        "phpunit/phpunit": "^7.0"
+        "phpunit/phpunit": "^8.0"
     },
     "autoload": {
         "classmap": [
@@ -39,25 +40,33 @@
     },
     "extra": {
         "laravel": {
-            "dont-discover": [
-            ]
+            "dont-discover": []
+        },
+        "hooks": {
+            "pre-commit": "vendor/bin/php-cs-fixer fix",
+            "pre-push": "vendor/bin/php-cs-fixer fix --dry-run",
+            "post-merge": "composer update"
         }
     },
     "scripts": {
+        "post-autoload-dump": [
+            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
+            "@php artisan package:discover --ansi"
+        ],
         "post-root-package-install": [
             "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
         ],
         "post-create-project-cmd": [
             "@php artisan key:generate --ansi"
         ],
-        "post-autoload-dump": [
-            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
-            "@php artisan package:discover --ansi"
-        ],
         "post-update-cmd": [
             "Illuminate\\Foundation\\ComposerScripts::postUpdate",
-            "php artisan ide-helper:generate",
-            "php artisan ide-helper:meta"
+            "[ $COMPOSER_DEV_MODE -eq 0 ] || vendor/bin/cghooks update",
+            "@php artisan ide-helper:generate",
+            "@php artisan ide-helper:meta"
+        ],
+        "post-install-cmd": [
+            "[ $COMPOSER_DEV_MODE -eq 0 ] || vendor/bin/cghooks add --ignore-lock"
         ]
     },
     "config": {

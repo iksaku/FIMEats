@@ -114,7 +114,7 @@ build/Release
 # Dependency directories
 jspm_packages/
 
-# TypeScript v1 declaration files
+# TypeScript v2 declaration files
 typings/
 
 # Optional npm cache directory
@@ -142,6 +142,11 @@ typings/
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
+
 /_ide_helper.php
 /.phpstorm.meta.php
-/theme/
+/.php_cs.cache
+/public/css/
+/public/js/
+/public/mix-manifest.json
+cghooks.lock

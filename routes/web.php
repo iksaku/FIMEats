@@ -11,7 +11,6 @@
 |
 */
 
-Route::get('/', 'Main@index')->name('index');
-Route::get('facultad/{name}', 'Main@faculty')->name('faculty');
-Route::get('comparar', 'Main@compare')->name('compare');
-Route::get('categoria/{name}', 'Main@category')->name('category');
+Route::get('/{any}', function () {
+    return view('app');
+})->where('any', '^(?!api).*');

@@ -12,8 +12,13 @@
     "devDependencies": {
         "axios": "^0.18",
         "cross-env": "^5.2",
-        "laravel-mix": "^4.0",
-        "lodash": "^4.17",
-        "vue-template-compiler": "^2.5.22"
+        "laravel-mix": "^4.1",
+        "laravel-mix-purgecss": "^4.1",
+        "tailwindcss": "^1.0",
+        "vue": "^2.6",
+        "vue-meta": "^2.2.0",
+        "vue-progressbar": "^0.7.5",
+        "vue-router": "^3.0.7",
+        "vue-template-compiler": "^2.5"
     }
 }
