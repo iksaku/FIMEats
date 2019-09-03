@@ -2,4 +2,27 @@
 
 @tailwind components;
 
+html {
+    @apply scrolling-touch;
+    scroll-behavior: smooth;
+}
+
+.faculty-card {
+    &:nth-child(-n+1) {
+        @apply border-t-0;
+    }
+}
+
+@screen sm {
+    .faculty-card {
+        &:nth-child(-n+2) {
+            @apply border-t-0;
+        }
+
+        &:nth-child(even) {
+            @apply border-l-2
+        }
+    }
+}
+
 @tailwind utilities;

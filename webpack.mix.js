@@ -35,6 +35,7 @@ mix
     .js('resources/js/app.js', 'public/js')
     .js('resources/js/ziggy.js', 'public/js')
     .postCss('resources/styles/app.pcss', 'public/css', [
+        require('postcss-nested'),
         require('tailwindcss')
     ])
     .purgeCss()

@@ -1,3 +1,5 @@
+require ('./fontawesome')
+
 import Vue from 'vue'
 import { InertiaApp } from '@inertiajs/inertia-vue'
 

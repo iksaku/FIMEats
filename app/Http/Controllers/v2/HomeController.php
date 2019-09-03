@@ -17,7 +17,7 @@ class HomeController extends Controller
     {
         logger()->info('Showing list of Faculties...');
 
-        $faculties = Faculty::all();
+        $faculties = Faculty::orderByRaw('short_name = "FIME" desc, short_name asc')->get();
 
         return inertia()->render('Home', compact('faculties'));
     }

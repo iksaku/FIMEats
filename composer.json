@@ -8,7 +8,7 @@
         "php": "^7.2",
         "doctrine/dbal": "^2.8",
         "fideloper/proxy": "^4.0",
-        "inertiajs/inertia-laravel": "^0.1.2",
+        "inertiajs/inertia-laravel": "^0.1",
         "laravel/framework": "^5.8",
         "laravel/tinker": "^1.0",
         "symfony/yaml": "^4.2",
@@ -17,7 +17,6 @@
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^2.5",
         "beyondcode/laravel-dump-server": "^1.0",
-        "filp/whoops": "^2.0",
         "friendsofphp/php-cs-fixer": "^2.15",
         "fzaninotto/faker": "^1.4",
         "lorisleiva/laravel-deployer": "^0.2",
@@ -44,8 +43,8 @@
             "dont-discover": []
         },
         "hooks": {
-            "pre-commit": "vendor/bin/php-cs-fixer fix",
-            "pre-push": "vendor/bin/php-cs-fixer fix --dry-run",
+            "pre-commit": "composer lint",
+            "pre-push": "composer test",
             "post-merge": "composer update"
         }
     },
@@ -65,7 +64,8 @@
             "@php artisan ide-helper:generate",
             "@php artisan ide-helper:meta"
         ],
-        "test:lint": "php-cs-fixer fix --dry-run",
+        "lint": "php-cs-fixer fix",
+        "test:lint": "@lint --dry-run",
         "test": [
             "@test:lint"
         ]
