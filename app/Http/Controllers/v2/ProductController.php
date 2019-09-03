@@ -18,21 +18,21 @@ class ProductController extends Controller
     {
         logger()->info('Looking for \''.$name.'\' Product...');
 
-        /** @var Collection $product */
-        $product = Product::where('name', 'LIKE', '%'.$name.'%')
+        /** @var Collection $products */
+        $products = Product::where('name', 'LIKE', '%'.$name.'%')
             ->with(['cafeteria', 'categories'])
             ->get();
 
-        if (empty($product)) {
+        if (empty($products) || $products->count() < 1) {
             logger()->info('Unable to find Product \''.$name.'\'...');
 
-            return response()->json([
+            return inertia()->render('Error', [
                 'message' => 'Product \''.$name.'\' not found.',
-            ], 404);
+            ]);
         }
 
         logger()->info('Found Product \''.$name.'\'... Displaying...');
 
-        return response()->json($product);
+        return inertia()->render('Product', compact('products'));
     }
 }

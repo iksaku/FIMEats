@@ -50,11 +50,11 @@ class Category extends Model
     /**
      * Ensures Category name is formatted correctly before saving.
      *
-     * @param $name
+     * @param string $value
      * @return string
      */
-    public function setNameAttribute($name)
+    public function setNameAttribute(string $value)
     {
-        return ucwords(mb_strtolower($name));
+        $this->attributes['name'] = ucwords(mb_strtolower($value));
     }
 }

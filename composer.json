@@ -8,14 +8,15 @@
         "php": "^7.2",
         "doctrine/dbal": "^2.8",
         "fideloper/proxy": "^4.0",
+        "inertiajs/inertia-laravel": "^0.1.2",
         "laravel/framework": "^5.8",
         "laravel/tinker": "^1.0",
-        "symfony/yaml": "^4.2"
+        "symfony/yaml": "^4.2",
+        "tightenco/ziggy": "^0.7.1"
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^2.5",
         "beyondcode/laravel-dump-server": "^1.0",
-        "brainmaestro/composer-git-hooks": "^2.7",
         "filp/whoops": "^2.0",
         "friendsofphp/php-cs-fixer": "^2.15",
         "fzaninotto/faker": "^1.4",
@@ -61,12 +62,12 @@
         ],
         "post-update-cmd": [
             "Illuminate\\Foundation\\ComposerScripts::postUpdate",
-            "[ $COMPOSER_DEV_MODE -eq 0 ] || vendor/bin/cghooks update",
             "@php artisan ide-helper:generate",
             "@php artisan ide-helper:meta"
         ],
-        "post-install-cmd": [
-            "[ $COMPOSER_DEV_MODE -eq 0 ] || vendor/bin/cghooks add --ignore-lock"
+        "test:lint": "php-cs-fixer fix --dry-run",
+        "test": [
+            "@test:lint"
         ]
     },
     "config": {

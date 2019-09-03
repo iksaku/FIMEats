@@ -5,6 +5,7 @@ namespace App\Http\Controllers\v2;
 use App\Faculty;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Response;
+use Inertia\Response as InertiaResponse;
 
 class FacultyController extends Controller
 {
@@ -15,16 +16,16 @@ class FacultyController extends Controller
      */
     public function index()
     {
-        logger()->info('Showing list of Faculties...');
+        logger()->info('Redirecting back to home for list of Faculties...');
 
-        return response()->json(Faculty::all());
+        return redirect()->route('home');
     }
 
     /**
      * Display the specified resource.
      *
      * @param string $name
-     * @return Response
+     * @return InertiaResponse
      */
     public function show(string $name)
     {
@@ -39,13 +40,13 @@ class FacultyController extends Controller
         if (empty($faculty)) {
             logger()->info('Unable to find Faculty \''.$name.'\'...');
 
-            return response()->json([
+            return inertia()->render('Error', [
                 'message' => 'Faculty \''.$name.'\' not found.',
-            ], 404);
+            ]);
         }
 
         logger()->info('Found Faculty \''.$faculty->name.'\'... Displaying...');
 
-        return response()->json($faculty);
+        return inertia()->render('Faculty', $faculty->toArray());
     }
 }

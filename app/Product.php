@@ -84,11 +84,23 @@ class Product extends Model
     /**
      * Ensures Product name is formatted correctly before saving.
      *
-     * @param string $name
+     * @param string $value
      * @return string
      */
-    public function setNameAttribute(string $name)
+    public function setNameAttribute(string $value)
     {
-        return ucwords(mb_strtolower($name));
+        $this->attributes['name'] = ucwords(mb_strtolower($value));
+    }
+
+    /**
+     * Intercepts object normalization and injects custom structured categories data.
+     *
+     * @return array
+     */
+    public function toArray()
+    {
+        return array_replace(parent::toArray(), [
+            'categories' => $this->categories->pluck('name')->all(),
+        ]);
     }
 }

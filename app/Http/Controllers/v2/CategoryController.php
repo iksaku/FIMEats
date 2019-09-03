@@ -4,7 +4,7 @@ namespace App\Http\Controllers\v2;
 
 use App\Category;
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Response;
+use Inertia\Response;
 
 class CategoryController extends Controller
 {
@@ -17,7 +17,9 @@ class CategoryController extends Controller
     {
         logger()->info('Showing list of Categories...');
 
-        return response()->json(Category::all()->pluck('name'));
+        $categories = Category::all()->pluck('name');
+
+        return inertia()->render('Category/Index', compact('categories'));
     }
 
     /**
@@ -38,13 +40,13 @@ class CategoryController extends Controller
         if (empty($category)) {
             logger()->info('Unable to find Category \''.$name.'\'...');
 
-            return response()->json([
+            return inertia()->render('Error', [
                 'message' => 'Category \''.$name.'\' not found.',
-            ], 404);
+            ]);
         }
 
         logger()->info('Found Category \''.$category->name.'\'... Displaying...');
 
-        return response()->json($category);
+        return inertia()->render('Category/Show', $category->toArray());
     }
 }

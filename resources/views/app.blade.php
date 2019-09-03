@@ -13,11 +13,10 @@
         <link rel="stylesheet" href="{{ mix('css/app.css') }}">
     </head>
     <body>
-        <div id="app"></div>
+        @inertia
 
         {{-- Scripts --}}
-        <script src="{{ mix('js/manifest.js') }}"></script>
-        <script src="{{ mix('js/vendor.js') }}"></script>
-        <script src="{{ mix('js/app.js') }}"></script>
+        @routes
+        <script src="{{ mix('js/app.js') }}" defer></script>
     </body>
 </html>

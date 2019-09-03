@@ -1,6 +1,24 @@
 const mix = require('laravel-mix')
-const tailwind = require('tailwindcss')
+const path = require('path')
 require('laravel-mix-purgecss')
+
+mix
+    .babelConfig({
+        plugins: [
+            '@babel/plugin-syntax-dynamic-import'
+        ]
+    })
+    .webpackConfig({
+        output: {
+            chunkFilename: 'js/[name].js?id=[chunkhash]'
+        },
+        resolve: {
+            alias: {
+                vue$: 'vue/dist/vue.runtime.esm.js',
+                '@': path.resolve('resources/js')
+            }
+        }
+    })
 
 /*
  |--------------------------------------------------------------------------
@@ -15,11 +33,10 @@ require('laravel-mix-purgecss')
 
 mix
     .js('resources/js/app.js', 'public/js')
-    .extract()
+    .js('resources/js/ziggy.js', 'public/js')
     .postCss('resources/styles/app.pcss', 'public/css', [
-        tailwind()
+        require('tailwindcss')
     ])
     .purgeCss()
-
-if (mix.inProduction())
-    mix.version()
+    .version()
+    .sourceMaps()

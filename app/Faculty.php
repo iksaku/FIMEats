@@ -43,6 +43,11 @@ class Faculty extends Model
         'name', 'short_name', 'logo', 'maps_url', 'cafeterias',
     ];
 
+    /** @var array */
+    protected $appends = [
+        'logo',
+    ];
+
     /**
      * Returns a Collection of Cafeterias owned by this Faculty.
      *
@@ -66,22 +71,22 @@ class Faculty extends Model
     /**
      * Ensures Faculty name is formatted correctly before saving.
      *
-     * @param string $name
+     * @param string $value
      * @return string
      */
-    public function setNameAttribute(string $name)
+    public function setNameAttribute(string $value)
     {
-        return ucwords(mb_strtolower($name));
+        $this->attributes['name'] = ucwords(mb_strtolower($value));
     }
 
     /**
      * Ensures Faculty short name is formatted correctly before saving.
      *
-     * @param string $short_name
+     * @param string $value
      * @return string
      */
-    public function setShortNameAttribute(string $short_name)
+    public function setShortNameAttribute(string $value)
     {
-        return mb_strtoupper($short_name);
+        $this->attributes['short_name'] = mb_strtoupper($value);
     }
 }

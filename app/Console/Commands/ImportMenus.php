@@ -68,10 +68,10 @@ class ImportMenus extends Command
         foreach ($this->filesInDir(resource_path('menus'), 'yaml') as $content) {
             try {
                 /*
-                 * @var string  $name
-                 * @var string  $short_name
-                 * @var string  $maps_url
-                 * @var array   $cafeterias
+                 * @var string $name
+                 * @var string $short_name
+                 * @var string $maps_url
+                 * @var array  $cafeterias
                  */
                 extract(Yaml::parse($content), EXTR_OVERWRITE);
 
@@ -81,8 +81,10 @@ class ImportMenus extends Command
                 $bar->start();
 
                 /** @var Faculty $faculty */
-                $faculty = Faculty::firstOrCreate(compact('short_name'),
-                    compact('name', 'maps_url'));
+                $faculty = Faculty::updateOrCreate(
+                    compact('short_name'),
+                    compact('name', 'maps_url')
+                );
 
                 foreach ($cafeterias as $cafeteria_content) {
                     $bar->setProgress(0);
@@ -110,8 +112,10 @@ class ImportMenus extends Command
                             .' ➤ '.$cafeteria->name.' ➤ '.$name);
 
                         /** @var Product $product */
-                        $product = $cafeteria->products()->firstOrCreate(compact('name', 'quantity', 'price'),
-                            compact('image'));
+                        $product = $cafeteria->products()->firstOrCreate(
+                            compact('name', 'quantity', 'price'),
+                            compact('image')
+                        );
 
                         foreach ($categories as $name) {
                             /** @var Category $category */
