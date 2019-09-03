@@ -8,19 +8,9 @@
             </inertia-link>
 
             <div class="flex justify-end text-lg">
-                <!-- Must be a normal anchor tag due to unsupported hash scrolling -->
-                <a
-                    :href="route('home').url() + '#facultades'"
-                    class="hidden sm:block"
-                >
-                    <span class="inline-block align-middle">
-                        Selecciona tu Facultad
-                    </span>
-                </a>
                 <a
                     href="https://github.com/iksaku/FIMEats"
                     target="_blank"
-                    class="ml-4"
                 >
                     <span class="hidden sm:inline-block align-middle">
                         Contribuye en Github
