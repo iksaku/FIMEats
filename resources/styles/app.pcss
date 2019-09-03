@@ -7,7 +7,21 @@ html {
     scroll-behavior: smooth;
 }
 
+a {
+    @apply block;
+
+    &:hover {
+        @apply shadow-outline;
+    }
+
+    &:focus {
+        @apply outline-none shadow-outline;
+    }
+}
+
 .faculty-card {
+    @apply border-t-2 border-gray-300;
+
     &:nth-child(-n+1) {
         @apply border-t-0;
     }
