@@ -72,7 +72,6 @@ class Faculty extends Model
      * Ensures Faculty name is formatted correctly before saving.
      *
      * @param string $value
-     * @return string
      */
     public function setNameAttribute(string $value)
     {
@@ -83,7 +82,6 @@ class Faculty extends Model
      * Ensures Faculty short name is formatted correctly before saving.
      *
      * @param string $value
-     * @return string
      */
     public function setShortNameAttribute(string $value)
     {

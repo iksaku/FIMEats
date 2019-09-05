@@ -8,33 +8,45 @@ html {
 }
 
 a {
-    @apply block;
-
-    &:hover {
-        @apply shadow-outline;
-    }
+    @apply block cursor-pointer;
 
     &:focus {
         @apply outline-none shadow-outline;
     }
 }
 
-.faculty-card {
-    @apply border-t-2 border-gray-300;
+.map {
+    max-height: 450px;
+    max-width: 600px;
+    height: 67.5vw;
+    width: 90vw;
+}
 
-    &:nth-child(-n+1) {
-        @apply border-t-0;
+.product-img {
+    max-height: 225px;
+}
+
+.card + .card {
+    @apply mt-4;
+}
+
+.resource-card {
+    @apply border-b-2 border-gray-300;
+
+    &:last-child {
+        @apply border-b-0;
     }
 }
 
 @screen sm {
-    .faculty-card {
-        &:nth-child(-n+2) {
-            @apply border-t-0;
+    .resource-card {
+        &:last-child,
+        &:nth-last-child(-n+2):not(:nth-child(even)) {
+            @apply border-b-0;
         }
 
         &:nth-child(even) {
-            @apply border-l-2
+            @apply border-l-2;
         }
     }
 }

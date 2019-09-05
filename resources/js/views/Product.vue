@@ -18,9 +18,11 @@
 </template>
 
 <script>
-    import Layout from '../components/Layout'
+    import Layout from "../components/partials/Layout"
 
     export default {
+        name: "Product",
+
         components: {
             Layout
         },

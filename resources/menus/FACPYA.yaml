@@ -46,37 +46,37 @@ cafeterias:
         image: molletes.jpg
         categories:
           - ALMUERZOS
-      - name: HUEVOS AL GUSTO C/ REFRESCO
+      - name: HUEVOS AL GUSTO CON REFRESCO
         quantity:
         price: 50
         image: huevos.jpg
         categories:
           - ALMUERZOS
-      - name: SINCRONIZADAS C/PAPAS
+      - name: SINCRONIZADAS CONPAPAS
         quantity:
         price: 35
         image: sincronizadas.jpg
         categories:
           - COMIDAS
-      - name: SANDWICH C/PAPAS
+      - name: SANDWICH CONPAPAS
         quantity:
         price: 35
         image: sandwichpapas.jpg
         categories:
           - COMIDAS
-      - name: HOT DOG C/PAPAS
+      - name: HOT DOG CONPAPAS
         quantity:
         price: 25
         image: hotdogpapas.jpg
         categories:
           - COMIDAS
-      - name: HAMBURGESA C/PAPAS Y REFRESCO
+      - name: HAMBURGESA CONPAPAS Y REFRESCO
         quantity:
         price: 47
         image: hamburguesapapasre.jpg
         categories:
           - COMIDAS
-      - name: TORTA C/PAPAS Y REFRESCO
+      - name: TORTA CONPAPAS Y REFRESCO
         quantity:
         price: 47
         image: tortapapas.jpg
@@ -91,7 +91,7 @@ cafeterias:
       - name: COMIDA DEL DIA
         quantity:
         price: 65
-        image: 
+        image:
         categories:
           - COMIDAS
       - name: MILANESA DE RES

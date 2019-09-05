@@ -6,7 +6,11 @@ use App\Cafeteria;
 use App\Category;
 use App\Faculty;
 use App\Product;
+use Generator;
 use Illuminate\Console\Command;
+use RecursiveDirectoryIterator;
+use RecursiveIteratorIterator;
+use RegexIterator;
 use Symfony\Component\Console\Helper\ProgressBar;
 use Symfony\Component\Yaml\Exception\ParseException;
 use Symfony\Component\Yaml\Yaml;
@@ -40,14 +44,14 @@ class ImportMenus extends Command
     /**
      * @param $directory
      * @param $fileExtension
-     * @return \Generator
+     * @return Generator
      */
     public function filesInDir($directory, $fileExtension)
     {
         $directory = realpath($directory);
-        $it = new \RecursiveDirectoryIterator($directory);
-        $it = new \RecursiveIteratorIterator($it, \RecursiveIteratorIterator::LEAVES_ONLY);
-        $it = new \RegexIterator($it, '(\.'.preg_quote($fileExtension).'$)');
+        $it = new RecursiveDirectoryIterator($directory);
+        $it = new RecursiveIteratorIterator($it, RecursiveIteratorIterator::LEAVES_ONLY);
+        $it = new RegexIterator($it, '(\.'.preg_quote($fileExtension).'$)');
         foreach ($it as $file) {
             $fileName = $file->getPathname();
             yield $fileName => file_get_contents($fileName);
@@ -67,13 +71,16 @@ class ImportMenus extends Command
 
         foreach ($this->filesInDir(resource_path('menus'), 'yaml') as $content) {
             try {
-                /*
-                 * @var string $name
-                 * @var string $short_name
-                 * @var string $maps_url
-                 * @var array  $cafeterias
-                 */
-                extract(Yaml::parse($content), EXTR_OVERWRITE);
+                /** @var array $data */
+                $data = Yaml::parse($content);
+                /** @var string $name */
+                $name = $data['name'];
+                /** @var string $short_name */
+                $short_name = $data['short_name'];
+                /** @var string $maps_url */
+                $maps_url = $data['maps_url'];
+                /** @var array $cafeterias */
+                $cafeterias = $data['cafeterias'];
 
                 $bar = $this->getOutput()->createProgressBar();
                 $bar->setFormat(ProgressBar::getFormatDefinition('normal_nomax').' | %message%');
@@ -89,24 +96,25 @@ class ImportMenus extends Command
                 foreach ($cafeterias as $cafeteria_content) {
                     $bar->setProgress(0);
 
-                    /*
-                     * @var string  $name
-                     * @var array   $products
-                     */
-                    extract($cafeteria_content, EXTR_OVERWRITE);
+                    /** @var string $name */
+                    $name = $cafeteria_content['name'];
+                    /** @var array $products */
+                    $products = $cafeteria_content['products'];
 
                     /** @var Cafeteria $cafeteria */
                     $cafeteria = $faculty->cafeterias()->firstOrCreate(compact('name'));
 
                     foreach ($products as $product_content) {
-                        /*
-                         * @var string  $name
-                         * @var string  $quantity
-                         * @var string  $price
-                         * @var string  $image
-                         * @var array   $categories
-                         */
-                        extract($product_content, EXTR_OVERWRITE);
+                        /** @var string $name */
+                        $name = $product_content['name'];
+                        /** @var string $quantity */
+                        $quantity = $product_content['quantity'];
+                        /** @var string $price */
+                        $price = $product_content['price'];
+                        /** @var string $image */
+                        $image = $product_content['image'];
+                        /** @var array $categories */
+                        $categories = $product_content['categories'];
 
                         $bar->setMessage('Importing for '.$faculty->short_name
                             .' ➤ '.$cafeteria->name.' ➤ '.$name);

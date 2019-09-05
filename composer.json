@@ -64,6 +64,7 @@
             "@php artisan ide-helper:generate",
             "@php artisan ide-helper:meta"
         ],
+        "routes": "@php artisan ziggy:generate resources/js/ziggy.js",
         "lint": "php-cs-fixer fix",
         "test:lint": "@lint --dry-run",
         "test": [

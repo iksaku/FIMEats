@@ -65,7 +65,7 @@ cafeterias:
         categories:
           - POSTRES
       - name: HOT CAKES
-        quantity: 3
+        quantity: 3 HOT CAKES
         price: 20
         image: hotcakes.jpg
         categories:
@@ -94,19 +94,19 @@ cafeterias:
         image: molletes.jpg
         categories:
           - ALMUERZOS
-      - name: BURRITO MACHACA C/HUEVO G
+      - name: BURRITO MACHACA CONHUEVO G
         quantity:
         price: 25
         image: burritos.jpg
         categories:
           - ALMUERZOS
-      - name: BURRITO MACHACA C/HUEVO J
+      - name: BURRITO MACHACA CONHUEVO J
         quantity:
         price: 40
         image: burritos.jpg
         categories:
           - ALMUERZOS
-      - name: HUEVO C/ CHILAQUILES Y FRIJOLES
+      - name: HUEVO CON CHILAQUILES Y FRIJOLES
         quantity:
         price: 35
         image: huevos.jpg
@@ -124,7 +124,7 @@ cafeterias:
         image: chilaquiles.jpg
         categories:
           - ALMUERZOS
-      - name: VASO DE FRUTA C/GRANOLA Y YOGURT
+      - name: VASO DE FRUTA CONGRANOLA Y YOGURT
         quantity: 1L
         price: 50
         image: vasodefruta.jpg
@@ -137,12 +137,12 @@ cafeterias:
         categories:
           - COMIDAS
       - name: HOT DOGS
-        quantity: 2
+        quantity: 2 HOT DOGS
         price: 20
         image: hotdog.jpg
         categories:
           - COMIDAS
-      - name: HAMBURGUESA C/PAPAS
+      - name: HAMBURGUESA CONPAPAS
         quantity:
         price: 45
         image: hamburguesapapasre.jpg
@@ -178,7 +178,7 @@ cafeterias:
         image: papas.jpg
         categories:
           - COMIDAS
-      - name: NUGET DE POLLO C/PAPAS
+      - name: NUGET DE POLLO CONPAPAS
         quantity:
         price: 40
         image: nuggetspollo.jpg
@@ -239,7 +239,7 @@ cafeterias:
         categories:
           - TACOS
       - name: AL VAPOR
-        quantity: 5
+        quantity: 5 TACOS
         price: 20
         image: tacosalvapor.jpg
         categories:

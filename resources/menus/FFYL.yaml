@@ -40,19 +40,19 @@ cafeterias:
         image: hotcakes.jpg
         categories:
           - ALMUERZOS
-      - name: SINCRONIZADA C/PAPAS
+      - name: SINCRONIZADA CONPAPAS
         quantity:
         price: 35
         image: sincronizadas.jpg
         categories:
           - COMIDAS
-      - name: SANDWICH C/PAPAS
+      - name: SANDWICH CONPAPAS
         quantity:
         price: 35
         image: sandwichpapas.jpg
         categories:
           - COMIDAS
-      - name: HOT DOG C/PAPAS
+      - name: HOT DOG CONPAPAS
         quantity:
         price: 25
         image: hotdogpapas.jpg
@@ -64,13 +64,13 @@ cafeterias:
         image: papas.jpg
         categories:
           - COMIDAS
-      - name: HAMBURGUESA C/PAPAS
+      - name: HAMBURGUESA CONPAPAS
         quantity:
         price: 40
         image: hamburguesapapasre.jpg
         categories:
           - COMIDAS
-      - name: TORTA C/PAPAS
+      - name: TORTA CONPAPAS
         quantity:
         price: 40
         image: tortapapas.jpg
@@ -79,7 +79,7 @@ cafeterias:
       - name: COMIDA DEL DIA
         quantity:
         price: 65
-        image: 
+        image:
         categories:
           - COMIDAS
       - name: MILANESA DE RES

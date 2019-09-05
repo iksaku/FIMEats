@@ -16,37 +16,37 @@ cafeterias:
         image: chilaquiles.jpg
         categories:
           - ALMUERZOS
-      - name: SANDWICH POLLO C/PAPAS
+      - name: SANDWICH POLLO CONPAPAS
         quantity:
         price: 45
         image: sandwichpollopapas.jpg
         categories:
           - ALMUERZOS
-      - name: SANDWICH JAMON C/PAPAS
+      - name: SANDWICH JAMON CONPAPAS
         quantity:
         price: 30
         image: sandwichjamonpapas.jpg
         categories:
           - ALMUERZOS
-      - name: CUERNITO C/PAPAS
+      - name: CUERNITO CONPAPAS
         quantity:
         price: 30
         image: cuernito.jpg
         categories:
           - ALMUERZOS
       - name: MOLLETES
-        quantity: 2
+        quantity: 2 MOLLETES
         price: 25
         image: molletes.jpg
         categories:
           - ALMUERZOS
-      - name: MOLLETES C/PAPAS Y CHORIZO
+      - name: MOLLETES CONPAPAS Y CHORIZO
         quantity:
         price: 35
         image: molletes.jpg
         categories:
           - ALMUERZOS
-      - name: SINCRONIZADA C/PAPAS
+      - name: SINCRONIZADA CONPAPAS
         quantity:
         price: 25
         image: sincronizadas.jpg
@@ -70,19 +70,19 @@ cafeterias:
         image: suizas.jpg
         categories:
           - COMIDAS
-      - name: HAMBURGUESA C/PAPAS
+      - name: HAMBURGUESA CONPAPAS
         quantity:
         price: 60
         image: hamburguesapapasre.jpg
         categories:
           - COMIDAS
-      - name: PIRATA C/PAPAS
+      - name: PIRATA CONPAPAS
         quantity:
         price: 45
         image: pirata.jpg
         categories:
           - COMIDAS
-      - name: HOTDOG C/PAPAS
+      - name: HOTDOG CONPAPAS
         quantity:
         price: 30
         image: hotdogpapas.jpg
@@ -112,7 +112,7 @@ cafeterias:
         image: papas.jpg
         categories:
           - COMIDAS
-      - name: PAPAS C/QUESO
+      - name: PAPAS CONQUESO
         quantity:
         price: 30
         image: papasqueso.jpg
@@ -139,7 +139,7 @@ cafeterias:
       - name: COMIDA DEL DIA
         quantity:
         price: 60
-        image: 
+        image:
         categories:
           - COMIDAS
       - name: MAIZ

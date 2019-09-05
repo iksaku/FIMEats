@@ -70,12 +70,13 @@ class Product extends Model
     /**
      * Returns a relative URL to access Product's image.
      *
+     * @param string|null $value
      * @return string
      */
-    public function getImageAttribute()
+    public function getImageAttribute($value)
     {
-        if (!empty($this->image) && file_exists(public_path('img/'.$this->image))) {
-            return asset('img/'.$this->image);
+        if (!empty($value) && file_exists(public_path('img/'.$value))) {
+            return asset('img/'.$value);
         } else {
             return asset('img/food_placeholder.jpg');
         }
@@ -85,7 +86,6 @@ class Product extends Model
      * Ensures Product name is formatted correctly before saving.
      *
      * @param string $value
-     * @return string
      */
     public function setNameAttribute(string $value)
     {

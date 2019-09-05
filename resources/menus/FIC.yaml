@@ -5,13 +5,13 @@ cafeterias:
   - name: Cafetería de FIC
     products:
       - name: ENCHILADAS SUIZAS
-        quantity: 4
+        quantity: 4 ENCHILADAS
         price: 60
         image: suizas.jpg
         categories:
           - COMIDAS
       - name: ENTOMATADAS
-        quantity: 4
+        quantity: 4 ENTOMATADAS
         price: 60
         image: entomatadas.jpg
         categories:
@@ -29,7 +29,7 @@ cafeterias:
         categories:
           - COMIDAS
       - name: GORDITAS
-        quantity: 4
+        quantity: 4 GORDITAS
         price: 60
         image: gorditas.jpg
         categories:
@@ -47,13 +47,13 @@ cafeterias:
         categories:
           - COMIDAS
       - name: SOPES
-        quantity: 4
+        quantity: 4 SOPES
         price: 60
         image: sopes.jpg
         categories:
           - COMIDAS
       - name: ALBÓNDIGAS
-        quantity: 6
+        quantity: 6 ALBÓNDIGAS
         price: 60
         image: albondigas.jpg
         categories:

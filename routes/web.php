@@ -23,4 +23,4 @@ Route::prefix('categoria')->group(function () {
     Route::get('{name}', 'v2\CategoryController@show')->name('category.show');
 });
 
-Route::get('producto/{name}', 'v2\ProductController@show')->name('product');
+Route::get('producto/{name}', 'v2\ProductController@show')->name('product.show');

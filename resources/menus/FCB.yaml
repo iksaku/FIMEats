@@ -5,7 +5,7 @@ cafeterias:
   - name: Cafetería de FCB
     products:
       - name: HOT CAKES
-        quantity: 2
+        quantity: 2 HOT CAKES
         price: 20
         image: hotcakes.jpg
         categories:
@@ -15,23 +15,23 @@ cafeterias:
         price: 9
         image: tacoharina.jpg
         categories:
-          - TACOS 
+          - TACOS
       - name: MAIZ
         quantity:
         price: 7
         image: tacomaiz.jpg
         categories:
-          - TACOS 
+          - TACOS
       - name: COMIDA DEL DIA
         quantity:
         price: 55
-        image: 
+        image:
         categories:
           - COMIDAS
       - name: COMIDA DEL DIA CON AGUA
         quantity:
         price: 60
-        image: 
+        image:
         categories:
           - COMIDAS
       - name: BURRITOS

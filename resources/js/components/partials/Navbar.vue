@@ -27,8 +27,6 @@
 
 <script>
     export default {
-        mounted() {
-
-        }
+        name: "Navbar"
     }
 </script>

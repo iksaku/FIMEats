@@ -10,12 +10,12 @@ cafeterias:
         image: coca.jpg
         categories:
           - BEBIDAS
-      - name: JUEGO DEL VALLE
+      - name: JUGO DEL VALLE
         quantity:
         price: 15
         image: jugos.jpg
         categories:
-          - BEBIDAS 
+          - BEBIDAS
       - name: PEPSI
         quantity: 600ml
         price: 16
@@ -27,13 +27,13 @@ cafeterias:
         price: 12
         image: jugodenaranja.jpg
         categories:
-          - BEBIDAS 
+          - BEBIDAS
       - name: LIMONADA
         quantity:
         price: 12
         image: limonada.png
         categories:
-          - BEBIDAS 
+          - BEBIDAS
       - name: CAFE NEGRO
         quantity:
         price: 10
@@ -63,7 +63,7 @@ cafeterias:
         price: 18
         image: empalmes.jpg
         categories:
-          - ALMUERZO 
+          - ALMUERZO
       - name: GELATINA
         quantity:
         price: 15
@@ -117,4 +117,4 @@ cafeterias:
         price: 40
         image: chilesrellenos.jpg
         categories:
-          - COMIDAS 
+          - COMIDAS

@@ -51,7 +51,6 @@ class Category extends Model
      * Ensures Category name is formatted correctly before saving.
      *
      * @param string $value
-     * @return string
      */
     public function setNameAttribute(string $value)
     {
