@@ -21,6 +21,9 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v1
+        run: |
+          shopt -s extglob
+          rm -rfv public/!(js|css)
       - name: Yarn Install
         run: yarn install
       - name: Build Development Assets
@@ -28,14 +31,12 @@ jobs:
       - name: Run Tests
         run: echo "No tests have been configured for NodeJS"
       - name: Build Production Assets
-        run: |
-          yarn prod
-          zip -r assets.zip public/js public/css
+        run: yarn prod
       - name: Persist Node Assets as Artifacts
         uses: actions/upload-artifact@v1
         with:
-          name: node-assets.zip
-          path: assets.zip
+          name: node-assets
+          path: public
 # TODO: Fix SSH_KEY
 #  cd:
 #    needs:
@@ -52,7 +53,7 @@ jobs:
 #      - name: Download Node Assets
 #        uses: actions/download-artifact@v1
 #        with:
-#          name: node-assets.zip
+#          name: node-assets
 #      - name: Setup SSH
 #        if: github.event_name != 'pull_request' && github.repository == 'iksaku/fimeats'
 #        env:
@@ -84,6 +85,4 @@ jobs:
 #        env:
 #          DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
 #          DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
-#        run: |
-#          unzip -o node-assets.zip
-#          php artisan deploy -s upload
+#        run: php artisan deploy -s upload
