@@ -93,6 +93,11 @@ return [
     'options' => [
         'application' => env('APP_NAME', 'Laravel'),
         'repository' => 'git@github.com:iksaku/FIMEats.git',
+        'upload_options' => [
+            'options' => [
+                '--exclude=public/img',
+            ],
+        ],
     ],
 
     /*
