@@ -36,53 +36,54 @@ jobs:
         with:
           name: node-assets.zip
           path: assets.zip
-  cd:
-    needs:
-      - php-ci
-      - node-ci
-    name: Deployment
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        if: github.event_name != 'pull_request' && github.repository == 'iksaku/fimeats'
-        uses: actions/checkout@v1
-        with:
-          lfs: true
-      - name: Download Node Assets
-        uses: actions/download-artifact@v1
-        with:
-          name: node-assets.zip
-      - name: Setup SSH
-        if: github.event_name != 'pull_request' && github.repository == 'iksaku/fimeats'
-        env:
-          DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
-          SSH_KEY: ${{ secrets.SSH_KEY }}
-        run: |
-          SSH_PATH="$HOME/.ssh"
-          mkdir -p "$SSH_PATH"
-          touch "$SSH_PATH/known_hosts"
-          echo $SSH_KEY > "$SSH_PATH/ssh_key"
-          chmod 700 "$SSH_PATH"
-          chmod 600 "$SSH_PATH/known_hosts" "$SSH_PATH/ssh_key"
-          eval $(ssh-agent)
-          ssh-add "$SSH_PATH/ssh_key"
-          ssh-keyscan -H "$DEPLOY_HOST" >> "$SSH_PATH/known_hosts"
-      - name: Upload Assets to CDN
-        if: github.event_name != 'pull_request' && github.repository == 'iksaku/fimeats'
-        uses: iksaku/openstack-swift-action@stein
-        env:
-          OS_AUTH_URL: ${{ secrets.CDN_AUTH_URL }}
-          OS_PASSWORD: ${{ secrets.CDN_PASSWORD }}
-          OS_REGION_NAME: ${{ secrets.CDN_REGION }}
-          OS_TENANT_ID: ${{ secrets.CDN_TENANT_ID }}
-          OS_USERNAME: ${{ secrets.CDN_USERNAME }}
-        with:
-          args: upload --object-name img jorgeglz-cdn/fimeats public/img
-      - name: Deploy Code to Production
-        if: github.event_name != 'pull_request' && github.repository == 'iksaku/fimeats' && github.ref == 'master'
-        env:
-          DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
-          DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
-        run: |
-          unzip -o node-assets.zip
-          php artisan deploy -s upload
+# TODO: Fix SSH_KEY
+#  cd:
+#    needs:
+#      - php-ci
+#      - node-ci
+#    name: Deployment
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: Checkout
+#        if: github.event_name != 'pull_request' && github.repository == 'iksaku/fimeats'
+#        uses: actions/checkout@v1
+#        with:
+#          lfs: true
+#      - name: Download Node Assets
+#        uses: actions/download-artifact@v1
+#        with:
+#          name: node-assets.zip
+#      - name: Setup SSH
+#        if: github.event_name != 'pull_request' && github.repository == 'iksaku/fimeats'
+#        env:
+#          DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
+#          SSH_KEY: ${{ secrets.SSH_KEY }}
+#        run: |
+#          SSH_PATH="$HOME/.ssh"
+#          mkdir -p "$SSH_PATH"
+#          touch "$SSH_PATH/known_hosts"
+#          echo $SSH_KEY > "$SSH_PATH/ssh_key"
+#          chmod 700 "$SSH_PATH"
+#          chmod 600 "$SSH_PATH/known_hosts" "$SSH_PATH/ssh_key"
+#          eval $(ssh-agent)
+#          ssh-add "$SSH_PATH/ssh_key"
+#          ssh-keyscan -H "$DEPLOY_HOST" >> "$SSH_PATH/known_hosts"
+#      - name: Upload Assets to CDN
+#        if: github.event_name != 'pull_request' && github.repository == 'iksaku/fimeats'
+#        uses: iksaku/openstack-swift-action@stein
+#        env:
+#          OS_AUTH_URL: ${{ secrets.CDN_AUTH_URL }}
+#          OS_PASSWORD: ${{ secrets.CDN_PASSWORD }}
+#          OS_REGION_NAME: ${{ secrets.CDN_REGION }}
+#          OS_TENANT_ID: ${{ secrets.CDN_TENANT_ID }}
+#          OS_USERNAME: ${{ secrets.CDN_USERNAME }}
+#        with:
+#          args: upload --object-name img jorgeglz-cdn/fimeats public/img
+#      - name: Deploy Code to Production
+#        if: github.event_name != 'pull_request' && github.repository == 'iksaku/fimeats' && github.ref == 'master'
+#        env:
+#          DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
+#          DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
+#        run: |
+#          unzip -o node-assets.zip
+#          php artisan deploy -s upload

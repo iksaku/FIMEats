@@ -9,15 +9,16 @@
         "doctrine/dbal": "^2.8",
         "fideloper/proxy": "^4.0",
         "inertiajs/inertia-laravel": "^0.1",
-        "laravel/framework": "^5.8",
+        "laravel/framework": "^6.0",
         "laravel/tinker": "^1.0",
         "sausin/laravel-ovh": "^2.2",
         "symfony/yaml": "^4.2",
-        "tightenco/ziggy": "^0.7.1"
+        "tightenco/ziggy": "^0.8"
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^2.5",
         "beyondcode/laravel-dump-server": "^1.0",
+        "facade/ignition": "^1.4",
         "friendsofphp/php-cs-fixer": "^2.15",
         "fzaninotto/faker": "^1.4",
         "lorisleiva/laravel-deployer": "^0.2",
