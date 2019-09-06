@@ -55,13 +55,17 @@ return [
             'visibility' => 'public',
         ],
 
-        's3' => [
-            'driver' => 's3',
-            'key' => env('AWS_ACCESS_KEY_ID'),
-            'secret' => env('AWS_SECRET_ACCESS_KEY'),
-            'region' => env('AWS_DEFAULT_REGION'),
-            'bucket' => env('AWS_BUCKET'),
-            'url' => env('AWS_URL'),
+        'ovh' => [
+            'driver' => 'ovh',
+            'server' => env('OVH_URL'),
+            'user' => env('OVH_USER'),
+            'pass' => env('OVH_PASS'),
+            'region' => env('OVH_REGION'),
+            'tenantName' => env('OVH_TENANT_NAME'),
+            'projectId' => env('OVH_TENANT_ID'),
+            'container' => env('OVH_CONTAINER'),
+            'urlKey' => env('OVH_URL_KEY'),
+            'endpoint' => env('OVH_CUSTOM_ENDPOINT'),
         ],
 
     ],

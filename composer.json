@@ -11,6 +11,7 @@
         "inertiajs/inertia-laravel": "^0.1",
         "laravel/framework": "^5.8",
         "laravel/tinker": "^1.0",
+        "sausin/laravel-ovh": "^2.2",
         "symfony/yaml": "^4.2",
         "tightenco/ziggy": "^0.7.1"
     },
@@ -41,11 +42,6 @@
     "extra": {
         "laravel": {
             "dont-discover": []
-        },
-        "hooks": {
-            "pre-commit": "composer lint",
-            "pre-push": "composer test",
-            "post-merge": "composer update"
         }
     },
     "scripts": {
