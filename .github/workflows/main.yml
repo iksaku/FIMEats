@@ -54,6 +54,7 @@ jobs:
         uses: actions/download-artifact@v1
         with:
           name: node-assets
+          path: public
       - name: Setup SSH
         if: github.event_name != 'pull_request' && github.repository == 'iksaku/fimeats'
         env:
