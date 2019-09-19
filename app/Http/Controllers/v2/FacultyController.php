@@ -41,7 +41,7 @@ class FacultyController extends Controller
             logger()->info('Unable to find Faculty \''.$name.'\'...');
 
             return inertia()->render('Error', [
-                'message' => 'Faculty \''.$name.'\' not found.',
+                'message' => 'Oops, no encontramos la Facultad \''.$name.'\'.',
             ]);
         }
 

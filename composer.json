@@ -5,7 +5,7 @@
     "license": "GPLv3",
     "type": "project",
     "require": {
-        "php": "^7.2",
+        "php": "^7.3",
         "doctrine/dbal": "^2.8",
         "fideloper/proxy": "^4.0",
         "inertiajs/inertia-laravel": "^0.1",
@@ -16,6 +16,7 @@
         "tightenco/ziggy": "^0.8"
     },
     "require-dev": {
+        "barryvdh/laravel-debugbar": "^3.2",
         "barryvdh/laravel-ide-helper": "^2.5",
         "beyondcode/laravel-dump-server": "^1.0",
         "facade/ignition": "^1.4",

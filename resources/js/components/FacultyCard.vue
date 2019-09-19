@@ -8,7 +8,7 @@
                 class="h-48 w-48 rounded-lg mx-auto"
                 :src="logo"
                 :alt="`Logo of ${short_name} Faculty`"
-            >
+            />
 
             <h3 class="text-center text-gray-700 text-xl uppercase mt-2">
                 {{ short_name }}
@@ -18,14 +18,14 @@
 </template>
 
 <script>
-    export default {
-        name: "FacultyCard",
+export default {
+    name: "FacultyCard",
 
-        inheritAttrs: false,
+    inheritAttrs: false,
 
-        props: {
-            short_name: String,
-            logo: String,
-        }
+    props: {
+        short_name: String,
+        logo: String
     }
+};
 </script>

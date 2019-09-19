@@ -38,6 +38,10 @@ mix
         require('postcss-nested'),
         require('tailwindcss')
     ])
-    .purgeCss()
-    .version()
     .sourceMaps()
+
+if (mix.inProduction()) {
+    mix
+        .purgeCss()
+        .version()
+}

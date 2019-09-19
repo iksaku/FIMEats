@@ -1,26 +1,52 @@
 <template>
-    <layout>
-        <h1>{{ code }}</h1>
-        <p>{{ message }}</p>
+    <layout :contentCenter="true">
+        <template v-slot:title>
+            {{ code }}
+        </template>
+        <template v-slot:description>
+            {{ message }}
+        </template>
     </layout>
 </template>
 
 <script>
-    import Layout from "../components/partials/Layout"
+import Layout from "../components/partials/Layout";
 
-    export default {
-        name: "Error",
+export default {
+    name: "Error",
 
-        components: {
-            Layout
+    components: {
+        Layout
+    },
+
+    props: {
+        code: {
+            type: Number,
+            default: 404
         },
-
-        props: {
-            code: {
-                type: Number,
-                default: 404
-            },
-            message: String
+        message: {
+            type: String,
+            default: "No se encontró el recurso."
         }
+    },
+
+    metaInfo() {
+        return {
+            title: `${this.code}`,
+            meta: [
+                {
+                    vmid: "description",
+                    name: "description",
+                    content:
+                        "Has encontrado un lugar desconocido... Porfavor regresa inmediatamente."
+                },
+                {
+                    vmid: "prerender-status-code",
+                    name: "prerender-status-code",
+                    content: `${this.code}`
+                }
+            ]
+        };
     }
+};
 </script>

@@ -41,7 +41,7 @@ class CategoryController extends Controller
             logger()->info('Unable to find Category \''.$name.'\'...');
 
             return inertia()->render('Error', [
-                'message' => 'Category \''.$name.'\' not found.',
+                'message' => 'Oops, no encontramos la Categoria \''.$name.'\'.',
             ]);
         }
 

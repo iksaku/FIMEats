@@ -3,12 +3,19 @@
         <navbar class="sticky top-0 inset-x-0 px-6 py-2" />
 
         <div class="flex-grow p-2">
-            <div class="w-full py-10">
-                <div class="max-w-xl mx-auto text-center">
+            <div class="w-full py-10" :class="{ 'h-full': this.contentCenter }">
+                <div
+                    class="max-w-xl mx-auto text-center"
+                    :class="
+                        this.contentCenter
+                            ? 'h-full flex flex-col items-center justify-center'
+                            : ''
+                    "
+                >
                     <h1 class="text-gray-700 text-4xl">
                         <slot name="title" />
                     </h1>
-                    <hr class="my-4 border-t-2">
+                    <hr class="w-full my-4 border-t-2" />
                     <p class="text-gray-700 text-xl">
                         <slot name="description" />
                     </p>
@@ -21,17 +28,23 @@
 </template>
 
 <script>
-    import Navbar from "./Navbar"
+import Navbar from "./Navbar";
 
-    export default {
-        name: "Layout",
+export default {
+    name: "Layout",
 
-        components: {
-            Navbar
-        },
+    components: {
+        Navbar
+    },
 
-        mounted() {
-            document.title = this.$page.app.name
-        }
+    props: {
+        contentCenter: Boolean
+    },
+
+    metaInfo() {
+        return {
+            titleTemplate: `%s | ${this.$page.app.name}`
+        };
     }
+};
 </script>

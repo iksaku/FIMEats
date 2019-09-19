@@ -9,18 +9,18 @@
 </template>
 
 <script>
-    import Layout from "../../components/partials/Layout"
+import Layout from "../../components/partials/Layout";
 
-    export default {
-        name: "Category/Show",
+export default {
+    name: "Category/Show",
 
-        components: {
-            Layout
-        },
+    components: {
+        Layout
+    },
 
-        props: {
-            name: String,
-            products: Array
-        }
+    props: {
+        name: String,
+        products: Array
     }
+};
 </script>

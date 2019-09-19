@@ -15,7 +15,7 @@
             </div>
             <div class="h-full w-11/12 mx-auto flex flex-wrap">
                 <faculty-card
-                    v-for="(faculty) in faculties"
+                    v-for="faculty in faculties"
                     :key="faculty.short_name"
                     v-bind="faculty"
                 />
@@ -25,21 +25,32 @@
 </template>
 
 <script>
-    import Layout from "../components/partials/Layout"
-    import Card from "../components/Card"
-    import FacultyCard from "../components/FacultyCard"
+import Layout from "../components/partials/Layout";
+import Card from "../components/Card";
+import FacultyCard from "../components/FacultyCard";
 
-    export default {
-        name: "Home",
+export default {
+    name: "Home",
 
-        components: {
-            Layout,
-            Card,
-            FacultyCard
-        },
+    components: {
+        Layout,
+        Card,
+        FacultyCard
+    },
 
-        props: {
-            faculties: Array
-        }
+    props: {
+        faculties: Array
+    },
+
+    metaInfo: {
+        title: "Home",
+        meta: [
+            {
+                vmid: "description",
+                name: "description",
+                content: "La comida que buscas, en el lugar que buscas."
+            }
+        ]
     }
+};
 </script>

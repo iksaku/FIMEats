@@ -11,6 +11,8 @@
                 <a
                     href="https://github.com/iksaku/FIMEats"
                     target="_blank"
+                    rel="noopener"
+                    aria-label="Abre el repositorio de Github del proyecto FIMEats"
                 >
                     <span class="hidden sm:inline-block align-middle">
                         Contribuye en Github
@@ -26,7 +28,7 @@
 </template>
 
 <script>
-    export default {
-        name: "Navbar"
-    }
+export default {
+    name: "Navbar"
+};
 </script>

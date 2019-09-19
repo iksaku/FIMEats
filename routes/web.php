@@ -24,3 +24,10 @@ Route::prefix('categoria')->group(function () {
 });
 
 Route::get('producto/{name}', 'v2\ProductController@show')->name('product.show');
+
+Route::get('{any}', function () {
+    return inertia('Error', [
+        'code' => 404,
+        'message' => 'No hemos encontrado la dirección solicitada.',
+    ]);
+})->where('any', '.*');

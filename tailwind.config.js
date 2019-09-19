@@ -2,6 +2,9 @@ module.exports = {
   theme: {
     extend: {}
   },
-  variants: {},
+  variants: {
+      borderWidth: ['first'],
+      borderStyle: ['first']
+  },
   plugins: []
 }

@@ -34,7 +34,9 @@
                     {{ cafeteria.name }}
                 </h3>
             </div>
-            <div class="h-full w-11/12 mx-auto flex flex-wrap items-center justify-center">
+            <div
+                class="h-full w-11/12 mx-auto flex flex-wrap items-center justify-center"
+            >
                 <product-card
                     v-for="(product, index) in cafeteria.products"
                     :key="index"
@@ -46,32 +48,41 @@
 </template>
 
 <script>
-    import Layout from "../components/partials/Layout"
-    import Card from "../components/Card"
-    import ProductCard from "../components/ProductCard"
+import Layout from "../components/partials/Layout";
+import Card from "../components/Card";
+import ProductCard from "../components/ProductCard";
 
-    export default {
-        name: "Faculty",
+export default {
+    name: "Faculty",
 
-        components: {
-            Layout,
-            Card,
-            ProductCard
-        },
+    components: {
+        Layout,
+        Card,
+        ProductCard
+    },
 
-        props: {
-            name: String,
-            short_name: String,
-            logo: String,
-            cafeterias: Array,
-            maps_url: {
-                type: String,
-                required: false
-            }
-        },
-
-        mounted() {
-            document.title = this.short_name + ' | ' + this.$page.app.name
+    props: {
+        name: String,
+        short_name: String,
+        logo: String,
+        cafeterias: Array,
+        maps_url: {
+            type: String,
+            required: false
         }
+    },
+
+    metaInfo() {
+        return {
+            title: this.short_name,
+            meta: [
+                {
+                    vmid: "description",
+                    name: "description",
+                    content: `Conoce los productos que se venden en la ${this.name}.`
+                }
+            ]
+        };
     }
+};
 </script>
