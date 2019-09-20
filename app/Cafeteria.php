@@ -2,13 +2,10 @@
 
 namespace App;
 
-use Eloquent;
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Support\Carbon;
 
 /**
  * App\Cafeteria.
@@ -16,19 +13,20 @@ use Illuminate\Support\Carbon;
  * @property int $id
  * @property int $faculty_id
  * @property string $name
- * @property Carbon|null $created_at
- * @property Carbon|null $updated_at
- * @property-read Faculty $faculty
- * @property-read Collection|Product[] $products
- * @method static Builder|Cafeteria newModelQuery()
- * @method static Builder|Cafeteria newQuery()
- * @method static Builder|Cafeteria query()
- * @method static Builder|Cafeteria whereCreatedAt($value)
- * @method static Builder|Cafeteria whereFacultyId($value)
- * @method static Builder|Cafeteria whereId($value)
- * @method static Builder|Cafeteria whereName($value)
- * @method static Builder|Cafeteria whereUpdatedAt($value)
- * @mixin Eloquent
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Faculty $faculty
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Product[] $products
+ * @property-read int|null $products_count
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Cafeteria newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Cafeteria newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Cafeteria query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Cafeteria whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Cafeteria whereFacultyId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Cafeteria whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Cafeteria whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Cafeteria whereUpdatedAt($value)
+ * @mixin \Eloquent
  */
 class Cafeteria extends Model
 {
@@ -47,7 +45,7 @@ class Cafeteria extends Model
      *
      * @return BelongsTo
      */
-    public function faculty()
+    public function faculty(): BelongsTo
     {
         return $this->belongsTo(Faculty::class);
     }
@@ -57,7 +55,7 @@ class Cafeteria extends Model
      *
      * @return HasMany
      */
-    public function products()
+    public function products(): HasMany
     {
         return $this->hasMany(Product::class);
     }

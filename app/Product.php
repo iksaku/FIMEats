@@ -2,16 +2,11 @@
 
 namespace App;
 
-use Eloquent;
-use Illuminate\Database\Eloquent\Builder;
+use App\Traits\CdnImage;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Illuminate\Support\Carbon;
-use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Facades\Storage;
-use InvalidArgumentException;
 
 /**
  * App\Product.
@@ -22,25 +17,28 @@ use InvalidArgumentException;
  * @property string|null $quantity
  * @property float $price
  * @property string $image
- * @property Carbon|null $created_at
- * @property Carbon|null $updated_at
- * @property-read Cafeteria $cafeteria
- * @property-read Collection|Category[] $categories
- * @method static Builder|Product newModelQuery()
- * @method static Builder|Product newQuery()
- * @method static Builder|Product query()
- * @method static Builder|Product whereCafeteriaId($value)
- * @method static Builder|Product whereCreatedAt($value)
- * @method static Builder|Product whereId($value)
- * @method static Builder|Product whereImage($value)
- * @method static Builder|Product whereName($value)
- * @method static Builder|Product wherePrice($value)
- * @method static Builder|Product whereQuantity($value)
- * @method static Builder|Product whereUpdatedAt($value)
- * @mixin Eloquent
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Cafeteria $cafeteria
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Category[] $categories
+ * @property-read int|null $categories_count
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Product newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Product newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Product query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Product whereCafeteriaId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Product whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Product whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Product whereImage($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Product whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Product wherePrice($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Product whereQuantity($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Product whereUpdatedAt($value)
+ * @mixin \Eloquent
  */
 class Product extends Model
 {
+    use CdnImage;
+
     /** @var array */
     protected $fillable = [
         'name', 'quantity', 'price', 'image',
@@ -55,7 +53,7 @@ class Product extends Model
      *
      * @return BelongsTo
      */
-    public function cafeteria()
+    public function cafeteria(): BelongsTo
     {
         return $this->belongsTo('App\Cafeteria');
     }
@@ -65,7 +63,7 @@ class Product extends Model
      *
      * @return BelongsToMany
      */
-    public function categories()
+    public function categories(): BelongsToMany
     {
         return $this->belongsToMany('App\Category');
     }
@@ -76,25 +74,9 @@ class Product extends Model
      * @param string|null $value
      * @return string
      */
-    public function getImageAttribute($value)
+    public function getImageAttribute($value): string
     {
-        return Cache::tags(['cdn', 'image'])->rememberForever($value, function () use ($value) {
-            $img = 'img/'.$value;
-
-            try {
-                if (Storage::cloud()->has($img)) {
-                    return Storage::cloud()->url($img);
-                }
-
-                return Storage::cloud()->get('img/food_placeholder.jpg');
-            } catch (InvalidArgumentException $exception) {
-                if (file_exists(public_path($img))) {
-                    return asset($img);
-                }
-
-                return asset('img/food_placeholder.jpg');
-            }
-        });
+        return $this->getImage($value);
     }
 
     /**
@@ -112,7 +94,7 @@ class Product extends Model
      *
      * @return array
      */
-    public function toArray()
+    public function toArray(): array
     {
         return array_replace(parent::toArray(), [
             'categories' => $this->categories->pluck('name')->all(),

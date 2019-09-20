@@ -1,5 +1,6 @@
 name: Facultad de Ingeniería Civil
 short_name: FIC
+logo: fic.png
 maps_url: https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d898.5959016614335!2d-100.3145295!3d25.7248249!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x86629452f713ad5d%3A0x581b445dc92f500b!2sCafeter%C3%ADa!5e0!3m2!1ses!2smx!4v1542687051988
 cafeterias:
   - name: Cafetería de FIC

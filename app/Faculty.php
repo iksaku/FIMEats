@@ -2,12 +2,10 @@
 
 namespace App;
 
-use Eloquent;
-use Illuminate\Database\Eloquent\Builder;
+use App\Traits\CdnImage;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Support\Carbon;
 
 /**
  * App\Faculty.
@@ -16,26 +14,29 @@ use Illuminate\Support\Carbon;
  * @property string $name
  * @property string $short_name
  * @property string|null $maps_url
- * @property Carbon|null $created_at
- * @property Carbon|null $updated_at
- * @property-read Collection|Cafeteria[] $cafeterias
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Cafeteria[] $cafeterias
+ * @property-read int|null $cafeterias_count
  * @property-read string $logo
- * @method static Builder|Faculty newModelQuery()
- * @method static Builder|Faculty newQuery()
- * @method static Builder|Faculty query()
- * @method static Builder|Faculty whereCreatedAt($value)
- * @method static Builder|Faculty whereId($value)
- * @method static Builder|Faculty whereMapsUrl($value)
- * @method static Builder|Faculty whereName($value)
- * @method static Builder|Faculty whereShortName($value)
- * @method static Builder|Faculty whereUpdatedAt($value)
- * @mixin Eloquent
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Faculty newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Faculty newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Faculty query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Faculty whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Faculty whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Faculty whereMapsUrl($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Faculty whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Faculty whereShortName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Faculty whereUpdatedAt($value)
+ * @mixin \Eloquent
  */
 class Faculty extends Model
 {
+    use CdnImage;
+
     /** @var array */
     protected $fillable = [
-        'name', 'short_name', 'maps_url',
+        'name', 'short_name', 'logo', 'maps_url',
     ];
 
     /** @var array */
@@ -43,17 +44,12 @@ class Faculty extends Model
         'name', 'short_name', 'logo', 'maps_url', 'cafeterias',
     ];
 
-    /** @var array */
-    protected $appends = [
-        'logo',
-    ];
-
     /**
      * Returns a Collection of Cafeterias owned by this Faculty.
      *
      * @return HasMany
      */
-    public function cafeterias()
+    public function cafeterias(): HasMany
     {
         return $this->hasMany(Cafeteria::class);
     }
@@ -61,11 +57,12 @@ class Faculty extends Model
     /**
      * Returns a pre-formatted URL to access Faculty's Logo.
      *
+     * @param string $value
      * @return string
      */
-    public function getLogoAttribute()
+    public function getLogoAttribute(string $value): string
     {
-        return asset('img/'.mb_strtolower($this->short_name)).'.png';
+        return $this->getImage($value);
     }
 
     /**

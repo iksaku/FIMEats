@@ -7,7 +7,7 @@
 
         <title>{{ config('app.name') }}</title>
 
-        <link rel="icon" href="{{ asset('img/favicon.png') }}">
+        <link rel="icon" href="{{ asset('favicon.png') }}">
 
         {{-- Styles --}}
         <link rel="stylesheet" href="{{ mix('css/app.css') }}">

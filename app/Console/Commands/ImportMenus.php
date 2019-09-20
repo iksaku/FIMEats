@@ -77,6 +77,8 @@ class ImportMenus extends Command
                 $name = $data['name'];
                 /** @var string $short_name */
                 $short_name = $data['short_name'];
+                /** @var string $logo */
+                $logo = $data['logo'];
                 /** @var string $maps_url */
                 $maps_url = $data['maps_url'];
                 /** @var array $cafeterias */
@@ -90,7 +92,7 @@ class ImportMenus extends Command
                 /** @var Faculty $faculty */
                 $faculty = Faculty::updateOrCreate(
                     compact('short_name'),
-                    compact('name', 'maps_url')
+                    compact('name', 'logo', 'maps_url')
                 );
 
                 foreach ($cafeterias as $cafeteria_content) {

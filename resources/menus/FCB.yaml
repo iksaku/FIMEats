@@ -1,5 +1,6 @@
 name: Facultad de Ciencias Biológicas
 short_name: FCB
+logo: fcb.png
 maps_url: https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3594.398328734499!2d-100.31815879984491!3d25.724337816344963!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8662944d7a4933a1%3A0xa9a148ee5f45ab6!2sPedro+de+Alba%2C+Ni%C3%B1os+H%C3%A9roes%2C+Ciudad+Universitaria%2C+San+Nicol%C3%A1s+de+los+Garza%2C+N.L.!5e0!3m2!1ses!2smx!4v1542687070138
 cafeterias:
   - name: Cafetería de FCB
