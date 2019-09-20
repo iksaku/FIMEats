@@ -44,7 +44,7 @@ jobs:
     needs:
       - php-ci
       - node-ci
-    name: Deployment
+    name: Deploy
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
