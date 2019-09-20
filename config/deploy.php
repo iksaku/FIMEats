@@ -70,7 +70,7 @@ return [
 
         // Deployment succeeded.
         'success' => [
-            //
+            'assets:clear:img',
         ],
 
         // Deployment failed.
@@ -147,6 +147,7 @@ return [
 
     'include' => [
         'recipe/import-menus.php',
+        'recipe/assets.php',
     ],
 
     /*

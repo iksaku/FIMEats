@@ -9,6 +9,9 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Storage;
+use InvalidArgumentException;
 
 /**
  * App\Product.
@@ -75,11 +78,23 @@ class Product extends Model
      */
     public function getImageAttribute($value)
     {
-        if (!empty($value) && file_exists(public_path('img/'.$value))) {
-            return asset('img/'.$value);
-        } else {
-            return asset('img/food_placeholder.jpg');
-        }
+        return Cache::tags(['cdn', 'image'])->rememberForever($value, function () use ($value) {
+            $img = 'img/'.$value;
+
+            try {
+                if (Storage::cloud()->has($img)) {
+                    return Storage::cloud()->url($img);
+                }
+
+                return Storage::cloud()->get('img/food_placeholder.jpg');
+            } catch (InvalidArgumentException $exception) {
+                if (file_exists(public_path($img))) {
+                    return asset($img);
+                }
+
+                return asset('img/food_placeholder.jpg');
+            }
+        });
     }
 
     /**

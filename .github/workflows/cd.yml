@@ -25,14 +25,12 @@ jobs:
           OS_TENANT_ID: ${{ secrets.CDN_TENANT_ID }}
           OS_USERNAME: ${{ secrets.CDN_USERNAME }}
         with:
-          args: upload --object-name img jorgeglz-cdn/fimeats public/img
+          args: upload --object-name img fimeats public/img
       - name: Composer Install
         if: github.repository == 'iksaku/fimeats'
         run: composer install -q --no-ansi --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist
       - name: Build Node Assets
         run: |
-          echo "Cleaning Assets Directory..."
-          rm -rf public/{css,img,js}
           echo "Installing Yarn pakcages..."
           yarn install --silent --ignore-scripts --non-interactive --no-progress
           echo "Building Node Assets..."
