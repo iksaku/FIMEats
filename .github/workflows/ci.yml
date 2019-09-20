@@ -1,0 +1,42 @@
+name: CI
+
+on:
+  - push
+  - pull_request
+
+jobs:
+  php-ci:
+    name: PHP Tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+      - name: Composer Install
+        run: composer install -q --no-ansi --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist
+      - name: Linter Test
+        run: composer test:lint
+  node-ci:
+    name: NodeJS Tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+      - name: Yarn Install
+        run: yarn install
+      - name: Linter Test
+        run: yarn lint
+#      - name: Build Development Assets
+#        run: yarn dev
+#      - name: Run Tests
+#        run: echo "No tests have been configured for NodeJS"
+      - name: Build Production Assets
+        run: yarn prod
+      - name: Prepare for Artifacts
+        run: |
+          shopt -s extglob
+          rm -rfv public/!(js|css|"mix-manifest.json")
+      - name: Persist Node Assets as Artifacts
+        uses: actions/upload-artifact@v1
+        with:
+          name: node-assets
+          path: public
