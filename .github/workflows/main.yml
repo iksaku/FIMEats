@@ -48,7 +48,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        if: github.event_name != 'pull_request' && github.repository == 'iksaku/fimeats'
+        if: github.event_name != 'pull_request' && github.repository == 'iksaku/fimeats' && github.ref == 'master'
         uses: actions/checkout@v1
         with:
           lfs: true
@@ -64,10 +64,13 @@ jobs:
         with:
           args: upload --object-name img jorgeglz-cdn/fimeats public/img
       - name: Clean Assets directory
+        if: github.event_name != 'pull_request' && github.repository == 'iksaku/fimeats' && github.ref == 'master'
         run: rm -rf public/img
       - name: Composer Install
+        if: github.event_name != 'pull_request' && github.repository == 'iksaku/fimeats' && github.ref == 'master'
         run: composer install -q --no-ansi --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist
       - name: Download Node Assets
+        if: github.event_name != 'pull_request' && github.repository == 'iksaku/fimeats' && github.ref == 'master'
         uses: actions/download-artifact@v1
         with:
           name: node-assets
