@@ -1,8 +1,10 @@
 name: CI
 
 on:
-  - push
-  - pull_request
+  pull_request:
+  push:
+    tags:
+      - '!*'
 
 jobs:
   php-ci:
@@ -22,21 +24,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v1
       - name: Yarn Install
-        run: yarn install
+        run: yarn install --silent --ignore-scripts --non-interactive --no-progress
       - name: Linter Test
         run: yarn lint
-#      - name: Build Development Assets
-#        run: yarn dev
-#      - name: Run Tests
-#        run: echo "No tests have been configured for NodeJS"
-      - name: Build Production Assets
-        run: yarn prod
-      - name: Prepare for Artifacts
-        run: |
-          shopt -s extglob
-          rm -rfv public/!(js|css|"mix-manifest.json")
-      - name: Persist Node Assets as Artifacts
-        uses: actions/upload-artifact@v1
-        with:
-          name: node-assets
-          path: public
