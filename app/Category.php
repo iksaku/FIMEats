@@ -35,20 +35,16 @@ class Category extends Model
         'name', 'products',
     ];
 
-    /**
+    /*
      * Returns a Collection of products that are tagged with this Category.
-     *
-     * @return BelongsToMany
      */
     public function products(): BelongsToMany
     {
         return $this->belongsToMany(Product::class);
     }
 
-    /**
+    /*
      * Ensures Category name is formatted correctly before saving.
-     *
-     * @param string $value
      */
     public function setNameAttribute(string $value)
     {

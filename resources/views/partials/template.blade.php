@@ -5,18 +5,16 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name') }}</title>
-
-        <link rel="icon" href="{{ asset('favicon.png') }}">
+        <title>{{ app_title() }}</title>
 
         {{-- Styles --}}
+        <link rel="icon" href="{{ asset('favicon.png') }}">
         <link rel="stylesheet" href="{{ mix('css/app.css') }}">
     </head>
-    <body>
-        @inertia
+    <body class="min-h-screen h-full w-full flex flex-col bg-gray-200 scrolling-touch">
+        @yield('body')
 
         {{-- Scripts --}}
-        @routes
-        <script src="{{ mix('js/app.js') }}" defer></script>
+        <script src="{{ mix('js/fontawesome.js') }}" defer></script>
     </body>
 </html>

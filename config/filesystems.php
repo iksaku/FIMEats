@@ -54,20 +54,6 @@ return [
             'url' => env('APP_URL').'/storage',
             'visibility' => 'public',
         ],
-
-        'ovh' => [
-            'driver' => 'ovh',
-            'server' => env('OVH_URL'),
-            'user' => env('OVH_USER'),
-            'pass' => env('OVH_PASS'),
-            'region' => env('OVH_REGION'),
-            'tenantName' => env('OVH_TENANT_NAME'),
-            'projectId' => env('OVH_TENANT_ID'),
-            'container' => env('OVH_CONTAINER'),
-            'urlKey' => env('OVH_URL_KEY'),
-            'endpoint' => env('OVH_CUSTOM_ENDPOINT'),
-        ],
-
     ],
 
 ];

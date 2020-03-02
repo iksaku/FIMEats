@@ -2,17 +2,8 @@
 
 @tailwind components;
 
-html {
-    @apply scrolling-touch;
-    scroll-behavior: smooth;
-}
-
-a {
-    @apply block cursor-pointer;
-
-    &:focus {
-        @apply outline-none shadow-outline;
-    }
+.card + .card {
+    @apply mt-6;
 }
 
 .map {
@@ -20,35 +11,6 @@ a {
     max-width: 600px;
     height: 67.5vw;
     width: 90vw;
-}
-
-.product-img {
-    max-height: 225px;
-}
-
-.card + .card {
-    @apply mt-4;
-}
-
-.resource-card {
-    @apply border-b-2 border-gray-300;
-
-    &:last-child {
-        @apply border-b-0;
-    }
-}
-
-@screen sm {
-    .resource-card {
-        &:last-child,
-        &:nth-last-child(-n+2):not(:nth-child(even)) {
-            @apply border-b-0;
-        }
-
-        &:nth-child(even) {
-            @apply border-l-2;
-        }
-    }
 }
 
 @tailwind utilities;

@@ -2,8 +2,11 @@
 
 namespace App\Exceptions;
 
-use Exception;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Http\Response;
+use Symfony\Component\HttpKernel\Exception\HttpExceptionInterface;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class Handler extends ExceptionHandler
 {
@@ -26,26 +29,20 @@ class Handler extends ExceptionHandler
         'password_confirmation',
     ];
 
-    /**
-     * Report or log an exception.
-     *
-     * @param  \Exception  $exception
-     * @return void
+    /*
+     * Return error view
      */
-    public function report(Exception $exception)
+    protected function renderHttpException(HttpExceptionInterface $e): Response
     {
-        parent::report($exception);
-    }
+        if ($e->getPrevious() instanceof ModelNotFoundException) {
+            $e = new NotFoundHttpException(
+                'No se ha encontrado el recurso solicitado.',
+                $e->getPrevious()
+            );
+        }
 
-    /**
-     * Render an exception into an HTTP response.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Exception  $exception
-     * @return \Illuminate\Http\Response
-     */
-    public function render($request, Exception $exception)
-    {
-        return parent::render($request, $exception);
+        return response()->view('error', [
+            'exception' => $e,
+        ], $e->getStatusCode(), $e->getHeaders());
     }
 }

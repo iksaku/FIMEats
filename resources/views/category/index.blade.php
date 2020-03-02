@@ -1,0 +1,1 @@
+@extends('partials.app')

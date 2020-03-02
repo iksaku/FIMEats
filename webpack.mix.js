@@ -1,24 +1,5 @@
 const mix = require('laravel-mix')
-const path = require('path')
 require('laravel-mix-purgecss')
-
-mix
-    .babelConfig({
-        plugins: [
-            '@babel/plugin-syntax-dynamic-import'
-        ]
-    })
-    .webpackConfig({
-        output: {
-            chunkFilename: 'js/[name].js?id=[chunkhash]'
-        },
-        resolve: {
-            alias: {
-                vue$: 'vue/dist/vue.runtime.esm.js',
-                '@': path.resolve('resources/js')
-            }
-        }
-    })
 
 /*
  |--------------------------------------------------------------------------
@@ -32,8 +13,7 @@ mix
  */
 
 mix
-    .js('resources/js/app.js', 'public/js')
-    .js('resources/js/ziggy.js', 'public/js')
+    .js('resources/js/fontawesome.js', 'public/js')
     .postCss('resources/styles/app.pcss', 'public/css', [
         require('postcss-nested'),
         require('tailwindcss')

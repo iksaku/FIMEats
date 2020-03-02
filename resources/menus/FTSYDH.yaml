@@ -66,7 +66,7 @@ cafeterias:
         categories:
           - POSTRES
       - name: HOT CAKES
-        quantity: 3 HOT CAKES
+        quantity: 3
         price: 20
         image: hotcakes.jpg
         categories:
@@ -138,7 +138,7 @@ cafeterias:
         categories:
           - COMIDAS
       - name: HOT DOGS
-        quantity: 2 HOT DOGS
+        quantity: 2
         price: 20
         image: hotdog.jpg
         categories:
@@ -224,13 +224,13 @@ cafeterias:
       - name: DE GUISO DEL DIA
         quantity:
         price: 13
-        image: tguiso.jpg
+        image:
         categories:
           - TACOS
       - name: DE ASADA
         quantity:
         price: 15
-        image: tasada.jpg
+        image:
         categories:
           - TACOS
       - name: AL PASTOR
@@ -240,7 +240,7 @@ cafeterias:
         categories:
           - TACOS
       - name: AL VAPOR
-        quantity: 5 TACOS
+        quantity: 5
         price: 20
         image: tacosalvapor.jpg
         categories:

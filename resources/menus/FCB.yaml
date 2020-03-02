@@ -6,7 +6,7 @@ cafeterias:
   - name: Cafetería de FCB
     products:
       - name: HOT CAKES
-        quantity: 2 HOT CAKES
+        quantity: 2
         price: 20
         image: hotcakes.jpg
         categories:

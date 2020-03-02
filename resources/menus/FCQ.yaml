@@ -36,7 +36,7 @@ cafeterias:
         categories:
           - ALMUERZOS
       - name: MOLLETES
-        quantity: 2 MOLLETES
+        quantity: 2
         price: 25
         image: molletes.jpg
         categories:

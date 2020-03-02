@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Str;
 
 /**
  * App\Cafeteria.
@@ -16,6 +17,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \App\Faculty $faculty
+ * @property-read mixed $slug
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Product[] $products
  * @property-read int|null $products_count
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Cafeteria newModelQuery()
@@ -40,23 +42,32 @@ class Cafeteria extends Model
         'name', 'faculty', 'products',
     ];
 
-    /**
+    /** @var array */
+    protected $appends = [
+        'slug',
+    ];
+
+    /*
      * Returns the Faculty that owns this Cafeteria.
-     *
-     * @return BelongsTo
      */
     public function faculty(): BelongsTo
     {
         return $this->belongsTo(Faculty::class);
     }
 
-    /**
+    /*
      * Returns a Collection of products available at this Cafeteria.
-     *
-     * @return HasMany
      */
     public function products(): HasMany
     {
         return $this->hasMany(Product::class);
+    }
+
+    /*
+     * Returns slugged name of Cafeteria
+     */
+    public function getSlugAttribute(): string
+    {
+        return Str::slug($this->name);
     }
 }

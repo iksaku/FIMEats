@@ -6,41 +6,28 @@ use App\Http\Controllers\Controller;
 use App\Product;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class ProductController extends Controller
 {
-    /**
+    /*
      * Display the specified resource.
-     *
-     * @param Request $request
-     * @param string $name
-     * @return void
      */
-    public function show(Request $request, string $name)
+    public function show(Product $product): View
     {
-        logger()->info('Looking for \''.$name.'\' Product...');
-
-        $ref = $request->get('ref');
-
         /** @var Collection $products */
-        $products = Product::where('name', 'LIKE', '%'.$name.'%')
+        $products = Product::where('name', 'LIKE', '%'.$product->name.'%')
+            ->orderByRaw('id = '.$product->id.' desc')
             ->with(['cafeteria.faculty', 'categories'])
-            ->when(!empty($ref) && is_numeric($ref), function (Builder $query) use ($ref) {
+            /*->when(!empty($ref) && is_numeric($ref), function (Builder $query) use ($ref) {
                 $query->orderByRaw('id = '.(int) $ref.' desc');
-            })
+            })*/
             ->get();
 
-        if (empty($products) || $products->count() < 1) {
-            logger()->info('Unable to find Product \''.$name.'\'...');
-
-            return inertia()->render('Error', [
-                'message' => 'Oops, no encontramos el Producto \''.$name.'\'.',
-            ]);
+        if ($products->count() < 1) {
+            abort(404, 'Oops, no encontramos el productos similares a \''.$product->name.'\'.');
         }
 
-        logger()->info('Found Product \''.$name.'\'... Displaying...');
-
-        return inertia()->render('Product', compact('name', 'products'));
+        return view('product', compact('products'));
     }
 }

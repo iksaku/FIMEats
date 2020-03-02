@@ -13,11 +13,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        inertia()->share([
-            'app' => [
-                'name' => config('app.name'),
-            ],
-        ]);
+        //
     }
 
     /**

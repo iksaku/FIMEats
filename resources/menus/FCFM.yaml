@@ -56,18 +56,18 @@ cafeterias:
       - name: ALITAS DE POLLO
         quantity:
         price: 25
-        image: alitas.jpg
+        image:
         categories:
           - ALMUERZO
       - name: SANDWICH DE HUEVO
         quantity:
         price: 30
-        image: shuevo.jpg
+        image:
         categories:
           - ALMUERZO
       - name: BURRIPIZZA
         quantity:
         price: 25
-        image: bp.jpg
+        image:
         categories:
           - ALMUERZO
