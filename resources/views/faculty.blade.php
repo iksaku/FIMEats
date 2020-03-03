@@ -9,19 +9,34 @@
 @section('contents')
     @if(!empty($faculty->maps_url))
         @component('components.card')
-            <div class="w-full text-center flex flex-col items-center">
-                <h3 class="text-gray-700 text-2xl">
-                    ¿No sabes como llegar?
-                </h3>
+            <div x-data="{ open: false }">
+                <button
+                    class="w-full flex items-center justify-between px-4 text-gray-700 text-xl focus:outline-none"
+                    @click="open = !open"
+                >
+                    <span class="fas fa-chevron-down transform duration-200" :class="open ? '-rotate-180' : ''"></span>
 
-                <p class="text-gray-600 text-lg">
-                    Aquí tienes un mapa con la ubicación del lugar.
-                </p>
+                    <span>
+                        ¿No sabes como llegar?
+                    </span>
 
-                <iframe
-                    src="{{ $faculty->maps_url }}"
-                    class="map border-0 mt-4"
-                ></iframe>
+                    <span class="fas fa-chevron-down transform duration-200" :class="open ? 'rotate-180' : ''"></span>
+                </button>
+
+                <div
+                    x-cloak
+                    x-show="open"
+                    class="w-full text-center flex flex-col items-center justify-center"
+                >
+                    <p class="text-gray-600 text-lg mt-4">
+                        Aquí tienes un mapa con la ubicación del lugar.
+                    </p>
+
+                    <iframe
+                        src="{{ $faculty->maps_url }}"
+                        class="map border-0 mt-4"
+                    ></iframe>
+                </div>
             </div>
         @endcomponent
     @endif

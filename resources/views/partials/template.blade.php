@@ -15,6 +15,8 @@
         @yield('body')
 
         {{-- Scripts --}}
+        <script src="{{ mix('js/alpine.js') }}" defer></script>
         <script src="{{ mix('js/fontawesome.js') }}" defer></script>
+        @stack('scripts')
     </body>
 </html>

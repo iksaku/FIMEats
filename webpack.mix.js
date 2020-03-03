@@ -13,6 +13,7 @@ require('laravel-mix-purgecss')
  */
 
 mix
+    .js('resources/js/alpine.js', 'public/js')
     .js('resources/js/fontawesome.js', 'public/js')
     .postCss('resources/styles/app.pcss', 'public/css', [
         require('postcss-nested'),

@@ -1,7 +1,7 @@
 import { library, dom } from "@fortawesome/fontawesome-svg-core";
-import { faUserSecret } from "@fortawesome/free-solid-svg-icons";
+import {faChevronDown, faUserSecret} from "@fortawesome/free-solid-svg-icons";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 
-library.add(faUserSecret, faGithub);
+library.add(faUserSecret, faGithub, faChevronDown);
 
 dom.i2svg();
