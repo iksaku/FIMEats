@@ -90,7 +90,7 @@ jobs:
           SSH_PUBLIC_KEY: ${{ secrets.SSH_PUBLIC_KEY }}
         run: |
           SSH_PATH="$HOME/.ssh"
-          mkdir -p "$HOME/.ssh"
+          mkdir -p "$SSH_PATH"
           touch "$SSH_PATH/known_hosts"
           echo "$SSH_PRIVATE_KEY" | tr -d '\r' > "$SSH_PATH/deploy_key"
           echo "$SSH_PUBLIC_KEY" | tr -d '\r' > "$SSH_PATH/deploy_key.pub"
