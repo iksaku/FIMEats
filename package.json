@@ -1,7 +1,6 @@
 {
   "private": true,
   "scripts": {
-    "lint": "cross-env NODE_ENV=development node_modules/eslint/bin/eslint.js --ext .js,.vue resources/js",
     "dev": "yarn run development",
     "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
     "hot": "cross-env NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",

@@ -3,9 +3,9 @@
 ### Description
 
 - The objective of this project is to provide a virtual Menu of available food around _Ciudad Universitaria_ in _Monterrey, Nuevo León_.
-- This project is based on the [Laravel framework](https://laravel.com/) (v5.8).
-- Javascript dependencies are handled by [NodeJS](https://nodejs.org/en/) (v10) and [Yarn](https://yarnpkg.com/en/) (v1.17).
-- Database used in this project is [MariaDB](https://mariadb.org/) (v10.3), but design must work with any SQL-based engine.
+- This project is based on the [Laravel framework](https://laravel.com/) (^7.0).
+- Javascript dependencies are handled by [NodeJS](https://nodejs.org/en/) (^10) and [Yarn](https://yarnpkg.com/en/) (^1.17).
+- Database used in this project is [MariaDB](https://mariadb.org/) (^10.3), but design must work with any SQL-based engine.
 
 ### Contributing
 You can help improve this project. You may use the following steps to get the project up and running in your machine:

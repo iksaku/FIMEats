@@ -1,0 +1,104 @@
+name: CI/CD
+
+on: [push, pull_request]
+
+jobs:
+    tests:
+        name: Tests
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v1
+
+            - name: Setup Composer Cache
+              id: composer-cache
+              run: echo "::set-output name=dir::$(composer config cache-files-dir)"
+            - uses: actions/cache@v1
+              with:
+                path: ${{ steps.composer-cache.outputs.dir }}
+                key: composer-cache-${{ hashFiles('composer.lock') }}
+            - name: Install Composer Packages
+              run: composer install -q --no-ansi --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist
+
+            - name: Lint Code
+              run: composer test:lint
+
+            - name: Setup Yarn Cache
+              id: yarn-cache
+              run: echo "::set-output name=dir::$(yarn cache dir)"
+            - uses: actions/cache@v1
+              with:
+                path: ${{ steps.yarn-cache.outputs.dir }}
+                key: yarn-cache-${{ hashFiles('yarn.lock') }}
+            - name: Install Javascript Packages
+              run: yarn install --silent --ignore-scripts --non-interactive --no-progress
+            - name: Build Javascript Packages
+              run: yarn production
+
+#            - name: Test Application
+#              run: artisan test
+
+            - name: Persist CSS Assets
+              if: github.repository == 'iksaku/FIMEats' && github.ref == 'refs/heads/master'
+              uses: actions/upload-artifact@v1
+              with:
+                  name: css-assets
+                  path: public/css
+            - name: Persist Javascript Assets
+              if: github.repository == 'iksaku/FIMEats' && github.ref == 'refs/heads/master'
+              uses: actions/upload-artifact@v1
+              with:
+                name: javascript-assets
+                path: public/js
+
+    deploy:
+        name: Deploy
+        runs-on: ubuntu-latest
+        if: github.repository == 'iksaku/FIMEats' && github.ref == 'refs/heads/master'
+        needs: tests
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v1
+              with:
+                  lfs: true
+
+            - name: Upload Images to CDN
+              uses: iksaku/openstack-swift-action@stein
+              env:
+                OS_AUTH_URL: ${{ secrets.CDN_AUTH_URL }}
+                OS_PASSWORD: ${{ secrets.CDN_PASSWORD }}
+                OS_PROJECT_NAME: ${{ secrets.CDN_PROJECT_NAME }}
+                OS_REGION_NAME: ${{ secrets.CDN_REGION_NAME }}
+                OS_USERNAME: ${{ secrets.CDN_USERNAME }}
+                OS_USER_DOMAIN_NAME: ${{ secrets.CDN_USER_DOMAIN_NAME }}
+              with:
+                args: upload --object-name img fimeats public/img
+            - run: rm -rf public/img
+
+            - name: Restore CSS Assets
+              uses: actions/download-artifact@v1
+              with:
+                name: css-assets
+            - name: Restore Javascript Assets
+              uses: actions/download-artifact@v1
+              with:
+                name: javascript-assets
+
+            - name: Deploy to Production
+              env:
+                DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
+                DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
+                SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+                SSH_PUBLIC_KEY: ${{ secrets.SSH_PUBLIC_KEY }}
+              run: |
+                SSH_PATH="$HOME/.ssh"
+                mkdir -p "$SSH_PATH"
+                touch "$SSH_PATH/known_hosts"
+                echo "$SSH_PRIVATE_KEY" | tr -d '\r' > "$SSH_PATH/deploy_key"
+                echo "$SSH_PUBLIC_KEY" | tr -d '\r' > "$SSH_PATH/deploy_key.pub"
+                chmod 700 "$SSH_PATH"
+                chmod 600 "$SSH_PATH/known_hosts" "$SSH_PATH/deploy_key" "$SSH_PATH/deploy_key.pub"
+                eval $(ssh-agent)
+                ssh-add "$SSH_PATH/deploy_key"
+                ssh-keyscan -H "$DEPLOY_HOST" >> "$SSH_PATH/known_hosts"
+                php artisan deploy -s upload

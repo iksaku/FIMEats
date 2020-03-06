@@ -56,6 +56,7 @@ return [
 
         // Deployment is done but not live yet (before symlink)
         'ready' => [
+            //'assets:clear:img',
             'artisan:storage:link',
             'artisan:view:clear',
             'artisan:cache:clear',
@@ -70,7 +71,7 @@ return [
 
         // Deployment succeeded.
         'success' => [
-            'assets:clear:img',
+            //
         ],
 
         // Deployment failed.
