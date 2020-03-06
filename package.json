@@ -10,14 +10,14 @@
     "watch-poll": "yarn run watch --watch-poll"
   },
   "devDependencies": {
-    "@fortawesome/fontawesome-svg-core": "^1.2.22",
-    "@fortawesome/free-brands-svg-icons": "^5.10.2",
-    "@fortawesome/free-solid-svg-icons": "^5.10.2",
-    "alpinejs": "^2.0.2",
+    "@fortawesome/fontawesome-svg-core": "^1.2",
+    "@fortawesome/free-brands-svg-icons": "^5.10",
+    "@fortawesome/free-solid-svg-icons": "^5.10",
+    "alpinejs": "^2.0",
     "cross-env": "^5.2",
     "laravel-mix": "^5.0",
     "laravel-mix-purgecss": "^4.1",
-    "postcss-nested": "^4.1.2",
+    "postcss-nested": "^4.1",
     "tailwindcss": "^1.2",
     "vue-template-compiler": "^2.5"
   }

@@ -1,5 +1,7 @@
 # FIMEats Project
 
+![CI/CD](https://github.com/iksaku/FIMEats/workflows/CI/CD/badge.svg?branch=master)
+
 ### Description
 
 - The objective of this project is to provide a virtual Menu of available food around _Ciudad Universitaria_ in _Monterrey, Nuevo León_.

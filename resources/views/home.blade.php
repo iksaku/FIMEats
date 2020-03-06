@@ -7,7 +7,7 @@
 @section('contents')
     @component('components.card')
         <div class="w-full text-center mb-6">
-            <h2 id="selecciona-tu-facultad" class="text-gray-700 text-2xl">
+            <h2 id="facultades" class="text-gray-700 text-2xl">
                 Selecciona tu Facultad
             </h2>
         </div>

@@ -36,7 +36,7 @@ jobs:
               run: yarn production
 
 #            - name: Test Application
-#              run: artisan test
+#              run: php artisan test
 
             - name: Persist CSS Assets
               if: github.repository == 'iksaku/FIMEats' && github.ref == 'refs/heads/master'

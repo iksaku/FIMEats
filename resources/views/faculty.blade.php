@@ -11,7 +11,7 @@
         @component('components.card')
             <div x-data="{ open: false }">
                 <button
-                    class="w-full flex items-center justify-between px-4 text-gray-700 text-xl focus:outline-none"
+                    class="w-full flex items-center justify-between px-4 text-gray-700 text-xl hover:cursor-pointer focus:outline-none"
                     @click="open = !open"
                 >
                     <span class="fas fa-chevron-down transform duration-200" :class="open ? '-rotate-180' : ''"></span>
