@@ -93,10 +93,11 @@ jobs:
       - name: Install Composer Packages
         run: composer install -q --no-ansi --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist
 
-      - name: Setup Deploy Keys
+      - name: Deploy to Production
         env:
           DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
-          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
+          DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
         run: |
           SSH_PATH=$HOME/.ssh
 
@@ -108,12 +109,8 @@ jobs:
 
           eval $(ssh-agent -s)
 
-          echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
+          echo "$DEPLOY_KEY" | tr -d '\r' | ssh-add -
 
           ssh-keyscan -H $DEPLOY_HOST >> $SSH_PATH/known_hosts
 
-      - name: Deploy to Production
-        env:
-          DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
-          DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
-        run: php artisan deploy -s upload
+          php artisan deploy -s upload
