@@ -156,7 +156,5 @@ class ImportMenus extends Command
                 continue;
             }
         }
-
-        return true;
     }
 }
