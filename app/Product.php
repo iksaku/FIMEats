@@ -2,7 +2,6 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -41,6 +40,7 @@ class Product extends Model
         'name', 'quantity', 'price', 'image',
     ];
 
+    /** @var array */
     protected $visible = [
         'name', 'quantity', 'price', 'image', 'cafeteria', 'categories',
     ];

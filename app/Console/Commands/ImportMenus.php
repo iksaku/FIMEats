@@ -12,6 +12,7 @@ use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
 use RegexIterator;
 use Symfony\Component\Console\Helper\ProgressBar;
+use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Yaml\Exception\ParseException;
 use Symfony\Component\Yaml\Yaml;
 
@@ -30,16 +31,6 @@ class ImportMenus extends Command
      * @var string
      */
     protected $description = 'Import Menus from Excel file';
-
-    /**
-     * Create a new command instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        parent::__construct();
-    }
 
     /**
      * @param $directory
@@ -65,6 +56,8 @@ class ImportMenus extends Command
      */
     public function handle()
     {
+        $showProgressBar = $this->verbosity !== OutputInterface::VERBOSITY_QUIET;
+
         $this->info('Cleaning up Database...');
         $this->callSilent('migrate:fresh', ['--force' => true]);
         $this->info('Importing Menus...');
@@ -84,10 +77,12 @@ class ImportMenus extends Command
                 /** @var array $cafeterias */
                 $cafeterias = $data['cafeterias'];
 
-                $bar = $this->getOutput()->createProgressBar();
-                $bar->setFormat(ProgressBar::getFormatDefinition('normal_nomax').' | %message%');
-                $bar->setMessage('Loading...');
-                $bar->start();
+                if ($showProgressBar) {
+                    $bar = $this->getOutput()->createProgressBar();
+                    $bar->setFormat(ProgressBar::getFormatDefinition('normal_nomax').' | %message%');
+                    $bar->setMessage('Loading...');
+                    $bar->start();
+                }
 
                 /** @var Faculty $faculty */
                 $faculty = Faculty::updateOrCreate(
@@ -96,7 +91,9 @@ class ImportMenus extends Command
                 );
 
                 foreach ($cafeterias as $cafeteria_content) {
-                    $bar->setProgress(0);
+                    if (isset($bar)) {
+                        $bar->setProgress(0);
+                    }
 
                     /** @var string $name */
                     $name = $cafeteria_content['name'];
@@ -118,8 +115,11 @@ class ImportMenus extends Command
                         /** @var array $categories */
                         $categories = $product_content['categories'];
 
-                        $bar->setMessage('Importing for '.$faculty->short_name
-                            .' ➤ '.$cafeteria->name.' ➤ '.$name);
+                        if (isset($bar)) {
+                            $bar->setMessage(
+                                'Importing for '.$faculty->short_name.' ➤ '.$cafeteria->name.' ➤ '.$name
+                            );
+                        }
 
                         /** @var Product $product */
                         $product = $cafeteria->products()->firstOrCreate(
@@ -134,12 +134,21 @@ class ImportMenus extends Command
                             $product->categories()->save($category);
                         }
 
-                        $bar->advance();
+                        if (isset($bar)) {
+                            $bar->advance();
+                        }
                     }
                 }
 
-                $bar->setMessage('Successfully imported all cafeterias of '.$faculty->short_name);
-                $bar->finish();
+                $message = 'Successfully imported all cafeterias of '.$faculty->short_name;
+
+                if (isset($bar)) {
+                    $bar->setMessage($message);
+                    $bar->finish();
+                } else {
+                    $this->info($message);
+                }
+
                 $this->line('');
             } catch (ParseException $e) {
                 $this->error($e->getMessage());
