@@ -55,7 +55,7 @@ jobs:
         uses: actions/upload-artifact@v1
         with:
           name: mix-manifest
-          path: public/mix-aminfest.json
+          path: public/mix-manifest.json
 
   deploy:
     name: Deploy
