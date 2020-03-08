@@ -78,7 +78,7 @@ jobs:
           OS_USERNAME: ${{ secrets.CDN_USERNAME }}
           OS_USER_DOMAIN_NAME: ${{ secrets.CDN_USER_DOMAIN_NAME }}
         with:
-          args: upload --object-name img fimeats public/img
+          args: upload --changed --object-name img fimeats public/img
 
       - name: Restore CSS Assets
         uses: actions/download-artifact@v1

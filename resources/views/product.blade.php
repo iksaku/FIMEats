@@ -21,7 +21,9 @@
 
                 <tbody>
                 @foreach($products as $product)
-                    <tr class="bg-green-100 hover:bg-green-200 border-b border-gray-300 first:border-dashed first:border-b-4">
+                    <tr
+                        class="bg-green-100 hover:bg-green-200 border-b border-gray-300 @if(isset($ref)) first:border-dashed first:border-b-4 @endif"
+                    >
                         <td class="whitespace-no-wrap p-2">
                             {{ $product->name }}
                         </td>

@@ -6,28 +6,34 @@ use App\Http\Controllers\Controller;
 use App\Product;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 class ProductController extends Controller
 {
     /*
-     * Display the specified resource.
+     * Compare prices between similar products.
      */
-    public function show(Product $product): View
+    public function compare(Request $request, string $name): View
     {
+        $validatedData = $request->validate([
+            'ref' => 'sometimes|required|numeric',
+        ]);
+
+        $ref = $validatedData['ref'] ?? null;
+
         /** @var Collection $products */
-        $products = Product::where('name', 'LIKE', '%'.$product->name.'%')
-            ->orderByRaw('id = '.$product->id.' desc')
+        $products = Product::where('name', 'LIKE', '%'.$name.'%')
             ->with(['cafeteria.faculty', 'categories'])
-            /*->when(!empty($ref) && is_numeric($ref), function (Builder $query) use ($ref) {
+            ->when(isset($ref), function (Builder $query) use ($ref) {
                 $query->orderByRaw('id = '.(int) $ref.' desc');
-            })*/
+            })
             ->get();
 
         if ($products->count() < 1) {
-            abort(404, 'Oops, no encontramos el productos similares a \''.$product->name.'\'.');
+            abort(404, 'Oops, no encontramos el productos similares a \''.$name.'\'.');
         }
 
-        return view('product', compact('products'));
+        return view('product', compact('products', 'ref'));
     }
 }

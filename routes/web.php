@@ -23,6 +23,6 @@ Route::prefix('facultad')->group(function () {
     Route::get('{category}', 'v2\CategoryController@show')->name('category.show');
 });*/
 
-Route::get('producto/{product}', 'v2\ProductController@show')->name('product.show');
+Route::get('productos/comparar/{name}', 'v2\ProductController@compare')->name('product.compare');
 
 Route::fallback(fn () => abort(404, 'No hemos encontrado la ruta solicitada.'));

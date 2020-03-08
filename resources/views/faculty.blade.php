@@ -53,7 +53,7 @@
                 @foreach($cafeteria->products as $product)
                     <div class="h-full w-full sm:w-1/2 lg:w-1/4 p-4">
                         <a
-                            href="{{ route('product.show', $product) }}"
+                            href="{{ route('product.compare', ['name' => $product, 'ref' => $product->id]) }}"
                             class="h-full w-full block text-center bg-gray-100 flex flex-col px-4 py-2 rounded-lg overflow-hidden hocus:shadow-outline focus:outline-none transform duration-200 hocus:scale-110 hocus:z-10"
                         >
                             <div class="h-32 w-full rounded-lg">
