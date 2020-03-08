@@ -11,12 +11,12 @@ jobs:
         uses: actions/checkout@v1
 
       - name: Setup Composer Cache
-        id: composer-cache
+        id: cache-composer
         run: echo "::set-output name=dir::$(composer config cache-files-dir)"
       - uses: actions/cache@v1
         with:
-          path: ${{ steps.composer-cache.outputs.dir }}
-          key: composer-cache-${{ hashFiles('composer.lock') }}
+          path: ${{ steps.cache-composer.outputs.dir }}
+          key: cache-composer-${{ hashFiles('composer.lock') }}
       - name: Install Composer Packages
         run: composer install -q --no-ansi --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist
 
@@ -24,12 +24,12 @@ jobs:
         run: composer test:lint
 
       - name: Setup Yarn Cache
-        id: yarn-cache
+        id: cache-yarn
         run: echo "::set-output name=dir::$(yarn cache dir)"
       - uses: actions/cache@v1
         with:
-          path: ${{ steps.yarn-cache.outputs.dir }}
-          key: yarn-cache-${{ hashFiles('yarn.lock') }}
+          path: ${{ steps.cache-yarn.outputs.dir }}
+          key: cache-yarn-${{ hashFiles('yarn.lock') }}
       - name: Install Javascript Packages
         run: yarn install --silent --ignore-scripts --non-interactive --no-progress
       - name: Build Javascript Packages
@@ -42,13 +42,13 @@ jobs:
         if: github.repository == 'iksaku/FIMEats' && github.ref == 'refs/heads/master'
         uses: actions/upload-artifact@v1
         with:
-            name: css-assets
+            name: assets-css
             path: public/css
       - name: Persist Javascript Assets
         if: github.repository == 'iksaku/FIMEats' && github.ref == 'refs/heads/master'
         uses: actions/upload-artifact@v1
         with:
-          name: javascript-assets
+          name: assets-js
           path: public/js
 
   deploy:
@@ -77,13 +77,26 @@ jobs:
       - name: Restore CSS Assets
         uses: actions/download-artifact@v1
         with:
-          name: css-assets
+          name: assets-css
       - name: Restore Javascript Assets
         uses: actions/download-artifact@v1
         with:
-          name: javascript-assets
+          name: assets-js
+
+      - name: Setup Composer Cache
+        id: cache-composer
+        run: echo "::set-output name=dir::$(composer config cache-files-dir)"
+      - uses: actions/cache@v1
+        with:
+          path: ${{ steps.cache-composer.outputs.dir }}
+          key: cache-composer-${{ hashFiles('composer.lock') }}
+      - name: Install Composer Packages
+        run: composer install -q --no-ansi --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist
 
       - name: Setup Deploy Keys
+        env:
+          DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
         run: |
           SSH_PATH=$HOME/.ssh
 
@@ -95,19 +108,9 @@ jobs:
 
           eval $(ssh-agent -s)
 
-          echo "${{ secrets.SSH_PRIVATE_KEY }}" | tr -d '\r' | ssh-add -
+          echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
 
-          ssh-keyscan -H ${{ secrets.DEPLOY_HOST }} >> $SSH_PATH/known_hosts
-
-      - name: Setup Composer Cache
-        id: composer-cache
-        run: echo "::set-output name=dir::$(composer config cache-files-dir)"
-      - uses: actions/cache@v1
-        with:
-          path: ${{ steps.composer-cache.outputs.dir }}
-          key: composer-cache-${{ hashFiles('composer.lock') }}
-      - name: Install Composer Packages
-        run: composer install -q --no-ansi --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist
+          ssh-keyscan -H $DEPLOY_HOST >> $SSH_PATH/known_hosts
 
       - name: Deploy to Production
         env:
