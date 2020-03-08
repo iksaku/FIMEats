@@ -69,7 +69,7 @@ jobs:
           lfs: true
 
       - name: Upload Images to CDN
-        uses: iksaku/openstack-swift-action@stein
+        uses: iksaku/openstack-swift-action@v3.8
         env:
           OS_AUTH_URL: ${{ secrets.CDN_AUTH_URL }}
           OS_PASSWORD: ${{ secrets.CDN_PASSWORD }}
