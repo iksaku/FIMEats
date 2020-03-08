@@ -50,6 +50,12 @@ jobs:
         with:
           name: assets-js
           path: public/js
+      - name: Persist Mix Manifest
+        if: github.repository == 'iksaku/FIMEats' && github.ref == 'refs/heads/master'
+        uses: actions/upload-artifact@v1
+        with:
+          name: mix-manifest
+          path: public/mix-aminfest.json
 
   deploy:
     name: Deploy
@@ -82,6 +88,10 @@ jobs:
         uses: actions/download-artifact@v1
         with:
           name: assets-js
+      - name: Restore Mix Manifest
+        uses: actions/download-artifact@v1
+        with:
+          name: mix-manifest
 
       - name: Setup Composer Cache
         id: cache-composer
