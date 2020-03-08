@@ -92,6 +92,12 @@ jobs:
         uses: actions/download-artifact@v1
         with:
           name: mix-manifest
+      - name: Fix Assets Path
+        run: |
+          mv assets-css public/css
+          mv assets-js public/js
+          mv mix-manifest/mix-manifest.json public
+          rm -rf mix-manifest
 
       - name: Setup Composer Cache
         id: cache-composer
