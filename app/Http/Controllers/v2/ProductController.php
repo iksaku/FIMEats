@@ -26,7 +26,7 @@ class ProductController extends Controller
         $products = Product::where('name', 'LIKE', '%'.$name.'%')
             ->with(['cafeteria.faculty', 'categories'])
             ->when(isset($ref), function (Builder $query) use ($ref) {
-                $query->orderByRaw('id = '.(int) $ref.' desc');
+                $query->orderByRaw('id = '.$ref.' desc');
             })
             ->get();
 
