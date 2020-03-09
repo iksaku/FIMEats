@@ -16,6 +16,7 @@
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.2",
         "barryvdh/laravel-ide-helper": "^2.5",
+        "brainmaestro/composer-git-hooks": "^2.8",
         "facade/ignition": "^2.0",
         "friendsofphp/php-cs-fixer": "^2.15",
         "fzaninotto/faker": "^1.4",
@@ -44,6 +45,18 @@
     "extra": {
         "laravel": {
             "dont-discover": []
+        },
+        "hooks": {
+            "pre-commit": [
+                "composer lint",
+                "git update-index --again"
+            ],
+            "pre-push": [
+                "composer test"
+            ],
+            "post-merge": [
+                "composer install"
+            ]
         }
     },
     "scripts": {
@@ -57,12 +70,18 @@
         "post-create-project-cmd": [
             "@php artisan key:generate --ansi"
         ],
+        "post-install-cmd": [
+            "App\\Composer\\Scripts::devOnly",
+            "cghooks add --ignore-lock"
+        ],
         "post-update-cmd": [
             "Illuminate\\Foundation\\ComposerScripts::postUpdate",
+            "App\\Composer\\Scripts::devOnly",
+            "cghooks update",
             "@php artisan ide-helper:generate",
             "@php artisan ide-helper:meta"
         ],
-        "routes": "@php artisan ziggy:generate resources/js/ziggy.js",
+
         "lint": [
             "@php artisan ide-helper:models -RW",
             "php-cs-fixer fix"
