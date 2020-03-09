@@ -39,19 +39,16 @@ jobs:
 #        run: php artisan test
 
       - name: Persist CSS Assets
-        if: github.repository == 'iksaku/FIMEats' && github.ref == 'refs/heads/master'
         uses: actions/upload-artifact@v1
         with:
             name: assets-css
             path: public/css
       - name: Persist Javascript Assets
-        if: github.repository == 'iksaku/FIMEats' && github.ref == 'refs/heads/master'
         uses: actions/upload-artifact@v1
         with:
           name: assets-js
           path: public/js
       - name: Persist Mix Manifest
-        if: github.repository == 'iksaku/FIMEats' && github.ref == 'refs/heads/master'
         uses: actions/upload-artifact@v1
         with:
           name: mix-manifest
@@ -60,8 +57,8 @@ jobs:
   deploy:
     name: Deploy
     runs-on: ubuntu-latest
-    if: github.repository == 'iksaku/FIMEats' && github.ref == 'refs/heads/master'
     needs: tests
+    if: github.repository == 'iksaku/FIMEats' && github.base_ref == 'master'
     steps:
       - name: Checkout
         uses: actions/checkout@v1
