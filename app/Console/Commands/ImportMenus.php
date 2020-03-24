@@ -44,38 +44,36 @@ class ImportMenus extends Command
         $it = new RecursiveIteratorIterator($it, RecursiveIteratorIterator::LEAVES_ONLY);
         $it = new RegexIterator($it, '(\.'.preg_quote($fileExtension).'$)');
         foreach ($it as $file) {
-            $fileName = $file->getPathname();
-            yield $fileName => file_get_contents($fileName);
+            yield $file->getPathname() => file_get_contents($file->getPathname());
         }
     }
 
     /**
      * Execute the console command.
-     *
-     * @return mixed
      */
     public function handle()
     {
         $showProgressBar = $this->verbosity !== OutputInterface::VERBOSITY_QUIET;
 
-        $this->info('Cleaning up Database...');
+        $this->info('Creating fresh Database...');
+        if (!file_exists($db = config('database.connections.sqlite.database'))) {
+            touch($db);
+        }
         $this->callSilent('migrate:fresh', ['--force' => true]);
+
         $this->info('Importing Menus...');
 
         foreach ($this->filesInDir(resource_path('menus'), 'yaml') as $content) {
             try {
                 /** @var array $data */
                 $data = Yaml::parse($content);
-                /** @var string $name */
-                $name = $data['name'];
-                /** @var string $short_name */
-                $short_name = $data['short_name'];
-                /** @var string $logo */
-                $logo = $data['logo'];
-                /** @var string $maps_url */
-                $maps_url = $data['maps_url'];
-                /** @var array $cafeterias */
-                $cafeterias = $data['cafeterias'];
+
+                /* @var string $name */
+                /* @var string $short_name */
+                /* @var string $logo */
+                /* @var string $maps_url */
+                /* @var array $cafeterias */
+                extract($data);
 
                 if ($showProgressBar) {
                     $bar = $this->getOutput()->createProgressBar();
@@ -95,25 +93,20 @@ class ImportMenus extends Command
                         $bar->setProgress(0);
                     }
 
-                    /** @var string $name */
-                    $name = $cafeteria_content['name'];
-                    /** @var array $products */
-                    $products = $cafeteria_content['products'];
+                    /* @var string $name */
+                    /* @var array $products */
+                    extract($cafeteria_content);
 
                     /** @var Cafeteria $cafeteria */
                     $cafeteria = $faculty->cafeterias()->firstOrCreate(compact('name'));
 
                     foreach ($products as $product_content) {
-                        /** @var string $name */
-                        $name = $product_content['name'];
-                        /** @var string $quantity */
-                        $quantity = $product_content['quantity'];
-                        /** @var string $price */
-                        $price = $product_content['price'];
-                        /** @var string $image */
-                        $image = $product_content['image'];
-                        /** @var array $categories */
-                        $categories = $product_content['categories'];
+                        /* @var string $name */
+                        /* @var string $quantity */
+                        /* @var string $price */
+                        /* @var string $image */
+                        /* @var array $categories */
+                        extract($product_content);
 
                         if (isset($bar)) {
                             $bar->setMessage(

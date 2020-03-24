@@ -197,6 +197,7 @@ composer.phar
 # composer.lock
 
 /app/Console/Commands/resources/.~lock.menus.xlsx#
+/database/database.sqlite
 /public/css/
 /public/js/
 /public/mix-manifest.json

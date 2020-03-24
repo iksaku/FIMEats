@@ -11,10 +11,10 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property int $id
  * @property string $name
  * @property string $short_name
- * @property string $logo
  * @property string|null $maps_url
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property string $logo
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Cafeteria[] $cafeterias
  * @property-read int|null $cafeterias_count
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Faculty newModelQuery()

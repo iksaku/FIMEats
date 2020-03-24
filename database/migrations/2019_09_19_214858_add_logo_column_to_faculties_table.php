@@ -14,7 +14,7 @@ class AddLogoColumnToFacultiesTable extends Migration
     public function up()
     {
         Schema::table('faculties', function (Blueprint $table) {
-            $table->string('logo')->after('short_name');
+            $table->string('logo')->default('')->after('short_name');
         });
     }
 
