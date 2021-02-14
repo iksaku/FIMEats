@@ -1,24 +1,15 @@
 {
+  "name": "fimeats",
+  "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "yarn run development",
-    "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
-    "hot": "cross-env NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
-    "prod": "yarn run production",
-    "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
-    "watch": "yarn run development --watch",
-    "watch-poll": "yarn run watch --watch-poll"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
   },
-  "devDependencies": {
-    "@fortawesome/fontawesome-svg-core": "^1.2",
-    "@fortawesome/free-brands-svg-icons": "^5.10",
-    "@fortawesome/free-solid-svg-icons": "^5.10",
-    "alpinejs": "^2.0",
-    "cross-env": "^7.0",
-    "laravel-mix": "^5.0",
-    "laravel-mix-purgecss": "^4.2",
-    "postcss-nested": "^4.1",
-    "tailwindcss": "^1.2",
-    "vue-template-compiler": "^2.5"
+  "dependencies": {
+    "next": "10.0.6",
+    "react": "17.0.1",
+    "react-dom": "17.0.1"
   }
 }
