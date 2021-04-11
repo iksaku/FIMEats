@@ -14,24 +14,22 @@ trait CdnImage
      */
     public function getImage($img): string
     {
-        return Cache::tags(['cdn', 'image'])->rememberForever($img, function () use ($img) {
-            if (!empty($img)) {
-                $path = 'img/'.$img;
+        if (!empty($img)) {
+            $path = 'img/'.$img;
 
-                try {
-                    if (Storage::cloud()->has($path)) {
-                        return Storage::cloud()->url($path);
-                    }
+            try {
+                if (Storage::cloud()->has($path)) {
+                    return Storage::cloud()->url($path);
+                }
 
-                    return Storage::cloud()->url('img/food_placeholder.jpg');
-                } catch (InvalidArgumentException $exception) {
-                    if (file_exists(public_path($path))) {
-                        return asset($path);
-                    }
+                return Storage::cloud()->url('img/food_placeholder.jpg');
+            } catch (InvalidArgumentException $exception) {
+                if (file_exists(public_path($path))) {
+                    return asset($path);
                 }
             }
+        }
 
-            return asset('img/food_placeholder.jpg');
-        });
+        return asset('img/food_placeholder.jpg');
     }
 }

@@ -5,25 +5,25 @@
     "license": "GPLv3",
     "type": "project",
     "require": {
-        "php": "^7.4",
-        "doctrine/dbal": "^2.8",
+        "php": "^7.4|^8.0",
         "fideloper/proxy": "^4.3",
-        "laravel/framework": "^7.0",
+        "guzzlehttp/guzzle": "^7.0.1",
+        "laravel/framework": "^8.0",
         "laravel/tinker": "^2.0",
         "predis/predis": "^1.1",
         "symfony/yaml": "^5.0"
     },
     "require-dev": {
-        "barryvdh/laravel-debugbar": "^3.2",
-        "barryvdh/laravel-ide-helper": "^2.5",
+        "barryvdh/laravel-debugbar": "^3.5",
+        "barryvdh/laravel-ide-helper": "^2.8.1",
         "brainmaestro/composer-git-hooks": "^2.8",
-        "facade/ignition": "^2.0",
+        "facade/ignition": "^2.3.6",
         "friendsofphp/php-cs-fixer": "^2.15",
         "fzaninotto/faker": "^1.4",
-        "lorisleiva/laravel-deployer": "^0.3",
+        "laravel/sail": "^1.4",
         "mockery/mockery": "^1.0",
-        "nunomaduro/collision": "^4.1",
-        "phpunit/phpunit": "^8.5"
+        "nunomaduro/collision": "^5.0",
+        "phpunit/phpunit": "^9.0"
     },
     "autoload": {
         "classmap": [
