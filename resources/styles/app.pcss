@@ -2,29 +2,33 @@
 
 @tailwind components;
 
-html {
-    scroll-behavior: smooth;
-}
+@tailwind utilities;
 
-[x-cloak] {
-    display: none !important;
-}
+@layer base {
+    html {
+        scroll-behavior: smooth;
+    }
 
-.card + .card {
-    @apply mt-6;
-}
-
-.map {
-    @apply max-w-full;
-    max-height: 450px;
-    height: 67.5vw;
-    width: 90vw;
-}
-
-@screen lg {
-    .map {
-        max-width: 600px;
+    [x-cloak] {
+        display: none !important;
     }
 }
 
-@tailwind utilities;
+@layer components {
+    .card + .card {
+        @apply mt-6;
+    }
+
+    .map {
+        @apply max-w-full;
+        max-height: 450px;
+        height: 67.5vw;
+        width: 90vw;
+    }
+
+    @screen lg {
+        .map {
+            max-width: 600px;
+        }
+    }
+}

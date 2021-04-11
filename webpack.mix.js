@@ -1,6 +1,4 @@
 const mix = require('laravel-mix')
-require('laravel-mix-purgecss')
-
 /*
  |--------------------------------------------------------------------------
  | Mix Asset Management
@@ -16,13 +14,11 @@ mix
     .js('resources/js/alpine.js', 'public/js')
     .js('resources/js/fontawesome.js', 'public/js')
     .postCss('resources/styles/app.pcss', 'public/css', [
-        require('postcss-nested'),
         require('tailwindcss')
     ])
     .sourceMaps()
 
 if (mix.inProduction()) {
     mix
-        .purgeCss()
         .version()
 }

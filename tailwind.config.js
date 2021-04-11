@@ -1,24 +1,21 @@
-const defaultVariants = require('tailwindcss/defaultConfig').variants
-
 module.exports = {
+    purge: [
+        './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
+        './storage/framework/views/*.php',
+        './resources/views/**/*.blade.php',
+    ],
+
+    darkMode: 'media',
+
+    mode: 'jit',
+
     theme: {
-        extend: {}
+        extend: {},
     },
+
     variants: {
-        borderWidth: [...defaultVariants.borderWidth, 'first', 'last'],
-        borderStyle: [...defaultVariants.borderStyle, 'first', 'last'],
-        boxShadow: [...defaultVariants.boxShadow, 'hocus'],
-        scale: [...defaultVariants.scale, 'hocus'],
-        textDecoration: [...defaultVariants.textDecoration, 'hocus'],
-        zIndex: [...defaultVariants.zIndex, 'hocus']
+        extend: {},
     },
-    plugins: [
-        function ({ addVariant, e }) {
-            addVariant('hocus', ({ modifySelectors, separator}) => {
-                modifySelectors(({ className }) => {
-                    return `.${e(`hocus${separator}${className}`)}:hover,.${e(`hocus${separator}${className}`)}:focus`
-                })
-            })
-        }
-    ]
+
+    plugins: [],
 }
