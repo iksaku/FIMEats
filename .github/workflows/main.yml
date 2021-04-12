@@ -3,53 +3,62 @@ name: CI/CD
 on: [push, pull_request]
 
 jobs:
-  tests:
-    name: Tests
+  build-assets:
+    name: Build Frontend Assets
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v1
+        uses: actions/checkout@v2
 
-      - name: Setup Composer Cache
-        id: cache-composer
-        run: echo "::set-output name=dir::$(composer config cache-files-dir)"
-      - uses: actions/cache@v1
-        with:
-          path: ${{ steps.cache-composer.outputs.dir }}
-          key: cache-composer-${{ hashFiles('composer.lock') }}
-      - name: Install Composer Packages
-        run: composer install -q --no-ansi --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist
-
-      - name: Lint Code
-        run: composer test:lint
-
-      - name: Setup Yarn Cache
-        id: cache-yarn
+      # Cache javascript packages, see: https://github.com/actions/cache/blob/main/examples.md#node---yarn
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
         run: echo "::set-output name=dir::$(yarn cache dir)"
-      - uses: actions/cache@v1
+      - name: Restore cached dependencies
+        uses: actions/cache@v2
+        id: yarn-cache
         with:
-          path: ${{ steps.cache-yarn.outputs.dir }}
-          key: cache-yarn-${{ hashFiles('yarn.lock') }}
-      - name: Install Javascript Packages
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+
+      - name: Install javascript packages
         run: yarn install --silent --ignore-scripts --non-interactive --no-progress
-      - name: Build Javascript Packages
+
+      - name: Compile assets
         run: yarn production
 
-#      - name: Test Application
-#        run: php artisan test
+      - name: Persist compiled assets
+        uses: actions/upload-artifact@v2
+        with:
+          name: compiled-assets
+          path: |
+            public/css
+            public/js
+            public/mix-manifest.json
 
-      - name: Persist CSS Assets
-        uses: actions/upload-artifact@v1
+  lint:
+    name: Lint project
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      # Cache php packages, see: https://github.com/actions/cache/blob/main/examples.md#php---composer
+      - name: Get composer cache directory
+        id: composer-cache
+        run: echo "::set-output name=dir::$(composer config cache-files-dir)"
+      - name: Restore cached dependencies
+        uses: actions/cache@v2
         with:
-            name: assets-css
-            path: public/css
-      - name: Persist Javascript Assets
-        uses: actions/upload-artifact@v1
-        with:
-          name: assets-js
-          path: public/js
-      - name: Persist Mix Manifest
-        uses: actions/upload-artifact@v1
-        with:
-          name: mix-manifest
-          path: public/mix-manifest.json
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-composer-
+
+      - name: Install composer packages
+        run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
+
+      - name: Lint project
+        run: composer test:lint
