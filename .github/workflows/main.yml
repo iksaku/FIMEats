@@ -39,7 +39,7 @@ jobs:
             public/mix-manifest.json
 
   lint:
-    name: Lint project
+    name: Lint Project
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
