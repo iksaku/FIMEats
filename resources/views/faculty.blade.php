@@ -1,4 +1,4 @@
-<?php /** @var \App\Faculty $faculty */ ?>
+<?php /** @var \App\Models\Faculty $faculty */ ?>
 
 @extends('partials.app')
 

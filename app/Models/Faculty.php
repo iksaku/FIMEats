@@ -1,34 +1,10 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-/**
- * App\Faculty.
- *
- * @property int $id
- * @property string $name
- * @property string $short_name
- * @property string|null $maps_url
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @property string $logo
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Cafeteria[] $cafeterias
- * @property-read int|null $cafeterias_count
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Faculty newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Faculty newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Faculty query()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Faculty whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Faculty whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Faculty whereLogo($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Faculty whereMapsUrl($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Faculty whereName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Faculty whereShortName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Faculty whereUpdatedAt($value)
- * @mixin \Eloquent
- */
 class Faculty extends Model
 {
     /** @var array */

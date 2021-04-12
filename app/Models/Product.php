@@ -1,0 +1,64 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+
+class Product extends Model
+{
+    /** @var array */
+    protected $fillable = [
+        'name', 'quantity', 'price', 'image',
+    ];
+
+    /** @var array */
+    protected $visible = [
+        'name', 'quantity', 'price', 'image', 'cafeteria', 'categories',
+    ];
+
+    /*
+     * Returns the Cafeteria that owns this Product.
+     */
+    public function cafeteria(): BelongsTo
+    {
+        return $this->belongsTo('App\Models\Cafeteria');
+    }
+
+    /*
+     * Returns a Collection of categories that are tagged in this Product.
+     */
+    public function categories(): BelongsToMany
+    {
+        return $this->belongsToMany('App\Models\Category');
+    }
+
+    /*
+     * Returns a relative URL to access Product's image.
+     */
+    public function getImageAttribute($value): string
+    {
+        if (empty($value)) {
+            $value = 'food_placeholder.jpg';
+        }
+
+        return asset('img/'.$value);
+    }
+
+    /*
+     * Ensures Product name is formatted correctly before saving.
+     */
+    public function setNameAttribute(string $value)
+    {
+        $this->attributes['name'] = ucwords(mb_strtolower($value));
+    }
+
+    /*
+     * Ensures that Implicit Route Binding uses the 'name' column to get the model.
+     */
+    public function getRouteKeyName(): string
+    {
+        return 'name';
+    }
+}

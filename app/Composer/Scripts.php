@@ -24,7 +24,7 @@ class Scripts
      */
     public static function devOnly(Event $event)
     {
-        if (!$event->isDevMode()) {
+        if (! $event->isDevMode()) {
             $event->stopPropagation();
         }
     }

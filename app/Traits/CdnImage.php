@@ -2,7 +2,6 @@
 
 namespace App\Traits;
 
-use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Storage;
 use InvalidArgumentException;
 
@@ -14,7 +13,7 @@ trait CdnImage
      */
     public function getImage($img): string
     {
-        if (!empty($img)) {
+        if (! empty($img)) {
             $path = 'img/'.$img;
 
             try {

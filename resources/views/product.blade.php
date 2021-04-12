@@ -1,4 +1,4 @@
-<?php /** @var \App\Product[] $products */ ?>
+<?php /** @var \App\Models\Product[] $products */ ?>
 
 @extends('partials.app')
 

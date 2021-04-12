@@ -82,11 +82,8 @@
             "@php artisan ide-helper:meta"
         ],
 
-        "lint": [
-            "@php artisan ide-helper:models -RW",
-            "php-cs-fixer fix"
-        ],
-        "test:lint": "php-cs-fixer fix --dry-run",
+        "lint": "php-cs-fixer fix",
+        "test:lint": "@lint --dry-run",
         "test": [
             "@test:lint"
         ]

@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\v2;
 
-use App\Faculty;
 use App\Http\Controllers\Controller;
+use App\Models\Faculty;
 use Illuminate\View\View;
 
 class HomeController extends Controller
