@@ -49,37 +49,27 @@
                 </h2>
             </div>
 
-            <div class="w-full mx-auto flex flex-wrap items-stretch justify-evenly">
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4">
                 @foreach($cafeteria->products as $product)
-                    <div class="h-full w-full sm:w-1/2 lg:w-1/4 p-4">
-                        <a
-                            href="{{ route('product.compare', ['name' => $product, 'ref' => $product->id]) }}"
-                            class="h-full w-full block text-center bg-gray-100 flex flex-col px-4 py-2 rounded-lg overflow-hidden hocus:shadow-outline focus:outline-none transform duration-200 hocus:scale-110 hocus:z-10"
-                        >
-                            <div class="h-32 w-full rounded-lg">
-                                <img
-                                    class="h-full rounded-lg mx-auto"
-                                    src="{{ $product->image }}"
-                                    alt="Imagen representativa de {{ $product->name }}"
-                                />
+                    <div class="group col-span-1 p-4 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-xl border">
+                        <a href="{{ route('product.compare', ['name' => $product, 'ref' => $product->id]) }}" class="h-full w-full flex flex-col justify-between">
+                            <div class="w-full overflow-hidden rounded-lg relative flex-grow-1">
+                                <img src="{{ $product->image }}"
+                                     alt="Imagen representativa de {{ $product->name }}"
+                                     class="h-32 mx-auto rounded-lg"/>
                             </div>
-
-                            <div class="flex-1">
-                                <div class="text-center text-gray-700 my-2 text-lg">
-                                    @if(!empty($product->quantity))
-                                        <span class="inline-block align-middle pr-2 mr-1 border-r border-gray-500">
-                                            {{ $product->quantity }}
-                                        </span>
-                                    @endif
-
-                                    <span class="inline-block align-middle normal-case">
-                                        ${{ $product->price }}
-                                    </span>
+                            <div class="mt-4">
+                                <div class="flex">
+                                    <div class="overflow-hidden w-full flex-grow-1">
+                                        <p title="{{ $product->name }}" class="font-semibold whitespace-nowrap overflow-ellipsis w-full overflow-hidden">{{ $product->name }}</p>
+                                        <p class="text-gray-500 dark:text-gray-200">${{ number_format($product->price, 2) }}</p>
+                                    </div>
+                                    <div class="ml-4 pt-0.5 flex-shrink-0">
+                                        <div class="w-auto h-auto px-1 py-0.5 rounded-lg bg-yellow-200 text-sm lig">
+                                            {{ $product->categories[0]->name }}
+                                        </div>
+                                    </div>
                                 </div>
-
-                                <span class="text-center text-gray-700 text-lg uppercase">
-                                    {{ $product->name }}
-                                </span>
                             </div>
                         </a>
                     </div>

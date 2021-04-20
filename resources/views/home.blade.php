@@ -12,25 +12,25 @@
             </h2>
         </div>
 
-        <div class="w-full mx-auto flex flex-wrap items-stretch justify-evenly">
-            @foreach($faculties as $faculty)
-                <div class="w-full sm:w-1/2 lg:w-1/4 px-4 py-2">
-                    <a
-                        href="{{ route('faculty.show', $faculty) }}"
-                        class="w-full block text-center bg-gray-100 px-4 py-2 rounded-lg overflow-hidden hocus:shadow-outline focus:outline-none transform duration-200 hocus:scale-110 hocus:z-10"
-                    >
-                        <img
-                            class="h-40 w-40 rounded-lg mx-auto"
-                            src="{{ $faculty->logo }}"
-                            alt="Logo of {{ $faculty->short_name }} Faculty"
-                        />
+        <ul class="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3">
+            <!-- This example requires Tailwind CSS v2.0+ -->
 
-                        <h3 class="text-center text-gray-700 text-xl uppercase mt-2">
-                            {{ $faculty->short_name }}
-                        </h3>
+        @foreach($faculties as $faculty)
+                <li class="col-span-1 flex flex-col text-center bg-white rounded-lg shadow divide-y divide-gray-200">
+                    <a href=" {{ route('faculty.show', $faculty) }} ">
+                        <div class="flex-1 flex flex-col p-8">
+                            <img class="w-32 h-32 flex-shrink-0 mx-auto bg-black rounded-full" src="{{ $faculty->logo }}" alt="">
+                            <h3 class="mt-6 text-gray-900 text-sm font-medium">{{ $faculty->name }}</h3>
+                            <dl class="mt-1 flex-grow flex flex-col justify-between">
+                                <dt class="sr-only">{{ $faculty->short_name }}</dt>
+                                <dd class="mt-3">
+                                    <span class="px-2 py-1 text-green-800 text-xs font-medium bg-green-100 rounded-full">{{ $faculty->short_name }}</span>
+                                </dd>
+                            </dl>
+                        </div>
                     </a>
-                </div>
+                </li>
             @endforeach
-        </div>
+        </ul>
     @endcomponent
 @endsection

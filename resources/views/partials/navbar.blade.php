@@ -8,7 +8,7 @@
 
         <div class="hidden sm:flex items-center">
             <a
-                class="w-full block whitespace-no-wrap mr-10"
+                class="w-full inline-block w-auto mr-10 flex-shrink-0 flex-grow-0"
                 href="{{ route('home') . '#facultades' }}"
                 aria-label="Ir la pantalla de selección de facultades"
             >
@@ -16,7 +16,7 @@
             </a>
 
             <a
-                class="w-full block whitespace-no-wrap"
+                class="w-full inline-block w-auto whitespace-no-wrap flex-shrink-0"
                 href="https://github.com/iksaku/FIMEats"
                 target="_blank"
                 rel="noopener"
