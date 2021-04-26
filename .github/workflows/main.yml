@@ -80,10 +80,6 @@ jobs:
           name: compiled-assets
           path: public/
 
-      - name: Debug paths
-        run: |
-          ls -1R
-
       # Cache php packages, see: https://github.com/actions/cache/blob/main/examples.md#php---composer
       - name: Get composer cache directory
         id: composer-cache
@@ -99,5 +95,24 @@ jobs:
       - name: Install composer packages
         run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
 
-      - name: Mock Deploy
-        run: composer exec dep -- -V
+      - name: Deploy
+        env:
+          DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
+          DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
+          DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
+        run: |
+          SSH_PATH=$HOME/.ssh
+
+          mkdir -p $SSH_PATH
+          chmod 700 $SSH_PATH
+
+          touch $SSH_PATH/known_hosts
+          chmod 600 $SSH_PATH/known_hosts
+
+          eval $(ssh-agent -s)
+
+          echo "$DEPLOY_KEY" | tr -d '\r' | ssh-add -
+
+          ssh-keyscan -H $DEPLOY_HOST >> $SSH_PATH/known_hosts
+
+          composer exec dep deploy
