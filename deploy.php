@@ -6,9 +6,11 @@ use Dotenv\Dotenv;
 require 'recipe/laravel.php';
 
 // Load .env
-require_once __DIR__.'/vendor/autoload.php';
+if (file_exists(__DIR__.'/.env')) {
+    require_once __DIR__.'/vendor/autoload.php';
 
-Dotenv::createImmutable(__DIR__)->load();
+    Dotenv::createImmutable(__DIR__)->load();
+}
 
 // Config
 
