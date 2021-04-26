@@ -81,8 +81,7 @@ jobs:
 
       - name: Debug paths
         run: |
-          ls -1
-          ls -1 public/
+          ls -1R public/
 
       # Cache php packages, see: https://github.com/actions/cache/blob/main/examples.md#php---composer
       - name: Get composer cache directory
@@ -100,4 +99,4 @@ jobs:
         run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
 
       - name: Mock Deploy
-        run: .vendor/bin/dep -V
+        run: composer exec dep -V
