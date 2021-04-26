@@ -3,8 +3,8 @@ name: CI/CD
 on: [push, pull_request]
 
 jobs:
-  build-assets:
-    name: Build Frontend Assets
+  build:
+    name: Compile Assets
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -62,3 +62,42 @@ jobs:
 
       - name: Lint project
         run: composer test:lint
+
+  deploy:
+    name: Deploy Project
+    runs-on: ubuntu-latest
+    needs:
+      - build
+      - lint
+    if: github.repository == 'iksaku/FIMEats' && github.ref == 'refs/heads/master'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Restore Assets
+          uses: actions/download-artifact@v2
+          with:
+            name: compiled-assets
+
+      - name: Debug paths
+          run: |
+            ls -1
+            ls -1 public/
+
+      # Cache php packages, see: https://github.com/actions/cache/blob/main/examples.md#php---composer
+      - name: Get composer cache directory
+        id: composer-cache
+        run: echo "::set-output name=dir::$(composer config cache-files-dir)"
+      - name: Restore cached dependencies
+        uses: actions/cache@v2
+        with:
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-composer-
+
+      - name: Install composer packages
+        run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
+
+      - name: Mock Deploy
+        run: .vendor/bin/dep -V
