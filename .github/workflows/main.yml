@@ -81,7 +81,7 @@ jobs:
 
       - name: Debug paths
         run: |
-          ls -1R public/
+          ls -1R
 
       # Cache php packages, see: https://github.com/actions/cache/blob/main/examples.md#php---composer
       - name: Get composer cache directory
