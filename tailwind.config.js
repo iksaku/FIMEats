@@ -1,21 +1,20 @@
 module.exports = {
-    purge: [
-        './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
-        './storage/framework/views/*.php',
-        './resources/views/**/*.blade.php',
-    ],
+  mode: 'jit',
 
-    darkMode: 'media',
+  purge: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
 
-    mode: 'jit',
+  darkMode: 'media',
 
-    theme: {
-        extend: {},
-    },
+  theme: {
+    extend: {},
+  },
 
-    variants: {
-        extend: {},
-    },
+  variants: {
+    extend: {},
+  },
 
-    plugins: [],
+  plugins: [
+    require('@tailwindcss/forms'),
+    require('@tailwindcss/aspect-ratio'),
+  ],
 }
