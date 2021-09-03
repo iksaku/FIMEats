@@ -9,4 +9,8 @@ export class Category extends Model {
 
   @ManyToMany(() => Product, product => product.categories)
   products?: Product[]
+
+  static searchable_columns(): string[] {
+    return ['name']
+  }
 }

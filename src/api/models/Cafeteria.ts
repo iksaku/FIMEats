@@ -14,4 +14,8 @@ export class Cafeteria extends Model {
 
   @OneToMany(() => Product, product => product.cafeteria)
   products?: Product[]
+
+  static searchable_columns(): string[] {
+    return ['name']
+  }
 }

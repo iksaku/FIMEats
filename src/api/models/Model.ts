@@ -1,9 +1,9 @@
-import {BaseEntity, Connection, DeepPartial, getConnection, ObjectType, PrimaryGeneratedColumn} from "typeorm";
+import {BaseEntity, DeepPartial, getConnection, ObjectType, PrimaryGeneratedColumn} from "typeorm";
 import {RelationMetadata} from "typeorm/metadata/RelationMetadata";
 
 export abstract class Model extends BaseEntity {
   @PrimaryGeneratedColumn()
-  id!: number
+  rowid!: number
 
   async load(relations: string|string[]): Promise<this> {
     const model = this.constructor.name
@@ -44,13 +44,11 @@ export abstract class Model extends BaseEntity {
     return this
   }
 
-  static async upsert<T extends Model>(this: ObjectType<T>, uniqueBy: string, values: DeepPartial<T>): Promise<T> {
-    return await getConnection()
-      .createQueryBuilder()
-      .insert()
-      .orIgnore(uniqueBy)
-      .into(this.constructor)
-      .values(values)
-      .execute()
+  static searchable_columns(): string[] {
+    return []
+  }
+
+  static searchable(): boolean {
+    return this.searchable_columns().length > 0
   }
 }

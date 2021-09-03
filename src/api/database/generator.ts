@@ -61,7 +61,7 @@ async function importDataset(): Promise<void> {
       const data = yaml.load(await fs.readFile(path.resolve(menuDir, menu))) as FacultyMenu
 
       await transactionManager.insert(Faculty, {
-        id: ++faculty_id,
+        rowid: ++faculty_id,
         name: data.name,
         short_name: data.short_name,
         logo: data.logo,
@@ -70,14 +70,14 @@ async function importDataset(): Promise<void> {
 
       for (const cafeteria of data.cafeterias) {
         await transactionManager.insert(Cafeteria, {
-          id: ++cafeteria_id,
+          rowid: ++cafeteria_id,
           name: cafeteria.name,
           faculty_id,
         })
 
         for (const product of cafeteria.products) {
           await transactionManager.insert(Product, {
-            id: ++product_id,
+            rowid: ++product_id,
             name: product.name,
             quantity: product.quantity ?? 1,
             price: product.price,
@@ -93,7 +93,7 @@ async function importDataset(): Promise<void> {
               categoryMap.set(category, category_id)
 
               await transactionManager.insert(Category, {
-                id: category_id,
+                rowid: category_id,
                 name: category
               })
             }
@@ -106,7 +106,23 @@ async function importDataset(): Promise<void> {
         }
       }
     }
+
+    for (const model of models) {
+      if (! model.searchable()) {
+        continue
+      }
+
+      const { tableMetadataArgs: { name: targetTable } } = getConnection().getMetadata(model)
+
+      const searchableTable = `searchable_${targetTable}`
+      const searchableColumns = model.searchable_columns().join(', ')
+
+      await transactionManager.query(`CREATE VIRTUAL TABLE ${searchableTable} using fts4(content=${targetTable}, ${searchableColumns})`)
+      await transactionManager.query(`INSERT INTO ${searchableTable}(${searchableTable}) VALUES ('rebuild')`)
+    }
   })
+
+  await getConnection().query('VACUUM');
 }
 
 let building = false

@@ -11,12 +11,16 @@ export class Faculty extends Model {
   short_name!: string
 
   @Column('varchar', { length: 255, nullable: true })
-  logo: string
+  logo!: string
 
   @Column('varchar', { length: 255, nullable: true })
-  maps_url: string
+  maps_url!: string
 
   @OneToMany(() => Cafeteria, cafeteria => cafeteria.faculty)
   @JoinColumn({ name: 'cafeteria_id' })
   cafeterias?: Cafeteria[]
+
+  static searchable_columns(): string[] {
+    return ['name', 'short_name']
+  }
 }

@@ -24,4 +24,8 @@ export class Product extends Model {
   @ManyToMany(() => Category, category => category.products)
   @JoinTable({ name: 'category_product', joinColumn: { name: 'product_id' }, inverseJoinColumn: { name: 'category_id' } })
   categories?: Category[]
+
+  static searchable_columns(): string[] {
+    return ['name']
+  }
 }
