@@ -555,10 +555,6 @@ export default {
   setup() {
     const mobileMenuOpen = ref(false)
 
-    Faculty.find().then((result) => {
-      console.log(result)
-    })
-
     return {
       currencies,
       navigation,
