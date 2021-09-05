@@ -58,7 +58,14 @@ async function importDataset(): Promise<void> {
         continue
       }
 
-      const data = yaml.load(await fs.readFile(path.resolve(menuDir, menu))) as FacultyMenu
+      const data = yaml.load(
+        await fs.readFile(
+          path.resolve(menuDir, menu),
+          {
+            encoding: 'utf-8'
+          }
+        )
+      ) as FacultyMenu
 
       await transactionManager.insert(Faculty, {
         rowid: ++faculty_id,
@@ -72,6 +79,7 @@ async function importDataset(): Promise<void> {
         await transactionManager.insert(Cafeteria, {
           rowid: ++cafeteria_id,
           name: cafeteria.name,
+          // @ts-ignore
           faculty_id,
         })
 
@@ -82,6 +90,7 @@ async function importDataset(): Promise<void> {
             quantity: product.quantity ?? 1,
             price: product.price,
             image: product.image,
+            // @ts-ignore
             cafeteria_id,
           })
 

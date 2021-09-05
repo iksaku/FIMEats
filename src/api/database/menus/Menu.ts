@@ -16,9 +16,5 @@ type Product = {
   quantity?: number
   price: number
   image?: string
-  categories: Category[]
-}
-
-type Category = {
-  name: string
+  categories: string[]
 }

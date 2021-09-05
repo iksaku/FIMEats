@@ -29,11 +29,13 @@ export abstract class Model extends BaseEntity {
         .of(this)
 
       if (['one-to-one', 'many-to-one'].includes(relationType)) {
+        // @ts-ignore
         this[relation] = await queryBuilder.loadOne()
         continue
       }
 
       if (['one-to-many', 'many-to-many'].includes(relationType)) {
+        // @ts-ignore
         this[relation] = await queryBuilder.loadMany()
         continue;
       }
