@@ -1,10 +1,3 @@
-// 1. touch the file ✅
-// 2. execute migrations
-// 3. transform YAML -> SQL Statements
-// 4. wrap SQL statements into a transaction
-// 5. execute transactions
-// 6. watch menus directory, re-generate DB
-
 import fs from 'fs/promises'
 import path from 'path'
 import yaml from 'js-yaml'
@@ -114,20 +107,6 @@ async function importDataset(): Promise<void> {
           }
         }
       }
-    }
-
-    for (const model of models) {
-      if (! model.searchable()) {
-        continue
-      }
-
-      const { tableMetadataArgs: { name: targetTable } } = getConnection().getMetadata(model)
-
-      const searchableTable = `searchable_${targetTable}`
-      const searchableColumns = model.searchable_columns().join(', ')
-
-      await transactionManager.query(`CREATE VIRTUAL TABLE ${searchableTable} using fts4(content=${targetTable}, ${searchableColumns})`)
-      await transactionManager.query(`INSERT INTO ${searchableTable}(${searchableTable}) VALUES ('rebuild')`)
     }
   })
 

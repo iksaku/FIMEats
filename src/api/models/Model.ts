@@ -45,12 +45,4 @@ export abstract class Model extends BaseEntity {
 
     return this
   }
-
-  static searchable_columns(): string[] {
-    return []
-  }
-
-  static searchable(): boolean {
-    return this.searchable_columns().length > 0
-  }
 }
