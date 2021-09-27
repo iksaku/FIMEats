@@ -1,27 +1,15 @@
-import {defineConfig, UserConfigExport} from 'vite'
+import { defineConfig } from 'vite'
 import Vue from '@vitejs/plugin-vue'
 import path from 'path'
 import Pages from 'vite-plugin-pages'
-import ViteFaviconsPlugin from 'vite-plugin-favicon'
-import DatabaseGenerator from "./src/api/database/generator";
+import ViteSvgLoader from 'vite-svg-loader'
+import DatabaseGenerator from './src/api/database/generator'
 
-export default defineConfig(({ command}) => {
-  const config: UserConfigExport = {
-    plugins: [
-      Vue(),
-      Pages(),
-      DatabaseGenerator(),
-    ],
-    resolve: {
-      alias: {
-        '@': path.resolve(__dirname, './src'),
-      },
-    }
-  }
-
-  if (command === 'build') {
-    config.plugins!.push(ViteFaviconsPlugin('src/assets/logo.svg'))
-  }
-
-  return config
-})
+export default defineConfig(({ command }) => ({
+  plugins: [Vue(), Pages(), ViteSvgLoader(), DatabaseGenerator()],
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, './src'),
+    },
+  },
+}))

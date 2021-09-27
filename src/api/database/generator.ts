@@ -1,9 +1,9 @@
 import fs from 'fs/promises'
 import path from 'path'
 import yaml from 'js-yaml'
-import {createConnection, getConnection, getConnectionManager} from "typeorm";
-import {normalizePath, Plugin} from "vite";
-import { Faculty, Cafeteria, Product, Category, models } from "../models";
+import { createConnection, getConnection, getConnectionManager } from 'typeorm'
+import { normalizePath, Plugin } from 'vite'
+import { Faculty, Cafeteria, Product, Category, models } from '../models'
 import { FacultyMenu } from './menus/Menu'
 
 async function build(): Promise<void> {
@@ -11,7 +11,7 @@ async function build(): Promise<void> {
 
   await ensureDatabaseExists(database)
 
-  if (! getConnectionManager().has('default')) {
+  if (!getConnectionManager().has('default')) {
     await createConnection({
       type: 'sqljs',
       location: database,
@@ -52,12 +52,9 @@ async function importDataset(): Promise<void> {
       }
 
       const data = yaml.load(
-        await fs.readFile(
-          path.resolve(menuDir, menu),
-          {
-            encoding: 'utf-8'
-          }
-        )
+        await fs.readFile(path.resolve(menuDir, menu), {
+          encoding: 'utf-8',
+        })
       ) as FacultyMenu
 
       await transactionManager.insert(Faculty, {
@@ -96,21 +93,18 @@ async function importDataset(): Promise<void> {
 
               await transactionManager.insert(Category, {
                 rowid: category_id,
-                name: category
+                name: category,
               })
             }
 
-            await transactionManager.createQueryBuilder()
-              .relation(Product, 'categories')
-              .of(product_id)
-              .add(category_id)
+            await transactionManager.createQueryBuilder().relation(Product, 'categories').of(product_id).add(category_id)
           }
         }
       }
     }
   })
 
-  await getConnection().query('VACUUM');
+  await getConnection().query('VACUUM')
 }
 
 let building = false
@@ -123,7 +117,7 @@ export default function (): Plugin {
     },
     async handleHotUpdate({ server }): Promise<void> {
       server.watcher.on('change', async (path) => {
-        if (building || ! normalizePath(path).includes('database/menus')) {
+        if (building || !normalizePath(path).includes('database/menus')) {
           return
         }
 
@@ -133,6 +127,6 @@ export default function (): Plugin {
 
         building = false
       })
-    }
+    },
   }
 }
