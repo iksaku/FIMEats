@@ -1,7 +1,7 @@
 import fs from 'fs/promises'
 import path from 'path'
 import yaml from 'js-yaml'
-import { createConnection, getConnection, getConnectionManager } from 'typeorm'
+import { Connection, createConnection, getConnection, getConnectionManager } from 'typeorm'
 import { normalizePath, Plugin } from 'vite'
 import { Faculty, Cafeteria, Product, Category, models } from '../models'
 import { FacultyMenu } from './menus/Menu'
@@ -11,18 +11,18 @@ async function build(): Promise<void> {
 
   await ensureDatabaseExists(database)
 
-  if (!getConnectionManager().has('default')) {
-    await createConnection({
-      type: 'sqljs',
-      location: database,
-      autoSave: true,
-      entities: models,
-    })
-  }
+  const connection = await createConnection({
+    type: 'sqljs',
+    location: database,
+    autoSave: true,
+    entities: models,
+  })
 
-  await getConnection().synchronize(true)
+  await connection.synchronize(true)
 
-  await importDataset()
+  await importDataset(connection)
+
+  await connection.close()
 }
 
 async function ensureDatabaseExists(path: string): Promise<void> {
@@ -35,8 +35,8 @@ async function ensureDatabaseExists(path: string): Promise<void> {
   }
 }
 
-async function importDataset(): Promise<void> {
-  await getConnection().transaction(async (transactionManager) => {
+async function importDataset(connection: Connection): Promise<void> {
+  await connection.transaction(async (transactionManager) => {
     const menuDir = path.resolve(__dirname, 'menus')
     const menus = await fs.readdir(menuDir)
 
@@ -104,7 +104,7 @@ async function importDataset(): Promise<void> {
     }
   })
 
-  await getConnection().query('VACUUM')
+  await connection.query('VACUUM')
 }
 
 let building = false
