@@ -8,7 +8,7 @@
 
     <Card v-for="cafeteria in faculty?.cafeterias">
       <div class="w-full text-center mb-6">
-        <h2 :id="cafeteria.rowid" class="text-gray-700 text-2xl">
+        <h2 class="text-gray-700 text-2xl">
           {{ cafeteria.name }}
         </h2>
       </div>

@@ -98,8 +98,8 @@
 <script lang="ts">
   import { computed, defineComponent, ref } from 'vue'
   import { useMetadata } from '@/api/metadata'
-  import GithubIcon from '@/components/icons/Github.svg'
-  import MenuIcon from '@/components/icons/Menu.svg'
+  import GithubIcon from '@/components/icons/Github.svg?component'
+  import MenuIcon from '@/components/icons/Menu.svg?component'
 
   export default defineComponent({
     name: 'App',

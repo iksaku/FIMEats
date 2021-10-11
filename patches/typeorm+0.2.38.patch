@@ -1,0 +1,28 @@
+diff --git a/node_modules/typeorm/browser/platform/BrowserPlatformTools.js b/node_modules/typeorm/browser/platform/BrowserPlatformTools.js
+index 7b58f73..8bc0993 100644
+--- a/node_modules/typeorm/browser/platform/BrowserPlatformTools.js
++++ b/node_modules/typeorm/browser/platform/BrowserPlatformTools.js
+@@ -5,6 +5,9 @@
+  * For node.js environment this class is not getting packaged.
+  * Don't use methods of this class in the code, use PlatformTools methods instead.
+  */
++
++import { Buffer } from 'buffer/index'
++
+ var PlatformTools = /** @class */ (function () {
+     function PlatformTools() {
+     }
+@@ -147,11 +150,11 @@ var Writable = /** @class */ (function () {
+ }());
+ export { Writable };
+ if (typeof window !== "undefined") {
+-    window.Buffer = require("buffer/").Buffer;
++    window.Buffer = Buffer;
+ }
+ // NativeScript uses global, not window
+ if (typeof global !== "undefined") {
+-    global.Buffer = require("buffer/").Buffer;
++    global.Buffer = Buffer;
+ }
+ 
+ //# sourceMappingURL=BrowserPlatformTools.js.map

@@ -2,8 +2,10 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
 import './assets/app.css'
-import '@/api/database/setup';
+import { setup } from '@/api/database/setup'
 
-createApp(App)
-  .use(router)
-  .mount('#app')
+const app = createApp(App).use(router)
+
+setup().then(() => {
+  app.mount('#app')
+})

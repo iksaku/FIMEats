@@ -1,14 +1,13 @@
-import {createConnection, getConnection} from "typeorm"
-import 'reflect-metadata'
+import { createConnection, getConnection } from 'typeorm'
 import sqljs from 'sql.js'
 import sqlite from 'sql.js/dist/sql-wasm.wasm?url'
 import database_url from './database.sqlite?url'
-import {models} from "@/api/models";
+import { models } from '@/api/models'
 
-async function setup(): Promise<void> {
+export async function setup(): Promise<void> {
   // @ts-ignore
   window.SQL = await sqljs({
-    locateFile: () => sqlite
+    locateFile: () => sqlite,
   })
 
   await createConnection({
@@ -20,5 +19,3 @@ async function setup(): Promise<void> {
   const database = new Uint8Array(await databaseStream.arrayBuffer())
   await getConnection().sqljsManager.loadDatabase(database)
 }
-
-await setup()

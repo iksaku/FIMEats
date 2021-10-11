@@ -1,5 +1,4 @@
-import { BaseEntity, DeepPartial, getConnection, ObjectType, PrimaryGeneratedColumn } from 'typeorm'
-import { RelationMetadata } from 'typeorm/metadata/RelationMetadata'
+import { BaseEntity, PrimaryGeneratedColumn } from 'typeorm'
 
 export abstract class Model extends BaseEntity {
   @PrimaryGeneratedColumn()
