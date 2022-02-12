@@ -4,7 +4,7 @@
       <h2 id="facultades" class="text-gray-700 text-2xl">Selecciona tu Facultad</h2>
     </div>
 
-    <ul class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+    <ul class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
       <li v-for="faculty of faculties.values()" class="col-span-1 flex flex-col text-center bg-white rounded-lg shadow divide-y divide-gray-200">
         <router-link :to="{ name: 'faculty', params: { short_name: faculty.short_name } }">
           <div class="flex-1 flex flex-col p-8">

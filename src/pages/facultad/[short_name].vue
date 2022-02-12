@@ -13,7 +13,7 @@
         </h2>
       </div>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4">
+      <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         <div v-for="product in cafeteria.products" class="group col-span-1 p-4 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-xl border">
           <!-- TODO: On click open modal with price comparison -->
           <div class="h-full w-full flex flex-col justify-between">
