@@ -111,7 +111,7 @@ let building = false
 
 export default function (): Plugin {
   return {
-    name: 'Database Generator',
+    name: 'Database Compiler',
     async buildStart(): Promise<void> {
       await build()
     },

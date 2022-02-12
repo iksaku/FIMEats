@@ -8,7 +8,7 @@
       <li v-for="faculty of faculties.values()" class="col-span-1 flex flex-col text-center bg-white rounded-lg shadow divide-y divide-gray-200">
         <router-link :to="{ name: 'faculty', params: { short_name: faculty.short_name } }">
           <div class="flex-1 flex flex-col p-8">
-            <img class="w-32 h-32 flex-shrink-0 mx-auto bg-black rounded-full" :src="faculty.logo" alt="" />
+            <img class="w-32 h-32 mx-auto flex-shrink-0 object-contain" :src="faculty.logoUrl" alt="" />
             <h3 class="mt-6 text-gray-900 text-sm font-medium">{{ faculty.name }}</h3>
             <dl class="mt-1 flex-grow flex flex-col justify-between">
               <dt class="sr-only">{{ faculty.short_name }}</dt>
@@ -44,6 +44,8 @@
       const faculties = reactive(new Map<number, Faculty>())
 
       Faculty.createQueryBuilder()
+        .orderBy('short_name = "FIME"', 'DESC')
+        .addOrderBy('short_name', 'ASC')
         .getMany()
         .then((models: Faculty[]) => {
           models.forEach((model: Faculty) => {

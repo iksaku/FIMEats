@@ -35,6 +35,7 @@
     "typeorm": "^0.2.37",
     "typescript": "^4.3.2",
     "vite": "^2.4.4",
+    "vite-plugin-favicon": "npm:vite-plugin-favicon2",
     "vite-plugin-pages": "^0.18.0",
     "vite-svg-loader": "^2.2.0",
     "vue-router": "4",
