@@ -61,7 +61,6 @@ async function importDataset(connection: Connection): Promise<void> {
         rowid: ++faculty_id,
         name: data.name,
         short_name: data.short_name,
-        logo: data.logo,
         maps_url: data.maps_url,
       })
 

@@ -11,9 +11,6 @@ export class Faculty extends Model {
   short_name!: string
 
   @Column('varchar', { length: 255, nullable: true })
-  logo!: string
-
-  @Column('varchar', { length: 255, nullable: true })
   maps_url!: string
 
   @OneToMany(() => Cafeteria, (cafeteria) => cafeteria.faculty)
@@ -24,7 +21,7 @@ export class Faculty extends Model {
     return ['name', 'short_name']
   }
 
-  get logoUrl(): string {
-    return new URL(`../../assets/logos/${this.logo}`, import.meta.url).href
+  get logo(): string {
+    return new URL(`../../assets/logos/${this.short_name.toLowerCase()}.png`, import.meta.url).href
   }
 }

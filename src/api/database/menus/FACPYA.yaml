@@ -1,6 +1,5 @@
 name: Facultad de Contaduría Pública y Administración
 short_name: FACPYA
-logo: facpya.png
 maps_url: https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3594.29484854102!2d-100.3111364!3d25.7277613!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x9b1c8f7d76fae54f!2sCafeter%C3%ADa!5e0!3m2!1ses!2smx!4v1542474423733
 cafeterias:
   - name: Cafetería de FACPYA

@@ -1,6 +1,5 @@
 name: Facultad De Ingenieria Mecanica Y Electrica
 short_name: FIME
-logo: fime.png
 maps_url: https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14377.445986369294!2d-100.3135605!3d25.7255564!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x79b183284cfe7bc9!2sCafeter%C3%ADa+FIME!5e0!3m2!1ses!2smx!4v1542687156459
 cafeterias:
   - name: Cafetería de FIME

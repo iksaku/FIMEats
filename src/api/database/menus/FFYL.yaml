@@ -1,6 +1,5 @@
 name: Facultad de Filosofía y Letras
 short_name: FFYL
-logo: ffyl.png
 maps_url: https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3594.2572984080166!2d-100.31134538497969!3d25.729003483651596!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8662945396e136af%3A0x99b2536497dbcd4d!2sCafeteria+Filosofia+y+Letras!5e0!3m2!1ses!2smx!4v1542687032812
 cafeterias:
   - name: Cafetería de FFYL
